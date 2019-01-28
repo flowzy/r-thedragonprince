@@ -1,8 +1,4 @@
-<center>
-
-![#theme preview#]()
-
-A theme for r/TheDragonPrince
+> Easy to setup theme development project, primarily for [r/TheDragonPrince](https://old.reddit.com/r/TheDragonPrince)
 
 ![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)
 ![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)
@@ -13,7 +9,7 @@ A theme for r/TheDragonPrince
 | --------- | --------- | --------- | --------- |
 | last version| last version| last version| last version
 
-</center>
+TL;DR - Cross-browser support is very narrow at the moment.
 
 # Table of content
 * [Getting started](#getting-started)
