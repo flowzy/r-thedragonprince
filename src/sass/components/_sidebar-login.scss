@@ -1,0 +1,28 @@
+.login-form-side {
+    padding: $gutter-size;
+    padding-top: 0;
+    border: none;
+    border-bottom: 1px solid $color-secondary;
+    margin: 0 (-$gutter-size);
+
+    input {
+        &[type="text"],
+        &[type="password"] {
+            @extend %input-field;
+            width: round($sidebar-width / 2 - $gutter-size / 2);
+            margin: 0;
+            float: left;
+            display: block;
+
+            + input {
+                margin-left: $gutter-size;
+            }
+        }
+    }
+
+    .submit {
+        float: right;
+        margin: 6px 0 0;
+        width: auto;
+    }
+}

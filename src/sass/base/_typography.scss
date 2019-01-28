@@ -1,0 +1,37 @@
+%anchor-link {
+    color: darken($color-text, 30%);
+}
+
+// anchor link styling
+a {
+    @extend %anchor-link;
+
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+// markdown
+.md {
+    color: inherit;
+
+    a {
+        @extend %anchor-link;
+    }
+}
+
+// thread info paragraphs
+.tagline,
+.search-result-meta {
+    color: darken($color-text, 30%);
+    font-size: 0.75rem;
+
+    .stickied-tagline {
+        color: $color-green;
+    }
+}
+
+// author links
+a.author {
+    margin-right: 0;
+}

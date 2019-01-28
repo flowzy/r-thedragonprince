@@ -1,0 +1,29 @@
+// handles function, mixins, and variables
+@import 'abstracts/headers';
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+
+// animations, base, typography, and utilies.
+@import 'base/general';
+@import 'base/typography';
+
+// header, footer, grid, navigation etc.
+@import 'layout/header';
+@import 'layout/sidebar';
+@import 'layout/content';
+@import 'layout/footer';
+
+// components
+@import 'components/forms';
+@import 'components/sidebar-submits';
+@import 'components/sidebar-search';
+@import 'components/sidebar-premium-banner';
+@import 'components/sidebar-login';
+@import 'components/sidebar-info';
+@import 'components/content-link';
+@import 'components/content-thing';
+@import 'components/content-infobar';
+@import 'components/content-flairs';
+
+// page-specific styling
+// @import 'pages/...';

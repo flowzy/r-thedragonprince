@@ -1,0 +1,27 @@
+// (un)subscribe button
+.fancy-toggle-button {
+    .active {
+        border: none;
+        padding: 5px 15px;
+        border-radius: 2rem;
+        font-weight: normal;
+        font-size: 0.8rem;
+        transition: all $transition-style;
+    }
+
+    // subscribe
+    .add {
+        background: rgba($color-primary, .2);
+        color: $color-primary;
+
+        &:hover {
+            background: $color-primary;
+            color: $color-text;
+        }
+    }
+
+    // unsubscribe
+    .remove {
+
+    }
+}

@@ -1,0 +1,39 @@
+%input-field {
+    background-color: transparent;
+    font: inherit;
+    font-size: 0.8rem;
+    border: none;
+    border-bottom: 2px solid $color-primary;
+    padding: 8px 0;
+    height: auto;
+    width: 100%;
+    color: $color-text;
+    transition: border-color $transition-style;
+}
+
+%input-field-focus {
+    border-color: $color-primary;
+    outline: none;
+}
+
+// field placeholders
+::-webkit-input-placeholder {
+    color: rgba(lighten($color-secondary, 20%), 1);
+    opacity: 0.8;
+}
+
+// text input fields
+.side input {
+    &[type="text"],
+    &[type="password"] {
+        @extend %input-field;
+
+        &:focus {
+            @extend %input-field-focus;
+
+            &::-webkit-input-placeholder {
+                opacity: 0.6;                
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+// $header-variant is getting passed in by webpack on runtime
+
+$start: #000 !default;
+$end: #000 !default;
+
+@if ($header-variant == 1) {
+    $start: #796a65;
+    $end: #293138;
+} @else if ($header-variant == 2) {
+    $start: #211e19;
+    $end: #462519;
+} @else if ($header-variant == 3) {
+    $start: #523f21;
+    $end: #a07039;
+} @else if ($header-variant == 4) {
+    $start: #383a32;
+    $end: #332e21;
+} @else if ($header-variant == 5) {
+    $start: #2c465d;
+    $end: #182e42;
+} @else if ($header-variant == 6) {
+    $start: #264c4a;
+    $end: #152d2a;
+} @else if ($header-variant == 7) {
+    $start: #264354;
+    $end: #172b44;
+} @else if ($header-variant == 8) {
+    $start: #402424;
+    $end: #54211e;
+} @else if ($header-variant == 9) {
+    $start: #424236;
+    $end: #313028;
+} @else if ($header-variant == 10) {
+    $header-logo-shadow: true;
+
+    $start: #232d1f;
+    $end: #17251a;
+} @else if ($header-variant == 11) {
+    $start: #5f5844;
+    $end: #403b34;
+} @else if ($header-variant == 12) {
+    $start: #384848;
+    $end: #232c2f;
+} @else if ($header-variant == 13) {
+    $start: #202727;
+    $end: #21262b;
+} @else if ($header-variant == 14) {
+    $start: #5a4d3c;
+    $end: #826d58;
+}
+
+// save these colors to variables, that are then used in _variables.scss
+$header-gradient-start: $start;
+$header-gradient-end: $end;

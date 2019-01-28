@@ -1,0 +1,39 @@
+// expand the height, so that the gradient (body::before)
+// can be positioned correctly
+html {
+    height: auto;
+    min-height: 100%;
+}
+
+body {
+    background: $color-body;
+    color: $color-text;
+    font-family: $font-family;
+    position: relative;
+    padding: $body-padding;
+    
+    &::before {
+        content: '';
+        background: linear-gradient(to bottom, #151b20 10%, $color-body 85%);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        z-index: -1;
+    }
+}
+
+// hide:
+// - debug info from the bottom of the page
+// - whitespace at the bottom of the page
+// - reddit redesign opt-in
+#hsts_pixel,
+.debuginfo,
+.redesign-beta-optin {
+    display: none;
+}
+
+%font-family-serif {
+    font-family: $font-family-serif;
+}

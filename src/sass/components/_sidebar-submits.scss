@@ -1,0 +1,38 @@
+.submit {
+    // size them half of the sidebar's width
+    width: $sidebar-width / 2 - $gutter-size / 2;
+}
+
+.submit-text {
+    // move the button next to its "cousin"
+    margin: -($gutter-size + $sidebar-submit-height) 0 0 ($sidebar-width / 2 + $gutter-size / 2);
+}
+
+.morelink {
+    background: rgba($color-primary, .2);
+    height: $sidebar-submit-height;
+    border: none;
+    line-height: $sidebar-submit-height;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-size: 0.85rem;
+    border-radius: $border-radius;
+    transition: background-color $transition-style,
+                box-shadow $transition-style;
+
+    &:hover {
+        background: lighten($color-primary, 6%);
+        box-shadow: 0 20px 38px rgba(#000, .16);
+    }
+
+    a {
+        transition: color $transition-style;
+        color: $color-primary;
+    }
+
+    // hide reddit's
+    .nub {
+        display: none;
+    }
+}

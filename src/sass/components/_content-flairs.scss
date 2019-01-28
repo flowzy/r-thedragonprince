@@ -1,0 +1,32 @@
+.linkflairlabel {
+    background: $color-linkflair-discussion;
+    color: $color-body;
+    padding: 2px 5px;
+    border: none;
+    font-size: 0.8rem;
+    display: inline-block;
+    max-width: none;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin: 0 round($gutter-size / 1.5) 0 0;
+
+    .linkflair-official-wonderstorm & {
+        background: $color-linkflair-wonderstorm;
+    }
+
+    .linkflair-fan-content & {
+        background: $color-linkflair-fan-content;
+    }
+
+    .linkflair-general-discussion & {
+        color: $color-primary;
+    }
+
+    .linkflair-announcement & {
+        background: $color-linkflair-announcement;
+    }
+
+    // .stickied & {
+    //     color: $color-green;
+    // }
+}

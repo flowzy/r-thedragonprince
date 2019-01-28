@@ -1,0 +1,56 @@
+.thing {
+    // there are 2 elements with this class, inside one another
+    // p.title and a.title (p.title > a.title)
+    p.title {
+        line-height: 1.1;
+        display: flex;
+        align-items: center;
+        margin-bottom: round($gutter-size / 2);
+    }
+
+    a.title {
+        color: $color-primary;
+        font-size: 1.2rem;
+        @extend %font-family-serif;
+
+        &:hover {
+            color: lighten($color-primary, 15%);
+        }
+
+        &:visited {
+            color: darken($color-primary, 20%);
+
+            &:hover {
+                color: darken($color-primary, 10%);
+            }
+        }
+    }
+
+    // stickied threads
+    &.stickied.link {
+        border-color: rgba($color-green, .3);
+
+        + .clearleft + .link {
+            &:not(.stickied) {
+                border-top-width: 1px;
+            }
+
+            &.stickied {
+                margin-bottom: $gutter-size;
+            }
+        }
+
+        // 
+        .midcol {
+            background: rgba($color-green, .15);
+        }
+
+        a.title {
+            color: $color-green;
+
+            &:hover {
+                color: lighten($color-green, 10%);
+            }
+        }
+    }
+}

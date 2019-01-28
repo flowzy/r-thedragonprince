@@ -1,0 +1,30 @@
+#search {
+    margin: -$gutter-size;
+    margin-bottom: 0;
+    border-bottom: 1px solid $color-secondary;
+    position: relative;
+
+    input {
+        &[type="text"] {
+            @extend %input-field;
+            padding: $gutter-size;
+            border-bottom: none;
+
+            &:focus {
+                @extend %input-field-focus;
+            }
+        }
+
+        &[type="submit"] {
+            margin-left: -$gutter-size * 2;
+        }
+    }
+}
+
+// this pop up after the user focuses search text field
+#searchexpando {
+    position: absolute;
+    left: $gutter-size;
+    right: $gutter-size;
+    z-index: 100;
+}

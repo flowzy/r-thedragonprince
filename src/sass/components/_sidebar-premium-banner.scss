@@ -1,0 +1,15 @@
+// reddit premium's banner
+// make it blend in with the rest of the theme
+.premium-banner-outer {
+    margin: 0 (-$gutter-size);
+}
+
+.premium-banner {
+    border-top: 1px solid $color-secondary;
+    border-bottom: 1px solid $color-secondary;
+
+    // hide the border frame
+    &::before {
+        content: none;
+    }
+}

@@ -1,0 +1,10 @@
+.side {
+    background: $sidebar-bg;
+    width: $sidebar-width;
+    margin: 0;
+    padding: $gutter-size;
+
+    > .spacer {
+        margin: 0 0 $gutter-size;
+    }
+}

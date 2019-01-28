@@ -1,0 +1,50 @@
+// colors
+$color-text: #fff;
+$color-body: #131317;
+$color-body-accent: #28060f;
+$color-primary: #e5a544;
+$color-green: #44a244;
+$color-secondary: rgba(lighten($color-body, 20%), .65);
+
+$color-linkflair-wonderstorm: #139feb;
+$color-linkflair-fan-content: #ff7990;
+$color-linkflair-discussion: $color-secondary;
+$color-linkflair-announcement: $color-green;
+
+// font settings
+$font-family: 'Source Sans Pro', 'Arial', sans-serif;
+$font-family-serif: serif;
+
+// general
+$gutter-size: 14px;
+$body-padding: $gutter-size * 1.5;
+
+$border-radius: 4px;
+
+$transition-style: 0.15s cubic-bezier(0.25, 1, 0.2, 1);
+
+// header
+$header-height: 300px;
+$header-color: $color-body;
+$header-logo-position: 'left'; // available options are: left, center, right
+$header-logo-shadow: false !default;
+
+$header-top-height: 22px;
+
+// $header-bottom-bg: linear-gradient(to left, rgba(#a21999, .85), rgba(#0a4498, .9));
+// $header-gradient-start and $header-gradient-end colors are defined inside of `abstracts/_headers.scss`
+$header-bottom-bg: linear-gradient(to right, rgba($header-gradient-start, .9), rgba($header-gradient-end, .9));
+$header-bottom-height: 40px;
+
+// footer
+$footer-image-height: 160px;
+
+// sidebar
+$sidebar-width: 340px;
+$sidebar-bg: transparentize($color-secondary, 0.2);
+
+$sidebar-search-bg: $color-secondary;
+$sidebar-search-focus-bg: #fff;
+$sidebar-search-height: 35px;
+
+$sidebar-submit-height: 35px;
