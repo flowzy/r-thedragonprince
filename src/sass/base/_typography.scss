@@ -34,4 +34,23 @@ a {
 // author links
 a.author {
     margin-right: 0;
+
+    &.moderator {
+        color: $color-green;
+
+        &::after {
+            content: 'M';
+            padding: 1px 3px;
+            border-radius: 2px;
+            background: $color-green;
+            color: $color-body;
+            font-size: 90%;
+            margin: 0 0 0 4px;
+        }
+    }
+}
+
+// [M], [S], [S,M] <- these kind of things next to the username
+.userattrs {
+    display: none;
 }
