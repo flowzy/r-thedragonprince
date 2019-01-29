@@ -1,15 +1,17 @@
 {
-  "name": "tdp-reddit",
-  "description": "Subreddit theme for r/TheDragonPrince",
-  "version": "0.0.1",
+  "name": "r-thedragonprince",
+  "description": "Subreddit theme for the Netflix show \"The Dragon Prince\"",
+  "version": "wip",
   "main": "src/sass/theme.scss",
   "scripts": {
     "dev": "webpack-dev-server --env.NODE_ENV=development",
-    "prod": "webpack --env.NODE_ENV=production"
+    "prod": "webpack --env.NODE_ENV=production",
+    "prod-test": "webpack-dev-server --env.NODE_ENV=production --env.test=true",
+    "prod-test-light": "webpack-dev-server --env.NODE_ENV=production --env.test=true --env.light=true"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flowzy/tdp-reddit.git"
+    "url": "git+https://github.com/flowzy/r-thedragonprince.git"
   },
   "keywords": [
     "sass",
@@ -21,9 +23,9 @@
   "author": "flowzy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flowzy/tdp-reddit/issues"
+    "url": "https://github.com/flowzy/r-thedragonprince/issues"
   },
-  "homepage": "https://github.com/flowzy/tdp-reddit#readme",
+  "homepage": "https://github.com/flowzy/r-thedragonprince#readme",
   "browserslist": [
     "last 1 major version",
     "not dead",

@@ -67,9 +67,19 @@ Generate SSL certificates, start a local development server and watch for file c
 $ yarn dev
 ```
 
-Minimize the CSS file size, optimize images and transform CSS `url(...)` to comply with Reddit's syntax:
+Minimize the CSS file size, optimize images and rewrites CSS `url(...)` to comply with Reddit's syntax:
 ```bash
 $ yarn prod
+```
+
+Combine both of the above tasks without rewriting `url(...)` to keep real image path:
+```bash
+$ yarn prod-test
+```
+
+Run `yarn prod-test` without image optimization. Useful for users with weaker CPUs:
+```bash
+$ yarn prod-test-light
 ```
 
 # Contributing

@@ -22,7 +22,7 @@ module.exports = env => {
         cachedAssets: true,
         errors: true,
         assetsSort: '!chunks',
-        excludeAssets: env.NODE_ENV === 'production' ? /\.(js|map)$/ : /\.(js|map|jpg|png)$/
+        excludeAssets: env.NODE_ENV === 'development' || !!env.light ? /\.(js|map|jpe?g|png|gif)$/ : /\.(js|map)$/
     }
 
     const headers = []
@@ -33,7 +33,7 @@ module.exports = env => {
             headers.push(file)
     })
 
-    return {
+    const config = {
         mode: env.NODE_ENV || 'none',
 
         entry: {
@@ -73,9 +73,9 @@ module.exports = env => {
                         {
                             loader: 'replace-css-url-loader',
                             query: {
-                                replace (url, file) {
+                                replace (url) {
                                     // rewrite css url() from, for example, "img/picture.jpg" => "%%picture%%"
-                                    if (env.NODE_ENV === 'production') {
+                                    if (env.NODE_ENV === 'production' && !env.test) {
                                         const split = url.split('/')
                                         const last = split[split.length - 1]
                                         const name = last.slice(0, last.lastIndexOf('.'))
@@ -104,8 +104,8 @@ module.exports = env => {
                             options: {
                                 sourceMap: true,
                                 data: `
-                                    $env: ${ env.NODE_ENV };
-                                    $header-variant: ${ Math.floor(Math.random() * headers.length) + 1 };
+                                    $env: ${ env.NODE_ENV};
+                                    $header-variant: ${ Math.floor(Math.random() * headers.length) + 1};
                                 `
                             }
                         }
@@ -157,21 +157,33 @@ module.exports = env => {
                 }),
 
                 new ImageminPlugin({
-                    test: /\.(jpe?g|png)/i,
-                    cacheFolder: path.resolve(__dirname, 'src/.cache'),
+                    disable: !!env.light,
+                    test: /\.(jpe?g|png|gif)$/i,
+                    cacheFolder: path.resolve(__dirname, '.cache'),
 
-                    pngquant: {
-                        quality: '85-90'
+                    // https://github.com/imagemin/imagemin-optipng#api
+                    optipng: {
+                        optimizationLevel: 2
                     },
 
                     plugins: [
+                        // https://github.com/imagemin/imagemin-mozjpeg#api
                         ImageminMozjpeg({
                             quality: 90,
-                            progresive: true
+                            dcScanOpt: 2
                         })
                     ]
                 })
             ]
         }
     }
+
+    if (env.test) {
+        // for live testing purposes, enable optimization plugins
+        config.optimization.minimizer.map(plugin => {
+            config.plugins.push(plugin)
+        })
+    }
+
+    return config
 }

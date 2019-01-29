@@ -31,7 +31,7 @@ node_modules/
 .vscode
 
 # Compiled asset directory
-dist
+dist/
 
 # Cached optimized images
-src/.cache/
+.cache/
