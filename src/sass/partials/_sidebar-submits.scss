@@ -18,16 +18,15 @@
     letter-spacing: 0;
     font-size: 0.85rem;
     border-radius: $border-radius;
-    transition: background-color $transition-style,
-                box-shadow $transition-style;
+    @extend %transition;
 
     &:hover {
         background: lighten($color-primary, 6%);
-        box-shadow: 0 20px 38px rgba(#000, .16);
+        box-shadow: $box-shadow;
     }
 
     a {
-        transition: color $transition-style;
+        @extend %transition;
         color: $color-primary;
     }
 

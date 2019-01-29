@@ -14,14 +14,14 @@
         @extend %font-family-serif;
 
         &:hover {
-            color: lighten($color-primary, 15%);
+            color: saturate(lighten($color-primary, 15%), 10%);
         }
 
         &:visited {
-            color: darken($color-primary, 20%);
+            color: desaturate(darken($color-primary, 20%), 20%);
 
             &:hover {
-                color: darken($color-primary, 10%);
+                color: desaturate(darken($color-primary, 10%), 10%);
             }
         }
     }
@@ -35,16 +35,18 @@
                 border-top-width: 1px;
             }
 
+            // add a space
             &.stickied {
                 margin-bottom: $gutter-size;
             }
         }
 
-        // 
+        // change background color for up/down-votes
         .midcol {
             background: rgba($color-green, .15);
         }
 
+        // change the title color of the stickied threads
         a.title {
             color: $color-green;
 

@@ -1,0 +1,39 @@
+// main navigation
+.tabmenu {
+    margin: 0;
+    font-size: 1rem;
+    position: absolute;
+    left: $gutter-size;
+    bottom: 0;
+    top: 0;
+    line-height: $header-bottom-height;
+    @extend %font-family-serif;
+
+    li {
+        background: transparent;
+        margin: 0;
+        font-weight: normal;
+        text-transform: uppercase;
+        float: left;
+
+        a {
+            background: transparent;
+            padding: 0 $gutter-size;
+            color: $color-text;
+            display: block;
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        &.selected {
+            a {
+                background: transparent;
+                border: none;
+                color: $color-primary;
+                box-shadow: inset 0 -2px 0 $color-primary;
+            }
+        }
+    }
+}

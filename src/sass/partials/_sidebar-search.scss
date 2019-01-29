@@ -24,7 +24,11 @@
 // this pop up after the user focuses search text field
 #searchexpando {
     position: absolute;
-    left: $gutter-size;
-    right: $gutter-size;
+    left: 0;
+    right: 0;
+    margin-top: 0;
     z-index: 100;
+    border: none;
+    border-radius: 0;
+    box-shadow: $box-shadow;
 }

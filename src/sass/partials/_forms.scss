@@ -8,7 +8,7 @@
     height: auto;
     width: 100%;
     color: $color-text;
-    transition: border-color $transition-style;
+    @extend %transition;
 }
 
 %input-field-focus {

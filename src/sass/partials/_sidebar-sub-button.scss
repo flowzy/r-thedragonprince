@@ -6,7 +6,7 @@
         border-radius: 2rem;
         font-weight: normal;
         font-size: 0.8rem;
-        transition: all $transition-style;
+        @extend %transition;
     }
 
     // subscribe
@@ -17,11 +17,12 @@
         &:hover {
             background: $color-primary;
             color: $color-text;
+            @extend %box-shadow;
         }
     }
 
     // unsubscribe
-    .remove {
+    // .remove {
 
-    }
+    // }
 }
