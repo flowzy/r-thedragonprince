@@ -22,12 +22,12 @@ module.exports = env => {
         cachedAssets: true,
         errors: true,
         assetsSort: '!chunks',
-        excludeAssets: /\.(js|map)$/
+        excludeAssets: env.NODE_ENV === 'production' ? /\.(js|map)$/ : /\.(js|map|jpg|png)$/
     }
 
     const headers = []
 
-    // get all non-blurry headers to later use in randomization
+    // get all non-blurry headers to use later in randomization
     fs.readdirSync(path.resolve(__dirname, 'src/img/headers')).map(file => {
         if (!file.includes('blurry') && !file.includes('psd'))
             headers.push(file)
