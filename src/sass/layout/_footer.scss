@@ -61,7 +61,7 @@
     .choice {
         line-height: 25px;
         display: block;
-        transition: all $transition-style;
+        @extend %transition;
 
         &:hover {
             text-decoration: none;

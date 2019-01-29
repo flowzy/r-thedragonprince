@@ -1,0 +1,18 @@
+// these are "placeholder selectors" and are used to generate more efficient output.
+// read more: http://thesassway.com/intermediate/understanding-placeholder-selectors
+
+%font-family-serif {
+    font-family: $font-family-serif;
+}
+
+%box-sizing {
+    box-sizing: border-box;
+}
+
+%box-shadow {
+    box-shadow: $box-shadow;
+}
+
+%transition {
+    transition: $transition;
+}

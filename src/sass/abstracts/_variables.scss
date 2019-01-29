@@ -21,7 +21,9 @@ $body-padding: $gutter-size * 1.5;
 
 $border-radius: 4px;
 
-$transition-style: 0.15s cubic-bezier(0.25, 1, 0.2, 1);
+$transition: all 0.15s cubic-bezier(0.25, 1, 0.2, 1);
+
+$box-shadow: 0 20px 38px rgba(#000, .16);
 
 // header
 $header-height: 300px;
@@ -41,7 +43,7 @@ $footer-image-height: 160px;
 
 // sidebar
 $sidebar-width: 340px;
-$sidebar-bg: transparentize($color-secondary, 0.2);
+$sidebar-bg: transparentize($color-secondary, 0.4);
 
 $sidebar-search-bg: $color-secondary;
 $sidebar-search-focus-bg: #fff;
