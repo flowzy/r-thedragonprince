@@ -4,6 +4,7 @@
 @import 'abstracts/functions';
 
 // animations, base, typography, and utilies.
+@import 'base/placeholder-selectors';
 @import 'base/general';
 @import 'base/typography';
 
@@ -13,17 +14,27 @@
 @import 'layout/content';
 @import 'layout/footer';
 
-// components
-@import 'components/forms';
-@import 'components/sidebar-submits';
-@import 'components/sidebar-search';
-@import 'components/sidebar-premium-banner';
-@import 'components/sidebar-login';
-@import 'components/sidebar-info';
-@import 'components/content-link';
-@import 'components/content-thing';
-@import 'components/content-infobar';
-@import 'components/content-flairs';
+// partials
+// -- general partials, that are spread around the site
+@import 'partials/forms';
+
+// -- header partials
+@import 'partials/header-logo';
+@import 'partials/header-menu';
+@import 'partials/header-profile';
+
+// -- sidebar partials
+@import 'partials/sidebar-submits';
+@import 'partials/sidebar-search';
+@import 'partials/sidebar-premium-banner';
+@import 'partials/sidebar-login';
+@import 'partials/sidebar-sub-button';
+
+// -- content partials
+@import 'partials/content-link';
+@import 'partials/content-thing';
+@import 'partials/content-infobar';
+@import 'partials/content-flairs';
 
 // page-specific styling
 // @import 'pages/...';
