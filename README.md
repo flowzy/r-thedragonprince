@@ -5,7 +5,7 @@
 > Easy to setup theme development project, primarily for [r/TheDragonPrince](https://old.reddit.com/r/TheDragonPrince)
 
 ![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)
-![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)
+![dependencies](https://img.shields.io/david/dev/flowzy/r-thedragonprince.svg?label=dependencies)
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
 
 <!-- Generated using: http://godban.github.io/browsers-support-badges/ -->
