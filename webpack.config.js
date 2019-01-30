@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const ImageminMozjpeg = require('imagemin-mozjpeg')
+const SpritesmithPlugin = require('webpack-spritesmith')
 
 // clear console
 process.stdout.write('\033c')
@@ -128,6 +129,22 @@ module.exports = env => {
             // extract css into a separate file
             new MiniCssExtractPlugin({
                 filename: 'css/[name].css'
+            }),
+
+            // create sprite from the images inside of img/sprites/icons folder
+            new SpritesmithPlugin({
+                src: {
+                    cwd: path.resolve(__dirname, 'src/img/sprites/icons'),
+                    glob: '*.png'
+                },
+                target: {
+                    image: path.resolve(__dirname, 'dist/img/sprite-icons.png'),
+                    css: path.resolve(__dirname, 'src/sass/abstracts/_sprite.scss')
+                },
+                apiOptions: {
+                    // image reference inside of CSS
+                    cssImageRef: '../img/sprite-icons.png'
+                }
             }),
 
             // move images from source to distribution folder

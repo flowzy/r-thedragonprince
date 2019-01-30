@@ -6,7 +6,7 @@
 
 ![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)
 ![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)
-![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)
+![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)
 
 <!-- Generated using: http://godban.github.io/browsers-support-badges/ -->
 | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" /></br>Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /></br>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /></br>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /></br>Safari |
@@ -31,7 +31,7 @@ Before you start your development on the project, you need go through a couple o
 Download and install the following software:
 * [NodeJS](https://nodejs.org/en/download/)
 * [Yarn](https://yarnpkg.com/)
-* [git](https://git-scm.com/downloads) (not required, but recommended)
+* [git](https://git-scm.com/downloads) (recommended, but not required)
 * [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) (for Chrome) or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (for Firefox)
 
 After you've done that, you now need to allow your browser to connect to "insecure" localhost:
@@ -47,6 +47,8 @@ After you've done that, you now need to allow your browser to connect to "insecu
     * add the exception by clicking "Confirm Security Exception"
 
 ## Installation
+Now that you've setup your environment, you can start downloading and installing the project.
+
 1. Clone the repository and `cd` into it:
     ```bash
     $ git clone https://github.com/flowzy/r-thedragonprince.git
@@ -77,10 +79,12 @@ Combine both of the above tasks without rewriting `url(...)` to keep real image 
 $ yarn prod-test
 ```
 
-Run `yarn prod-test` without image optimization. Useful for users with weaker CPUs:
+Run `yarn prod-test` without image optimization (useful for users with weaker CPUs):
 ```bash
 $ yarn prod-test-light
 ```
+
+> Although image optimization is the most demanding task in this project, it only really runs once. After that, it stores optimized images in the cache folder (`.cache` in this case) and uses that instead for later builds. You can read on that [here](https://www.npmjs.com/package/imagemin-webpack-plugin#optionscachefolder).
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -52,6 +52,7 @@
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
-    "webpack-fix-style-only-entries": "^0.1.0"
+    "webpack-fix-style-only-entries": "^0.1.0",
+    "webpack-spritesmith": "^1.0.0"
   }
 }
