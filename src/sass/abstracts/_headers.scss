@@ -3,8 +3,10 @@
 $start: #000 !default;
 $end: #000 !default;
 
+$header-logo-shadow: false !default;
+
 @if ($header-variant == 1) {
-    $start: #796a65;
+    $start: #5f5653;
     $end: #293138;
 } @else if ($header-variant == 2) {
     $start: #211e19;
@@ -45,8 +47,24 @@ $end: #000 !default;
     $start: #202727;
     $end: #21262b;
 } @else if ($header-variant == 14) {
+    $header-logo-shadow: true;
+
     $start: #5a4d3c;
     $end: #826d58;
+} @else if ($header-variant == 15) {
+    $header-logo-shadow: true;
+
+    $start: #063773;
+    $end: #7321a9;
+} @else if ($header-variant == 16) {
+    $start: #253756;
+    $end: #254167;
+} @else if ($header-variant == 17) {
+    $start: #2c3532;
+    $end: #273338;
+} @else if ($header-variant == 18) {
+    $start: #441704;
+    $end: #793d16;
 }
 
 // save these colors to variables, that are then used in _variables.scss
