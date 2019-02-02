@@ -5,12 +5,11 @@ os:
 language: node_js
 cache: yarn
 node_js:
-  - "10"
-  - "8"
+  - "11"
+  - "lts/*"
 
-jobs:
-  include:
-    - stage: "Installation"
-      script: yarn install
-    - stage: "Bundle Size Test"
-      script: yarn test
+install:
+  - yarn install
+
+script:
+  - yarn test
