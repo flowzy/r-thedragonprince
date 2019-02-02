@@ -229,7 +229,7 @@ module.exports = env => {
                             dcScanOpt: 2
                         })
                     ]
-                }),
+                })
             ]
         }
     }
