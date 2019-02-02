@@ -6,13 +6,5 @@ os:
 language: node_js
 cache: yarn
 node_js:
-  - "node"
-
-install:
-  - yarn install
-
-script:
-  - yarn test
-
-after_script:
-  - exit
+  - "iojs"
+  - "7"
