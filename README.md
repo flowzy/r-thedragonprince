@@ -4,9 +4,9 @@
 
 > Easy to setup theme development project, primarily for [r/TheDragonPrince](https://old.reddit.com/r/TheDragonPrince)
 
-![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)
+[![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)](LICENSE)
 ![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)
-![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)
+[![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)](https://travis-ci.org/flowzy/r-thedragonprince)
 
 <!-- Generated using: http://godban.github.io/browsers-support-badges/ -->
 | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" /></br>Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /></br>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /></br>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /></br>Safari |
@@ -69,15 +69,21 @@ Generate SSL certificates, start a local development server and watch for file c
 $ yarn dev
 ```
 
+---
+
 Minimize the CSS file size, optimize images and rewrites CSS `url(...)` to comply with Reddit's syntax:
 ```bash
 $ yarn prod
 ```
 
+---
+
 Combine both of the above tasks without rewriting `url(...)` to keep real image path:
 ```bash
 $ yarn prod-test
 ```
+
+---
 
 Run `yarn prod-test` without image optimization (useful for users with weaker CPUs):
 ```bash
@@ -86,6 +92,8 @@ $ yarn prod-test-light
 
 > Although image optimization is the most demanding task in this project, it only really runs once. After that, it stores optimized images in the cache folder (`.cache` in this case) and uses that instead for later builds. You can read on that [here](https://www.npmjs.com/package/imagemin-webpack-plugin#optionscachefolder).
 
+---
+
 You can also choose a header image by passing an argument `env.header` like so:
 
 ```bash
@@ -93,6 +101,8 @@ $ yarn <any of the above> --env.header=<number>
 ```
 
 `number` - from 1 to the amount of header variants inside of `src/img/headers/` directory.
+
+---
 
 Finally, to make sure the bundle size doesn't exceed Reddit's limit, use:
 
@@ -110,4 +120,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 # Acknowledgment
 [@ncla](https://github.com/ncla) and his project "[musereddit](https://github.com/ncla/musereddit)" was a great starting point and helped me kickstart the initial development.
 
-### [License](https://choosealicense.com/licenses/mit/)
+### [License](LICENSE)

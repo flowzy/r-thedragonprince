@@ -5,8 +5,8 @@ os:
 language: node_js
 cache: yarn
 node_js:
-  - "11"
-  - "lts/*"
+  - "10"
+  - "node"
 
 install:
   - yarn install
