@@ -1,0 +1,27 @@
+// note: RES hides this element when enabled
+.nav-buttons {
+    background: $content-bg;
+    border: 1px solid $color-secondary;
+    padding: ($gutter-size / 2) $gutter-size;
+}
+
+.nextprev,
+.next-suggestions {
+    @extend %text-muted;
+
+    .separator {
+        border-color: $color-secondary;
+        margin-left: ($gutter-size / 2);
+        padding-left: 0;
+    }
+
+    a {
+        margin-left: ($gutter-size /2);
+        display: inline-block;
+        @extend %rounded-button;
+
+        &:hover {
+            border: none;
+        }
+    }
+}

@@ -1,9 +1,41 @@
+// menu bar
+#header-bottom-left {
+    height: $header-bottom-height;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 0;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    // add a blurred version of the header picture in the background
+    &::before {
+        background-image: url(../img/headers/header-#{$header-variant}-blurry.jpg);
+        @extend %header-img;
+    }
+
+    // overlay the blurred picture with a transparent gradient
+    &::after {
+        background: $header-bottom-bg;
+        top: 0;
+    }
+}
+
 // main navigation
 .tabmenu {
     margin: 0;
     font-size: 1rem;
     position: absolute;
-    left: $gutter-size;
+    left: $snoo-width;
     bottom: 0;
     top: 0;
     line-height: $header-bottom-height;
@@ -19,11 +51,11 @@
         a {
             background: transparent;
             padding: 0 $gutter-size;
-            color: $color-text;
             display: block;
+            @extend %text-white;
 
             &:hover {
-                color: $color-primary;
+                @extend %text-primary;
             }
         }
 
@@ -31,9 +63,26 @@
             a {
                 background: transparent;
                 border: none;
-                color: $color-primary;
                 box-shadow: inset 0 -2px 0 $color-primary;
+                @extend %text-primary;
             }
         }
+    }
+}
+
+// reddit snoo
+#header-img.default-header {
+    background: transparent;
+    width: $snoo-width;
+    height: $snoo-height;
+    margin: 0;
+    font-size: 0;
+    justify-content: center;
+    @extend %display-flex-and-center;
+
+    &::before {
+        content: '';
+        display: block;
+        @include sprite($icon-reddit-snoo);
     }
 }

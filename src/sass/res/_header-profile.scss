@@ -1,0 +1,64 @@
+#header-bottom-right {
+    // move the profile back down for RES users
+    .res-navTop & {
+        top: auto;
+        bottom: 0;
+    }
+}
+
+.user {
+    position: relative;
+
+    // add a space on the right for the toggle
+    // if the user has an option enabled to switch profiles
+    .res-accountSwitcher-dropDownStyle-alien & {
+        padding-right: 20px;
+    }
+
+    #RESAccountSwitcherIcon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -5px;
+        background: transparent;
+        width: 20px;
+        height: 100%;
+        @extend %text-white;
+        @extend %display-flex-and-center;
+
+        // arrow
+        &::after {
+            content: '';
+            border-top: 4px solid;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            height: 0;
+            width: 0;
+            display: block;
+            margin: auto;
+        }
+
+        &:hover {
+            @extend %text-primary;
+        }
+    }
+}
+
+#RESSettingsButton {
+    // tooltip
+    &::before {
+        content: 'RES Settings';
+    }
+
+    // icon
+    &::after {
+        @include sprite($icon-settings-res);
+    }
+}
+
+#RESAnnouncementAlert {
+    &::before {
+        content: 'RES Announcement';
+        @extend %profile-tooltip;
+    }
+}

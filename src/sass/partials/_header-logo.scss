@@ -1,39 +1,46 @@
-// make a header logo out of the side reddit name
+// make a header logo out of the reddit name, located in the sidebar
+
 .redditname {
     position: absolute;
     top: $header-top-height + $body-padding;
     height: $header-height - ($header-top-height + $header-bottom-height);
-    right: $gutter-size;
-    display: flex;
-    align-items: center;
+    right: $body-padding;
     z-index: 100;
-    left: $gutter-size;
-    padding: 0 ($gutter-size * 3);
+    left: $body-padding;
+    font-size: 0 !important;
 
-    @if ($header-logo-position == 'left') {
-        @if ($header-logo-shadow == 'yes') {
-            background: linear-gradient(to right, rgba(#000, 0.3), rgba(#000, 0) 50%);
-        }
+    @if ($header-logo-position == 'left' and $header-logo-shadow) {
+        background: linear-gradient(to right, rgba(#000, 0.3) 10%, rgba(#000, 0) 60%);
     } @else if ($header-logo-position == 'center') {
         justify-content: center;
     } @else if ($header-logo-position == 'right') {
         justify-content: flex-end;
 
-        @if ($header-logo-shadow == 'yes') {
-            background: linear-gradient(to right, rgba(#000, 0.3), rgba(#000, 0) 50%);
+        @if ($header-logo-shadow) {
+            background: linear-gradient(to right, rgba(#000, 0.3) 10%, rgba(#000, 0) 60%);
         }
     }
 
     // create a logo
     a { 
-        font-size: 0;
-        display: block;
-        background: url(../img/sprites/sprite-logo.png) no-repeat;
-        width: 450px;
-        height: 59px;
+        height: 100%;
+        padding: 0 ($gutter-size * 3);
+        display: inline-flex;
+        align-items: center;
+
+        &::after {
+            content: '';
+            display: block;
+            @include sprite-position($logo);
+            @include sprite-width($logo);
+            @include sprite-height($logo);
+            @extend %sprite-image;
+        }
 
         &:hover {
-            background-position-y: -59px;
+            &::after {
+                @include sprite-position($logo-hover);
+            }
         }
     }
 }

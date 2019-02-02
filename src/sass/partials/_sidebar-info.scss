@@ -1,0 +1,6 @@
+.titlebox {
+    // "created by ..." part at the bottom
+    .bottom {
+        @extend %hide;
+    }
+}

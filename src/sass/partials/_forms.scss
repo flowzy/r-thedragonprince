@@ -7,7 +7,7 @@
     padding: 8px 0;
     height: auto;
     width: 100%;
-    color: $color-text;
+    @extend %text-white;
     @extend %transition;
 }
 

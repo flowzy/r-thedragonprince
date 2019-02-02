@@ -1,0 +1,11 @@
+// "Create your own subreddit" subtitles
+.sidebox {
+    .spacer {
+        @extend %hide;
+    }
+
+    .subtitle {
+        color: $color-muted;
+        font-size: .8rem;
+    }
+}

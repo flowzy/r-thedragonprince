@@ -1,0 +1,92 @@
+%buttons-highlighted-link {
+    a {
+        padding: 3px 10px;
+        border-radius: 1rem;
+        background: rgba($color-primary, .1);
+        font-weight: bold;
+        opacity: 1;
+        @extend %text-primary;
+        
+        &:hover {
+            background: $color-primary;
+            text-decoration: none;
+            @extend %box-shadow;
+            @extend %text-body;
+        }
+    }
+}
+
+// used in footer and "moderation tools" widget
+.flat-vert {
+    &.title {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: $gutter-size;
+        @extend %text-white;
+    }
+
+    li {
+        margin: 0;
+    }
+
+    .choice {
+        background: transparent;
+        padding: 5px 8px 5px 0;
+        @extend %display-flex-and-center;
+        @extend %transition;
+        @extend %border-radius;
+
+        &:hover {
+            text-decoration: none;
+            padding-left: 8px;
+            background: rgba($color-primary, 0.15);
+        }
+    }
+}
+
+// used in threads and comments
+.buttons {
+    .entry & {
+        padding: 2px 0 0;
+
+        li {
+            font-size: .8rem;
+            line-height: inherit;
+            padding-right: 8px;
+
+            + li {
+                padding-left: 0;
+            }
+
+            a {
+                color: $color-muted;
+                font-weight: normal;
+                display: inline-block;
+                padding: 3px 2px;
+                opacity: .35;
+                @extend %transition;
+            }
+
+            .link & {
+                // stamp (spoiler, nsfw) and "X comments"
+                &:first-child,
+                &.first {
+                    @extend %buttons-highlighted-link;
+                }
+            }
+
+            .comment & {
+                &.reply-button {
+                    float: left;
+                    @extend %buttons-highlighted-link;
+                }
+            }
+        }
+
+        &:hover {
+            a {
+                opacity: 1;
+            }
+        }
+    }
+}

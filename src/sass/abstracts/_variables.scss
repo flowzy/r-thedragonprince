@@ -1,19 +1,27 @@
 // colors
-$color-text: #fff;
+$color-white: #fff;
+$color-black: #000;
+$color-muted: darken(#fff, 25%);
 $color-body: #131317;
-$color-body-accent: #28060f;
-$color-primary: #e5a544;
-$color-green: #44a244;
+$color-body-accent-top: lighten(#151b20, 2%);
+$color-body-accent-bottom: #28060f;
+$color-primary: #e5a544 !default;
 $color-secondary: rgba(lighten($color-body, 20%), .65);
+$color-green: #44a244;
+$color-red: #db3131;
 
-$color-linkflair-wonderstorm: #139feb;
-$color-linkflair-fan-content: #ff7990;
+$color-brand-reddit: #ff4500;
+$color-brand-wonderstorm: #139feb;
+
+$color-linkflair-wonderstorm: $color-brand-wonderstorm;
+$color-linkflair-fan-content: #eb6558;
 $color-linkflair-discussion: $color-secondary;
 $color-linkflair-announcement: $color-green;
 
 // font settings
-$font-family: 'Source Sans Pro', 'Arial', sans-serif;
-$font-family-serif: serif;
+$font-family: 'Source Sans Pro', Arial, sans-serif;
+$font-family-alt: Verdana, 'Bitstream Vera Sans', 'DejaVu Sans', Tahoma, Geneva, Arial, sans-serif;
+$font-family-serif: 'Times New Roman', Georgia, serif;
 
 // general
 $gutter-size: 14px;
@@ -28,25 +36,26 @@ $box-shadow: 0 20px 38px rgba(#000, .16);
 // header
 $header-height: 300px;
 $header-color: $color-body;
-$header-logo-position: 'left'; // available options are: left, center, right
-$header-logo-shadow: false !default;
+$header-logo-position: 'left' !default; // available options are: left, center, right
 
 $header-top-height: 22px;
 
-// $header-bottom-bg: linear-gradient(to left, rgba(#a21999, .85), rgba(#0a4498, .9));
-// $header-gradient-start and $header-gradient-end colors are defined inside of `abstracts/_headers.scss`
-$header-bottom-bg: linear-gradient(to right, rgba($header-gradient-start, .9), rgba($header-gradient-end, .9));
 $header-bottom-height: 40px;
+
+// reddit snoo
+$snoo-height: $header-bottom-height;
+$snoo-width: $icon-reddit-snoo-width + $gutter-size * 2;
 
 // footer
 $footer-image-height: 160px;
 
-// sidebar
-$sidebar-width: 340px;
-$sidebar-bg: transparentize($color-secondary, 0.4);
+// content
+$content-bg: transparentize($color-secondary, 0.4);
 
-$sidebar-search-bg: $color-secondary;
-$sidebar-search-focus-bg: #fff;
-$sidebar-search-height: 35px;
+// sidebar
+$sidebar-width: 340px + $gutter-size * 2;
+$sidebar-bg: $content-bg;
+
+$sidebar-search-height: 40px;
 
 $sidebar-submit-height: 35px;

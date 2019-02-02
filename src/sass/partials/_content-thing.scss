@@ -1,43 +1,32 @@
+// used in threads and comments
 .thing {
-    // there are 2 elements with this class, inside one another
-    // p.title and a.title (p.title > a.title)
-    p.title {
-        line-height: 1.1;
-        display: flex;
-        align-items: center;
-        margin-bottom: round($gutter-size / 2);
-    }
-
-    a.title {
-        color: $color-primary;
-        font-size: 1.2rem;
-        @extend %font-family-serif;
-
-        &:hover {
-            color: saturate(lighten($color-primary, 15%), 10%);
-        }
-
-        &:visited {
-            color: desaturate(darken($color-primary, 20%), 20%);
-
-            &:hover {
-                color: desaturate(darken($color-primary, 10%), 10%);
-            }
-        }
-    }
-
     // stickied threads
     &.stickied.link {
-        border-color: rgba($color-green, .3);
+        border-bottom-width: 0;
 
-        + .clearleft + .link {
-            &:not(.stickied) {
-                border-top-width: 1px;
+        &,
+        &.last-clicked::after {
+            border-color: rgba($color-green, .3);
+        }
+
+        &.last-clicked {
+            border-color: rgba($color-green, .5);
+        }
+
+        + .clearleft {
+            + .stickied {
+                border-bottom-width: 1px;
+
+                &::after {
+                    content: none;
+                }
             }
 
-            // add a space
-            &.stickied {
-                margin-bottom: $gutter-size;
+            + .link {
+                // add a space
+                &.stickied {
+                    margin-bottom: $gutter-size;
+                }
             }
         }
 
@@ -48,11 +37,47 @@
 
         // change the title color of the stickied threads
         a.title {
-            color: $color-green;
+            @extend %text-green;
 
             &:hover {
                 color: lighten($color-green, 10%);
             }
+        }
+
+        &.linkflair-official-wonderstorm {
+            background-image: url(../img/thread/thread-wonderstorm.png);
+        }
+    }
+
+    // spoiler-tagged threads
+    &.spoiler,
+    &.nsfw,
+    &.linkflair-official-wonderstorm {
+        position: relative;
+
+        // add an accented background for these threads
+        &::before {
+            content: '';
+            background: linear-gradient(to left, rgba($color-primary, .08), rgba($color-primary, 0) 75%);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+    }
+
+    // differentiate NSFW posts from the ones marked as spoilery
+    &.nsfw {
+        &::before {
+            background: linear-gradient(to left, rgba($color-red, .1), rgba($color-red, 0) 75%);
+        }
+    }
+
+    &.linkflair-official-wonderstorm {
+        &::before {
+            background: linear-gradient(to left, rgba($color-brand-wonderstorm, .07), rgba($color-brand-wonderstorm, 0) 75%);
         }
     }
 }

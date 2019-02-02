@@ -7,20 +7,38 @@ html {
 
 body {
     background: $color-body;
-    color: $color-text;
     font-family: $font-family;
     position: relative;
     padding: $body-padding;
     
+    // add a slight gradient to the background
     &::before {
         content: '';
-        background: linear-gradient(to bottom, #151b20 10%, $color-body 85%);
+        background: linear-gradient(to bottom, $color-body-accent-top 10%, $color-body 85%);
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
         height: 100vh;
-        z-index: -1;
+        z-index: -5;
+    }
+
+    // add a blurry version of the current header in the background
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: ($header-height + $body-padding * 2);
+        background: url(../img/headers/header-#{$header-variant}-blurry.jpg) no-repeat;
+        background-size: cover;
+        z-index: -2;
+        opacity: $header-opacity;
+        // make it fade out at the bottom
+        mask-image: -webkit-gradient(linear, left 90%, left bottom, from(rgba($color-black, 1)), to(rgba($color-black, 0)));
+        // make it even more blurry
+        filter: blur(20px);
     }
 }
 
@@ -31,5 +49,5 @@ body {
 #hsts_pixel,
 .debuginfo,
 .redesign-beta-optin {
-    display: none;
+    @extend %hide;
 }

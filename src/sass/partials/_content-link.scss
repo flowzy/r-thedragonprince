@@ -1,92 +1,276 @@
-.link {
-    background: $sidebar-bg;
+// this is used mainly for threads
+.link,
+.search-result-link {
+    background: $content-bg right -38px no-repeat;
     padding: 0;
-    border: 1px solid $color-secondary;
-    border-top-width: 0;
     margin: 0;
-    display: flex;
+    border: 1px solid $color-secondary;
+    border-bottom-width: 0;
+    position: relative;
+    @extend %display-flex;
 
-    &:first-of-type {
-        border-top-width: 1px;
+    &::after {
+        position: absolute;
+        left: -1px;
+        bottom: -1px;
+        right: -1px;
+        border-top: 1px solid lighten(rgba($color-secondary, 1), 5%);
+        z-index: 10;
+    }
+
+    &.last-clicked {
+        border: 1px solid lighten(rgba($color-secondary, 1), 5%);
+        border-bottom-width: 0;
+        overflow: visible;
+
+        &::after {
+            content: '';
+        }
+    }
+
+    // there are 2 elements with this class, inside one another
+    // p.title and a.title (p.title > a.title)
+    p.title,
+    .search-result-header {
+        line-height: 1.1;
+        margin: 0 $gutter-size round($gutter-size / 2) 0;
+    }
+
+    a.title,
+    a.search-title {
+        color: $color-primary;
+        font-size: 1.2rem;
+        @extend %font-family-serif;
+
+        &:hover {
+            color: saturate(lighten($color-primary, 15%), 10%);
+        }
+
+        &:visited {
+            color: desaturate(darken($color-primary, 20%), 20%);
+
+            &:hover {
+                color: desaturate(darken($color-primary, 10%), 10%);
+            }
+        }
+    }
+
+    &.visited {
+        a.title {
+            @extend a.title:visited;
+        }
     }
 
     > * {
-        margin: 0;
         flex-shrink: 0;
     }
 
-    .entry  {
+    // first selector is used for styling search result
+    .thumbnail + div,
+    .entry {
+        padding: ($gutter-size - 2px) $gutter-size ($gutter-size - 2px) 0;
+        margin: 0;
         flex-grow: 1;
         flex-shrink: 1;
-        padding: $gutter-size 0;
     }
 
-    // hide the order number
-    .rank {
-        display: none;
-    }
-
-    // 
+    // contains score of the thread/comment (upvote/downvote)
     .midcol {
         margin: 0;
-        padding: $gutter-size 4px;
-        background: transparentize($color-secondary, .35);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding: round($gutter-size * 1.5) 4px 0;
+        background: $content-bg;
     }
 
-    // add a space between the score of the post and arrows
-    .score {
-        margin: 4px 0;
-    }
-
-    // hide user flair
+    // hide rank number and user flair
+    .rank,
     .flair {
-        display: none;
+        @extend %hide;
     }
 
     // stylize author of the thread
     .author {
         font-weight: bold;
-        color: darken($color-text, 25%);
+        @extend %text-muted;
+    }
+
+    // content
+    .usertext-body {
+        .md {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    // add an icon, which would indicate that thread is locked
+    &.locked {
+        .first + li {
+            position: relative;
+            padding-left: $icon-lock-width + $gutter-size;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: round($icon-lock-width / 2);
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                @include sprite($icon-lock);
+            }
+        }
     }
 }
 
-// thread approval checkmark,
-// which is visible on to the moderators of the subreddit
-// .approval-checkmark {
-//     filter: brightness(1.5);
-// }
+// add a space between the score of the post and arrows
+.score {
+    margin: 5px 0;
+
+    .link & {
+        // change colors of text depending if the thread was upvoted or downvoted
+        &.likes {
+            color: #ff8717;
+        }
+
+        &.dislikes {
+            color: #7193ff;
+        }
+    }
+}
+
+// upvote/downvote arrows
+.arrow {
+    position: relative;
+    margin: 6px auto;
+    @include sprite-height($icon-upvote);
+
+    &.up,
+    &.down {
+        opacity: .5;
+        transition: opacity nth($transition, 2) nth($transition, 3);
+        @include sprite-image($icon-upvote);
+        @include sprite-width($icon-upvote);
+        @include sprite-position($icon-upvote);
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &.up,
+    &.upmod {
+        margin-top: 0;
+    }
+
+    &.down {
+        @include sprite-position($icon-downvote);
+    }
+
+    &.upmod,
+    &.downmod {
+        background: transparent;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            bottom: 0;
+            @include sprite($icon-upvoted);
+        }
+    }
+
+    &.downmod {
+        &::after {
+            bottom: auto;
+            top: 0;
+            @include sprite-position($icon-downvoted);
+        }
+    }
+}
 
 // thread thumbnails
 .thumbnail {
-    margin: 10px $gutter-size;
+    background-color: $content-bg;
+    margin: ($gutter-size - 2px) $gutter-size;
     width: 70px;
-    height: 70px;
-    border-radius: $border-radius;
-    align-self: center;
+    height: 70px !important;
+    @extend %border-radius;
 
     // add a sligthly visible outline to the image
-    &:not(.self):not(.spoiler)::after {
+    &::after {
         content: '';
         position: absolute;
-        border-radius: $border-radius;
         box-shadow: inset 0 0 0 1px rgba(#fff, .1);
         bottom: 0;
         right: 0;
         left: 0;
         top: 0;
+        z-index: 5;
+        @extend %border-radius;
     }
 
     img {
         object-fit: cover;
-        width: 100%;
-        height: 100%;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    &.self,
+    &.image,
+    &.spoiler,
+    &.nsfw,
+    &.default {
+        @extend %sprite-image;
+    }
+
+    &.self {
+        @include sprite-position($thumbnail-text);
+    }
+
+    &.spoiler {
+        @include sprite-position($thumbnail-spoiler);
+    }
+
+    &.nsfw {
+        @include sprite-position($thumbnail-nsfw);
+    }
+
+    &.image {
+        @include sprite-position($thumbnail-image);
+    }
+
+    &.default {
+        @include sprite-position($thumbnail-link);
+    }
+
+    .linkflair-fan-content & {
+        @include sprite-position($thumbnail-flair-fan-content);
+    }
+
+    .linkflair-official-wonderstorm &,
+    .linkflair-wonderstorm & {
+        @include sprite-position($thumbnail-flair-wonderstorm);
     }
 }
 
 // this is the "(self.subreddit)" thing you see after each thread's title
 .domain {
-    display: none;
+    @extend %hide;
+}
+
+// overlay over the thumbnail
+.duration-overlay {
+    font-size: .7rem;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+// approval checkmark next to the title (visible only to mods)
+.approval-checkmark {
+    content: url(../img/checkmark.png);
+    width: 12px;
+    height: 9px;
+    position: relative;
+    top: -2px;
 }

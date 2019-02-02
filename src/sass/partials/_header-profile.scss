@@ -1,0 +1,279 @@
+%profile-tooltip {
+    position: absolute;
+    font: inherit;
+    font-size: .8rem;
+    top: -5px;
+    left: 50%;
+    transform: rotateX(45deg) translate(-50%, -100%);
+    background: $color-white;
+    color: $color-body;
+    padding: 6px 12px;
+    text-indent: 0;
+    font-weight: normal;
+    white-space: nowrap;
+    opacity: 0;
+    @extend %box-shadow;
+    @extend %transition;
+    @extend %border-radius;
+}
+
+#header-bottom-right {
+    background: transparent;
+    height: $header-bottom-height;
+    padding: 0 $gutter-size;
+    font-size: 1rem;
+    align-items: stretch;
+    @extend %display-flex;
+    @extend %box-sizing;
+
+    .separator {
+        @extend %hide;
+
+        // add a border after user's profile
+        &:nth-child(2) {
+            display: block;
+            font-size: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba($color-white, .07);
+            margin-right: $gutter-size;
+        }
+    }
+
+    > a:not(.message-count),
+    .hover a,
+    .gearIcon {
+        margin: 0;
+        height: 100%;
+        background: transparent !important;
+        font-size: 0;
+        padding: 0 10px;
+        top: 0;
+        position: relative;
+        overflow: visible;
+        @extend %display-flex-and-center;
+
+        // tooltip
+        &::before {
+            @extend %profile-tooltip;
+        }
+
+        // icon
+        &::after {
+            content: '';
+            display: block;
+            @extend %sprite-image;
+        }
+
+        &:hover {
+            box-shadow: inset 0 -2px 0 $color-primary;
+
+            // transition in the tooltip
+            &::before {
+                opacity: 1;
+                transform: translate(-50%, -100%);
+            }
+        }
+    }
+
+    > *:last-child {
+        &,
+        a {
+            &::before {
+                left: auto;
+                right: 0;
+                transform: rotateX(45deg) translateY(-100%);
+            }
+
+            &:hover {
+                &::before {
+                    transform: translateY(-100%);
+                }
+            }
+        }
+    }
+}
+
+.user {
+    align-self: center;
+    line-height: 0;
+    padding-top: 2px;
+    font-size: 0;
+    margin-right: ($gutter-size + 10px);
+    @extend %text-muted;
+    @extend %font-family-serif;
+
+    iframe[name*='"userId":false'] ~ #header & {
+        font-size: 1rem;
+        padding-top: 0;
+    }
+
+    // reset font settings for elements inside
+    > * {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    // stylize username
+    > a {
+        font-weight: bold;
+        @extend %text-white;
+
+        &:hover {
+            @extend %text-primary;
+        }
+    }
+
+    .userkarma {
+        font-size: .8rem;
+        display: block;
+        cursor: default;
+        @extend %text-primary;
+
+        > a {
+            @extend %text-primary;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.message-count {
+    font-size: .7rem;
+    align-self: center;
+    background: $color-brand-reddit;
+    padding: 2px 5px;
+    margin: 0 0 0 -4px;
+    position: relative;
+    pointer-events: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: -3px;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        height: 0;
+        border-right: 3px solid $color-brand-reddit;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+    }
+}
+
+#mail {
+    // tooltip
+    &::before {
+        content: 'Inbox';
+    }
+
+    // icon
+    &::after {
+        @include sprite-position($icon-mail);
+        @include sprite-width($icon-mail);
+        @include sprite-height($icon-mail);
+    }
+
+    &.havemail {
+        // change icon
+        &::after {
+            @include sprite-position($icon-mail-marked);
+        }
+    }
+}
+
+#chat {
+    // tooltip
+    &::before {
+        content: 'Chat';
+    }
+
+    // icon
+    &::after {
+        @include sprite-position($icon-chat);
+        @include sprite-width($icon-chat);
+        @include sprite-height($icon-chat);
+    }
+
+    &.active {
+        // change icon
+        &::after {
+            @include sprite-position($icon-chat-marked);
+        }
+    }
+}
+
+#modmail {
+    // tooltip
+    &::before {
+        content: 'Mod Mail';
+    }
+
+    // icon
+    &::after {
+        @include sprite-position($icon-modmail-old);
+        @include sprite-width($icon-modmail-old);
+        @include sprite-height($icon-modmail-old);
+    }
+
+    &.havemail {
+        // change icon
+        &::after {
+            @include sprite-position($icon-modmail-old-marked);
+        }
+    }
+}
+
+#new_modmail {
+    // tooltip
+    &::before {
+        content: 'New Mod Mail';
+    }
+
+    // icon
+    &::after {
+        @include sprite-position($icon-modmail);
+        @include sprite-width($icon-modmail);
+        @include sprite-height($icon-modmail);
+    }
+
+    &.havemail {
+        // change icon
+        &::after {
+            @include sprite-position($icon-modmail-marked);
+        }
+    }
+}
+
+// "preferences" and "logout"
+.hover {
+    .pref-lang {
+        // tooltip
+        &::before {
+            content: 'Preferences';
+        }
+
+        // icon
+        &::after {
+            @include sprite-position($icon-preferences);
+            @include sprite-width($icon-preferences);
+            @include sprite-height($icon-preferences);
+        }
+    }
+
+    &.logout a {
+        // tooltip
+        &::before {
+            content: 'Logout';
+        }
+
+        // icon
+        &::after {
+            @include sprite-position($icon-logout);
+            @include sprite-width($icon-logout);
+            @include sprite-height($icon-logout);
+        }
+    }
+}

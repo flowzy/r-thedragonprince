@@ -9,7 +9,7 @@
         &[type="text"],
         &[type="password"] {
             @extend %input-field;
-            width: round($sidebar-width / 2 - $gutter-size / 2);
+            width: round($sidebar-width / 2 - $gutter-size - $gutter-size / 2 - 1px);
             margin: 0;
             float: left;
             display: block;

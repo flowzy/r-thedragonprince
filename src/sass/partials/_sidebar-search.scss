@@ -1,14 +1,15 @@
 #search {
-    margin: -$gutter-size;
-    margin-bottom: 0;
+    margin: (-$gutter-size) (-$gutter-size) 0;
     border-bottom: 1px solid $color-secondary;
     position: relative;
+    // width: $sidebar-width;
 
     input {
         &[type="text"] {
-            @extend %input-field;
             padding: $gutter-size;
+            height: $sidebar-search-height;
             border-bottom: none;
+            @extend %input-field;
 
             &:focus {
                 @extend %input-field-focus;
@@ -23,12 +24,14 @@
 
 // this pop up after the user focuses search text field
 #searchexpando {
+    background: $color-primary;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: -1px;
+    right: -1px;
     margin-top: 0;
     z-index: 100;
     border: none;
+    opacity: 1;
     border-radius: 0;
     box-shadow: $box-shadow;
 }

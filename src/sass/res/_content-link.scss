@@ -1,0 +1,12 @@
+.link {
+    &.res-selected {
+        @extend .link.last-clicked;
+
+        .entry {
+            &,
+            .md-container {
+                background: transparent !important;
+            }
+        }
+    }
+}

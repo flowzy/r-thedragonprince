@@ -1,0 +1,90 @@
+// TEMPORARY CODE AHEAD
+// because I don't have icons ready yet
+
+.expando-button {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px 0 0;
+    background: transparent;
+    position: relative;
+    @extend %border-radius-half;
+    @extend %transition;
+
+    &::before,
+    &::after {
+        content: '';
+        font-size: 0;
+        display: block;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        margin: auto;
+        padding: 0 !important;
+        transition: opacity nth($transition, 2) nth($transition, 3);
+        @include sprite-width($icon-expando-text);
+        @include sprite-height($icon-expando-text);
+        @extend %sprite-image;
+    }
+
+    &::after {
+        opacity: 0;
+    }
+
+    &.expanded {
+        background: rgba($color-primary, .2) !important;
+
+        &::before {
+            @include sprite-position($icon-expando-close);
+        }
+
+        &::after {
+            @include sprite-position($icon-expando-close-alt);
+        }
+    }
+
+    &.collapsed {
+        background: $color-secondary !important;
+
+        &.selftext {
+            &::before {
+                @include sprite-position($icon-expando-text);
+            }
+
+            &::after {
+                @include sprite-position($icon-expando-text-alt);
+            }
+        }
+
+        &.video {
+            &::before {
+                @include sprite-position($icon-expando-video);
+            }
+
+            &::after {
+                @include sprite-position($icon-expando-video-alt);
+            }
+        }
+
+        // &.crosspost {
+        //     // ...
+
+        //     &:hover {
+        //         // ...
+        //     }
+        // }
+    }
+
+    &:hover {
+        background: $color-primary !important;
+
+        &::before {
+            opacity: 0;
+        }
+
+        &::after {
+            opacity: 1;
+        }
+    }
+}

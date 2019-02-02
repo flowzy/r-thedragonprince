@@ -1,0 +1,74 @@
+// these are "placeholder selectors" and are used to generate a more efficient output.
+// 
+// basically - if you notice, that you are writing the same line(s) of code in multiple places,
+// perhaps consider making a "placeholder selector" and use "@extend %your-placeholder-name;" instead.
+// 
+// read more: http://thesassway.com/intermediate/understanding-placeholder-selectors
+
+%font-family-serif {
+    font-family: $font-family-serif;
+}
+
+%box-sizing {
+    box-sizing: border-box;
+}
+
+%box-shadow {
+    box-shadow: $box-shadow;
+}
+
+%transition {
+    transition: $transition;
+}
+
+%border-radius {
+    border-radius: $border-radius;
+}
+
+%border-radius-half {
+    border-radius: $border-radius / 2;
+}
+
+// display properties
+%hide {
+    display: none;
+}
+
+%display-flex {
+    display: flex;
+}
+
+%display-flex-and-center {
+    display: flex;
+    align-items: center;
+}
+
+// colors
+%text-white {
+    color: $color-white;
+}
+
+%text-body {
+    color: $color-body;
+}
+
+%text-muted {
+    color: $color-muted;
+}
+
+%text-green {
+    color: $color-green;
+}
+
+%text-primary {
+    color: $color-primary;
+}
+
+%text-brand-reddit {
+    color: $color-brand-reddit;
+}
+
+// sprite
+%sprite-image {
+    background-image: url(#{$spritesheet-image});
+}

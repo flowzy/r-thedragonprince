@@ -1,0 +1,47 @@
+.expando-button {
+    &.collapsed {
+        &.expando-button-requires-permission {
+            &::before {
+                @include sprite-position($icon-expando-lock);
+            }
+
+            &::after {
+                @include sprite-position($icon-expando-lock-alt);
+            }
+        }
+
+        &.image {
+            &::before {
+                @include sprite-position($icon-expando-image);
+            }
+
+            &::after {
+                @include sprite-position($icon-expando-image-alt);
+            }
+
+            &.gallery {
+                &::before {
+                    @include sprite-position($icon-expando-album);
+                }
+
+                &::after {
+                    @include sprite-position($icon-expando-album-alt);
+                }
+            }
+        }
+    }
+
+    .res-freetext-expando & {
+        transform: none;
+    }
+
+    .res-showImages-highlightSpoilerButton .thing.spoiler .title ~ & {
+        &.collapsed {
+            background: $color-primary;
+        }
+
+        &::before {
+            @extend %sprite-image;
+        }
+    }
+}

@@ -1,56 +1,113 @@
 %anchor-link {
-    color: darken($color-text, 30%);
-}
-
-// anchor link styling
-a {
-    @extend %anchor-link;
-
-    &:hover {
-        color: $color-primary;
-    }
+    @extend %text-primary;
 }
 
 // markdown
-.md {
-    color: inherit;
+.md,
+.content,
+.side {
+    @extend %text-white;
 
     a {
-        @extend %anchor-link;
+        @extend %text-muted;
+
+        &:hover {
+            @extend %text-primary;
+        }
+    }
+}
+
+.md {
+    p {
+        line-height: 1.6;
+    }
+
+    th,
+    hr {
+        background: $color-secondary;
+    }
+
+    table,
+    td,
+    th {
+        border-color: $color-secondary;
+    }
+}
+
+.toggle {
+    .error {
+        font-size: inherit;
     }
 }
 
 // thread info paragraphs
 .tagline,
 .search-result-meta {
-    color: darken($color-text, 30%);
-    font-size: 0.75rem;
+    font-size: .75rem;
+    margin-bottom: 5px;
+    line-height: 16px;
+    @extend %text-muted;
 
     .stickied-tagline {
-        color: $color-green;
+        @extend %text-green;
     }
 }
 
 // author links
 a.author {
-    margin-right: 0;
+    font-weight: bold;
+    @extend %text-primary;
 
-    &.moderator {
-        color: $color-green;
-
+    &.moderator,
+    &.submitter {
         &::after {
             content: 'M';
             padding: 1px 3px;
-            border-radius: 2px;
             background: $color-green;
-            color: $color-body;
             font-size: 90%;
             margin: 0 0 0 4px;
+            @extend %border-radius-half;
+            @extend %text-body;
         }
+    }
+
+    &.moderator {
+        @extend %text-green;
+    }
+
+    &.submitter {
+        @extend %text-primary;
+
+        &::after {
+            content: 'S';
+            background: $color-primary;
+        }
+    }
+
+    &:hover {
+        text-decoration: underline;
     }
 }
 
 // [M], [S], [S,M] <- these kind of things next to the username
 .userattrs {
     display: none;
+}
+
+// NSFW and Spoiler stamps
+.stamp {
+    border: none;
+    display: inline;
+    padding: 4px 6px 3px;
+    font-weight: bold;
+    @extend %text-white;
+    @extend %border-radius-half;
+}
+
+.spoiler-stamp {
+    background: darken($color-primary, 15%);
+}
+
+.nsfw-stamp {
+    background: $color-red;
 }

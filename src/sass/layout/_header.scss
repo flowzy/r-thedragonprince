@@ -1,5 +1,5 @@
 %header-img {
-    background: $header-color url(../img/headers/header-#{$header-variant}.jpg) center 60% no-repeat;
+    background: $header-color url(../img/headers/header-#{$header-variant}.jpg) center no-repeat;
     background-size: cover;
     height: $header-height;
 }
@@ -8,75 +8,46 @@
 // this element contains all of the elements listed in here
 #header {
     border-bottom: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 1rem 2rem rgba(#000, .3);
     z-index: -1;
     margin-bottom: $gutter-size;
+    @extend %box-shadow;
     @extend %header-img;
 }
 
 // subreddit list above the header
 #sr-header-area {
-    background: $color-body;
+    background: $color-black;
     border: none;
     height: $header-top-height;
     line-height: $header-top-height;
+    font-family: $font-family-alt;
+    @extend %text-white;
 }
 
-%subreddit-color {
-    color: $color-text;
-}
-
-.sr-bar {
-    a {
-        @extend %subreddit-color;
-    }
-}
-
+.sr-bar a,
 .dropdown.srdrop .selected {
-    @extend %subreddit-color;
+    @extend %text-white;
 }
 
+// "Edit >>" button on the right side
 #sr-more-link {
-    background: $color-body;
-    color: $color-text;
+    background: $color-black;
     border-left: 1px solid $color-secondary;
-}
+    @extend %text-white;
 
-// menu bar
-#header-bottom-left {
-    height: $header-bottom-height;
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-
-    &::before,
-    &::after {
+    // add a fade out to the text next to this button
+    &::before {
         content: '';
         position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        z-index: -1;
-    }
-
-    // add a blurred version of the header picture in the background
-    &::before {
-        @extend %header-img;
-        background-image: url(../img/headers/header-#{$header-variant}-blurry.jpg);
-    }
-
-    // overlay the blurred picture with a transparent gradient
-    &::after {
-        background: $header-bottom-bg;
+        left: -11px;
         top: 0;
+        bottom: 0;
+        width: 10px;
+        background: linear-gradient(to right, rgba($color-black, 0), $color-black);
     }
 }
 
-// hide page name and snoo
-.pagename,
-#header-img {
-    display: none !important;
+// hide page name
+.pagename {
+    @extend %hide;
 }

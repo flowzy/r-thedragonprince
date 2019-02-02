@@ -1,0 +1,29 @@
+.res {
+    a.author {
+        &.moderator,
+        &.submitter {
+            color: $color-body !important;
+            padding: 0 3px;
+
+            &::after {
+                content: none;
+            }
+
+            &:hover {
+                color: $color-white !important;
+            }
+        }
+
+        &.moderator {
+            background: $color-green !important;
+        }
+
+        &.submitter {
+            background: $color-primary !important;
+
+            &:hover {
+                background: darken($color-primary, 15%) !important;
+            }
+        }
+    }
+}

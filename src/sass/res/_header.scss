@@ -1,0 +1,16 @@
+#RESShortcutsSort,
+#RESShortcutsRight,
+#RESShortcutsLeft,
+#RESShortcutsAdd,
+#RESShortcutsEditContainer {
+    height: $header-top-height;
+    line-height: $header-top-height;
+    background: transparent;
+    @extend %text-primary;
+}
+
+#srLeftContainer,
+#RESShortcutsViewport,
+#RESShortcutsEditContainer {
+    max-height: $header-top-height;
+}

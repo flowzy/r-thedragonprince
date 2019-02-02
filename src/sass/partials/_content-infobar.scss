@@ -1,5 +1,27 @@
+// usually, this is reddit's ad for stuff like new reddit and the "Welcome to Reddit" banner
+// but also, this class is added to #searchexpando for some reason, so be careful with the changes you make
 .infobar {
+    &,
     &.listingsignupbar {
         margin: 0 0 $gutter-size !important;
+        // lower the opacity of 
+        opacity: 0.8;
+    }
+}
+
+// "This post is locked" bar
+.reddit-infobar {
+    margin-bottom: $gutter-size;
+    background: rgba(#fff7d7, .4);
+    border-color: rgba(#ffd634, .7);
+
+    &.with-icon {
+        &::before {
+            background-color: rgba(#ffd634, .7);
+        }
+    }
+
+    .md {
+        @extend %text-white;
     }
 }

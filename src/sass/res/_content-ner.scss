@@ -1,0 +1,19 @@
+// Never Ending Reddit
+
+%reset-ner {
+    background: $color-secondary;
+    border-radius: 0;
+    border-color: $color-secondary;
+}
+
+// 
+.NERPageMarker {
+    margin: 0;
+    border-bottom: none;
+    @extend %reset-ner;
+}
+
+// spinny boy
+#progressIndicator {
+    @extend %reset-ner;
+}
