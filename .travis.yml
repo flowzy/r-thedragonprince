@@ -1,6 +1,5 @@
 os:
   - linux
-  - windows
   - osx
 
 language: node_js
@@ -9,8 +8,9 @@ node_js:
   - "10"
   - "8"
 
-install:
-  - yarn install
-
-script:
-  - yarn test
+jobs:
+  include:
+    - stage: "Installation"
+      script: yarn install
+    - stage: "Bundle Size Test"
+      script: yarn test
