@@ -1,22 +1,47 @@
 // handles function, mixins, and variables
-@import 'abstracts/headers';
+@import 'abstracts/sprite';
+@import 'abstracts/mixins';
 @import 'abstracts/variables';
-@import 'abstracts/functions';
+@import 'abstracts/headers';
+@import 'abstracts/placeholder-selectors';
+// ==================================================
 
+// ==================================================
 // animations, base, typography, and utilies.
-@import 'base/placeholder-selectors';
 @import 'base/general';
 @import 'base/typography';
+// ==================================================
 
+// ==================================================
+// tweaks for "Reddit Enhancement Suite" (RES)
+// -- general
+@import 'res/typography';
+
+// -- header
+@import 'res/header';
+@import 'res/header-profile';
+
+// -- content
+@import 'res/content-link';
+@import 'res/content-ner';
+@import 'res/content-expando-button';
+@import 'res/content-expando-content';
+@import 'res/content-comments';
+// ==================================================
+
+// ==================================================
 // header, footer, grid, navigation etc.
 @import 'layout/header';
 @import 'layout/sidebar';
 @import 'layout/content';
 @import 'layout/footer';
+// ==================================================
 
+// ==================================================
 // partials
 // -- general partials, that are spread around the site
 @import 'partials/forms';
+@import 'partials/lists';
 
 // -- header partials
 @import 'partials/header-logo';
@@ -28,13 +53,23 @@
 @import 'partials/sidebar-search';
 @import 'partials/sidebar-premium-banner';
 @import 'partials/sidebar-login';
-@import 'partials/sidebar-sub-button';
+@import 'partials/sidebar-fancy-toggle';
+@import 'partials/sidebar-info';
+@import 'partials/sidebar-own-subreddit';
 
 // -- content partials
 @import 'partials/content-link';
 @import 'partials/content-thing';
+@import 'partials/content-comments';
 @import 'partials/content-infobar';
 @import 'partials/content-flairs';
+@import 'partials/content-expando-button';
+@import 'partials/content-expando-content';
+@import 'partials/content-nav-buttons';
+// ==================================================
 
+// ==================================================
 // page-specific styling
-// @import 'pages/...';
+@import 'pages/search';
+@import 'pages/comments';
+// ==================================================
