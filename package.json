@@ -1,13 +1,14 @@
 {
   "name": "r-thedragonprince",
   "description": "Subreddit theme for the Netflix show \"The Dragon Prince\"",
-  "version": "wip",
+  "version": "0.1.0",
   "main": "src/sass/theme.scss",
   "scripts": {
     "dev": "webpack-dev-server --env.NODE_ENV=development",
     "prod": "webpack --env.NODE_ENV=production",
     "prod-test": "webpack-dev-server --env.NODE_ENV=production --env.test=true",
-    "prod-test-light": "webpack-dev-server --env.NODE_ENV=production --env.test=true --env.light=true"
+    "prod-test-light": "webpack-dev-server --env.NODE_ENV=production --env.test=true --env.light=true",
+    "test": "npm run prod && bundlesize"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,10 @@
   "keywords": [
     "sass",
     "webpack",
+    "webpack4",
     "reddit",
     "theme",
+    "reddit-theme",
     "thedragonprince"
   ],
   "author": "flowzy",
@@ -31,15 +34,32 @@
     "not dead",
     "> 1%"
   ],
+  "bundlesize": [
+    {
+      "path": "./dist/css/*.css",
+      "maxSize": "100 kB",
+      "compression": "none"
+    },
+    {
+      "path": "./dist/img/*/*.jpg",
+      "maxSize": "500 kB",
+      "compression": "none"
+    },
+    {
+      "path": "./dist/img/*/*.png",
+      "maxSize": "500 kB",
+      "compression": "none"
+    }
+  ],
   "dependencies": {
     "autoprefixer": "^9.4.6",
+    "bundlesize": "^0.17.1",
     "clean-terminal-webpack-plugin": "^2.0.1",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webpack-plugin": "^2.4.0",
-    "img-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",

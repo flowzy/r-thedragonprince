@@ -22,7 +22,7 @@ module.exports = env => {
         timings: true,
         cachedAssets: true,
         errors: true,
-        assetsSort: '!chunks',
+        assetsSort: 'chunks',
         excludeAssets: env.NODE_ENV === 'development' || !!env.light ? /\.(js|map|jpe?g|png|gif)$/ : /\.(js|map)$/
     }
 
@@ -33,6 +33,8 @@ module.exports = env => {
         if (!file.includes('blurry') && !file.includes('psd'))
             headers.push(file)
     })
+
+    const headerVariant = !!env.header ? env.header : Math.floor(Math.random() * headers.length) + 1
 
     const config = {
         mode: env.NODE_ENV || 'none',
@@ -92,7 +94,6 @@ module.exports = env => {
                         {
                             loader: 'css-loader',
                             options: {
-                                sourceMap: true,
                                 url: false,
                                 modules: false
                             }
@@ -103,10 +104,9 @@ module.exports = env => {
                         {
                             loader: 'sass-loader',
                             options: {
-                                sourceMap: true,
                                 data: `
                                     $env: ${ env.NODE_ENV};
-                                    $header-variant: ${ Math.floor(Math.random() * headers.length) + 1};
+                                    $header-variant: ${ headerVariant };
                                 `
                             }
                         }
@@ -131,19 +131,20 @@ module.exports = env => {
                 filename: 'css/[name].css'
             }),
 
-            // create sprite from the images inside of img/sprites/icons folder
+            // create sprite from the images inside of img/sprites folder
             new SpritesmithPlugin({
                 src: {
-                    cwd: path.resolve(__dirname, 'src/img/sprites/icons'),
-                    glob: '*.png'
+                    cwd: path.resolve(__dirname, 'src/img/sprites'),
+                    glob: '*/*.png'
                 },
                 target: {
-                    image: path.resolve(__dirname, 'dist/img/sprite-icons.png'),
-                    css: path.resolve(__dirname, 'src/sass/abstracts/_sprite.scss')
+                    // target destinations for outputs
+                    image: path.resolve(__dirname, `dist/img/sprite.[hash].png`),
+                    css: path.resolve(__dirname, `src/sass/abstracts/_sprite.scss`)
                 },
                 apiOptions: {
                     // image reference inside of CSS
-                    cssImageRef: '../img/sprite-icons.png'
+                    cssImageRef: `../img/sprite.[hash].png`
                 }
             }),
 
@@ -151,11 +152,11 @@ module.exports = env => {
             new CopyWebpackPlugin([{
                 from: path.resolve(__dirname, 'src/img'),
                 to: 'img',
-                ignore: ['*.psd']
+                ignore: ['sprites/**']
             }]),
 
             // clean terminal on each build
-            // to only have information about the latest build
+            // to only have information from the latest build
             new CleanTerminalPlugin
         ],
 
@@ -173,10 +174,48 @@ module.exports = env => {
                     }
                 }),
 
+                // optimize (compress) images
                 new ImageminPlugin({
                     disable: !!env.light,
-                    test: /\.(jpe?g|png|gif)$/i,
-                    cacheFolder: path.resolve(__dirname, '.cache'),
+                    test: /\.(jpe?g|png)$/i,
+                    cacheFolder: path.resolve(__dirname, '.cache/large-files'),
+                    minFileSize: 500000,
+
+                    // https://github.com/imagemin/imagemin-optipng#api
+                    optipng: {
+                        optimizationLevel: 5
+                    },
+
+                    plugins: [
+                        // https://github.com/imagemin/imagemin-mozjpeg#api
+                        ImageminMozjpeg({
+                            quality: 78,
+                            dcScanOpt: 2
+                        })
+                    ]
+                }),
+
+                // heavily compress blurry header images
+                new ImageminPlugin({
+                    disable: !!env.light,
+                    test: /blurry\.jpe?g$/i,
+                    cacheFolder: path.resolve(__dirname, '.cache/blurry-headers'),
+                    minFileSize: 10000,
+
+                    plugins: [
+                        // https://github.com/imagemin/imagemin-mozjpeg#api
+                        ImageminMozjpeg({
+                            quality: 70
+                        })
+                    ]
+                }),
+
+                new ImageminPlugin({
+                    disable: !!env.light,
+                    test: /\.(jpe?g|png)$/i,
+                    cacheFolder: path.resolve(__dirname, '.cache/rest'),
+                    maxFileSize: 500000,
+                    minFileSize: 25000,
 
                     // https://github.com/imagemin/imagemin-optipng#api
                     optipng: {
@@ -186,11 +225,11 @@ module.exports = env => {
                     plugins: [
                         // https://github.com/imagemin/imagemin-mozjpeg#api
                         ImageminMozjpeg({
-                            quality: 90,
+                            quality: 95,
                             dcScanOpt: 2
                         })
                     ]
-                })
+                }),
             ]
         }
     }

@@ -86,6 +86,24 @@ $ yarn prod-test-light
 
 > Although image optimization is the most demanding task in this project, it only really runs once. After that, it stores optimized images in the cache folder (`.cache` in this case) and uses that instead for later builds. You can read on that [here](https://www.npmjs.com/package/imagemin-webpack-plugin#optionscachefolder).
 
+You can also choose a header image by passing an argument `env.header` like so:
+
+```bash
+$ yarn <any of the above> --env.header=<number>
+```
+
+`number` - from 1 to the amount of header variants inside of `src/img/headers/` directory.
+
+Finally, to make sure the bundle size doesn't exceed Reddit's limit, use:
+
+```bash
+yarn test
+```
+
+If this command fails, that means that one of the assets (be it an image or a stylesheet) exceeds the limit and needs more optimization applied.
+
+**Note:** This command will run `yarn prod` beforehand, which compresses image assets.
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
