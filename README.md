@@ -1,23 +1,21 @@
-### This theme is at a very early stage in development and may change substantially.
-
----
-
-![early theme preview](early-preview.png)
-
 > Easy to setup theme development project, primarily for [r/TheDragonPrince](https://old.reddit.com/r/TheDragonPrince)
 
 [![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)](LICENSE)
 ![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)
 [![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)](https://travis-ci.org/flowzy/r-thedragonprince)
 
+![theme preview](preview.png)
+
 # Table of content
-* [Browser support](#browser-support)
-* [Getting started](#getting-started)
-    * [Prerequisites](#prerequisites)
-    * [Installation](#installation)
-    * [Usage](#usage)
-* [Contributing](#contributing)
-* [Acknowledgment](#acknowledgment)
+- [Table of content](#table-of-content)
+- [Browser support](#browser-support)
+- [Getting started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+- [Contributing](#contributing)
+- [Acknowledgment](#acknowledgment)
+    - [MIT License](#mit-license)
 
 # Browser support
 Because Reddit's limit for stylesheet is only 100 Kb, cross-browser support is not the priority, so officially the project supports only the latest version of current desktop browsers. But, at the time of writing this, here's a list of browsers that, on paper, _should_ fully support currently used features:
