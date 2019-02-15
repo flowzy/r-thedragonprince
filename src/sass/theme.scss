@@ -1,3 +1,5 @@
+// <reference path="./abstracts/_placeholder-selectors.scss" />
+
 // handles function, mixins, and variables
 @import 'abstracts/sprite';
 @import 'abstracts/mixins';
@@ -10,6 +12,7 @@
 // animations, base, typography, and utilies.
 @import 'base/general';
 @import 'base/typography';
+@import 'base/formatting';
 // ==================================================
 
 // ==================================================
@@ -21,12 +24,21 @@
 @import 'res/header';
 @import 'res/header-profile';
 
-// -- content
-@import 'res/content-link';
+// -- content partials
+@import 'res/content-thing';
 @import 'res/content-ner';
 @import 'res/content-expando-button';
 @import 'res/content-expando-content';
 @import 'res/content-comments';
+@import 'res/content-commentarea';
+
+// -- sidebar partials
+@import 'res/sidebar-sub-buttons';
+@import 'res/sidebar-info';
+
+// -- extension-specific features
+@import 'res/ext-user-tag';
+@import 'res/ext-nightmode';
 // ==================================================
 
 // ==================================================
@@ -50,26 +62,45 @@
 
 // -- sidebar partials
 @import 'partials/sidebar-submits';
+@import 'partials/sidebar-buttons';
 @import 'partials/sidebar-search';
 @import 'partials/sidebar-premium-banner';
 @import 'partials/sidebar-login';
-@import 'partials/sidebar-fancy-toggle';
+@import 'partials/sidebar-sub-buttons';
 @import 'partials/sidebar-info';
+@import 'partials/sidebar-flair';
 @import 'partials/sidebar-own-subreddit';
+@import 'partials/sidebar-submission-info';
+@import 'partials/sidebar-boxes';
+@import 'partials/sidebar-formatting';
+@import 'partials/sidebar-history';
 
 // -- content partials
 @import 'partials/content-link';
 @import 'partials/content-thing';
+@import 'partials/content-crosspost';
+@import 'partials/content-thumbnails';
+@import 'partials/content-score';
 @import 'partials/content-comments';
+@import 'partials/content-commentarea';
 @import 'partials/content-infobar';
-@import 'partials/content-flairs';
 @import 'partials/content-expando-button';
 @import 'partials/content-expando-content';
 @import 'partials/content-nav-buttons';
+@import 'partials/content-user-flairs';
+@import 'partials/content-link-flairs';
+@import 'partials/content-flair-menu';
+@import 'partials/content-dropdown';
+
+// -- miscellaneous
+@import 'partials/misc-fancy-settings';
 // ==================================================
 
 // ==================================================
 // page-specific styling
 @import 'pages/search';
-@import 'pages/comments';
+@import 'pages/submit';
+@import 'pages/wiki';
+@import 'pages/rules';
+@import 'pages/mod-flair';
 // ==================================================

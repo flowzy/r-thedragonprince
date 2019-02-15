@@ -1,0 +1,11 @@
+// stylesheet toggle
+form.toggle.res-sr-style-toggle {
+    .titlebox & { 
+        margin: (-$gutter-size);
+        margin-bottom: $gutter-size;
+        padding: 8px $gutter-size;
+        background: rgba($color-white, .06) !important;
+        border-bottom: 1px solid rgba($color-white, .06);
+        border-radius: 0;
+    }
+}

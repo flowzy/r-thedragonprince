@@ -1,0 +1,26 @@
+.morelink,
+.account-activity-box {
+    height: $sidebar-submit-height;
+
+    &,
+    &:hover {
+        background: transparent;
+        border: none;
+    }
+
+    a {
+        text-transform: uppercase;
+        letter-spacing: 0;
+        font-size: 0.85rem;
+        padding: 0;
+        line-height: $sidebar-submit-height;
+        border-radius: $border-radius;
+        display: block;
+        @extend %rounded-button;
+    }
+
+    // hide reddit's nub
+    .nub {
+        display: none;
+    }
+}

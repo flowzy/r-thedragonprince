@@ -1,0 +1,77 @@
+.wiki-page {
+    > .content > span {
+        padding: $gutter-size $gutter-size 0;
+        display: block;
+    }
+
+    .wiki-page-content {
+        margin: 0;
+        padding: ($gutter-size * 2);
+
+        // table of content
+        .wiki > .toc {
+            > ul {
+                @extend %container;
+
+                ul {
+                    border-color: lighten($color-secondary, 15%);
+                }
+            }
+        }
+    }
+
+    .wikititle {
+        color: $color-muted;
+        text-transform: capitalize;
+    }
+
+    // wiki action buttons
+    .pageactions {
+        border: none;
+        margin: 0 0 0 $gutter-size;
+
+        .wikiaction {
+            @extend %text-size-md;
+            @extend %toggle-button;
+
+            &:hover {
+                background: transparent;
+            }
+        }
+
+        .wikiaction-current {
+            &,
+            &:hover {
+                background: $color-primary;
+                color: $color-body;
+                font-weight: bold;
+                border-color: transparent;
+            }
+        }
+    }
+}
+
+.wiki-page-content {
+    .md {
+        h1,
+        h6 {
+            font-size: 2rem;
+            color: $color-primary;
+            font-weight: bold;
+            margin: 1.5em 0 .25em;
+            @extend %font-family-serif;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        h2 {
+            font-size: 1rem;
+            color: $color-primary;
+            border-left: 2px solid rgba($color-primary, .5);
+            padding: .2em 1em;
+            text-transform: uppercase;
+        }
+    }
+}

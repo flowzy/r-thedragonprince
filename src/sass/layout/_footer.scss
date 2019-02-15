@@ -29,14 +29,25 @@
 }
 
 .footer {
-    padding: 0;
+    padding: 0 0 $gutter-size;
     margin: 0 auto $gutter-size;
     border: none;
     max-width: 725px;
-    @extend .md;
+    border-radius: 0;
+    border-bottom: 1px solid $color-secondary;
 
     .col {
         margin: 0;
         border-left: none;
+    }
+}
+
+.bottommenu {
+    font-size: $text-size-md;
+    color: $color-muted;
+
+    a {
+        text-decoration: none;
+        @extend %anchor-link;
     }
 }

@@ -1,19 +1,7 @@
-%buttons-highlighted-link {
-    a {
-        padding: 3px 10px;
-        border-radius: 1rem;
-        background: rgba($color-primary, .1);
-        font-weight: bold;
-        opacity: 1;
-        @extend %text-primary;
-        
-        &:hover {
-            background: $color-primary;
-            text-decoration: none;
-            @extend %box-shadow;
-            @extend %text-body;
-        }
-    }
+%list-rounded-button {
+    opacity: 1;
+    padding: 3px 10px;
+    @extend %rounded-button;
 }
 
 // used in footer and "moderation tools" widget
@@ -32,9 +20,9 @@
     .choice {
         background: transparent;
         padding: 5px 8px 5px 0;
-        @extend %display-flex-and-center;
+        @extend %flexbox-center;
         @extend %transition;
-        @extend %border-radius;
+        @extend %rounded;
 
         &:hover {
             text-decoration: none;
@@ -50,43 +38,145 @@
         padding: 2px 0 0;
 
         li {
-            font-size: .8rem;
             line-height: inherit;
-            padding-right: 8px;
+            padding-right: 0;
 
             + li {
                 padding-left: 0;
             }
 
+            &.reported-stamp {
+                border: none !important;
+                @extend .nsfw-stamp;
+            }
+
+            &:not(.stamp) {
+                @extend %text-size-md;
+            }
+
+            > a,
+            .toggle .togglebutton,
+            &.toggle a,
+            .state-button a,
+            .redditSingleClick::after {
+                opacity: .3;
+                @extend %toggle-button;
+            }
+
             a {
-                color: $color-muted;
-                font-weight: normal;
-                display: inline-block;
-                padding: 3px 2px;
-                opacity: .35;
-                @extend %transition;
+                &.give-gold {
+                    color: $color-gold;
+
+                    &:hover {
+                        border-color: rgba($color-gold, .3);
+                        color: lighten($color-gold, 10%);
+                    }
+                }
             }
 
             .link & {
                 // stamp (spoiler, nsfw) and "X comments"
                 &:first-child,
                 &.first {
-                    @extend %buttons-highlighted-link;
+                    &:not(.flairsample-left) {
+                        padding-right: ($gutter-size / 2);
+                    }
+
+                    > a {
+                        @extend %list-rounded-button;
+                    }
                 }
             }
 
             .comment & {
                 &.reply-button {
                     float: left;
-                    @extend %buttons-highlighted-link;
+                    padding: 0 ($gutter-size / 2);
+
+                    > a {
+                        @extend %list-rounded-button;
+                    }
                 }
             }
         }
 
         &:hover {
-            a {
+            li > a,
+            .toggle .togglebutton,
+            .toggle a,
+            .state-button a,
+            .redditSingleClick::after {
                 opacity: 1;
             }
+        }
+    }
+}
+
+// mod buttons
+.pretty-button {
+    margin: 0;
+
+    &.access-required {
+        background: transparent;
+        @extend %toggle-button;
+    }
+
+    &.negative {
+        color: $color-red;
+
+        &:hover {
+            border-color: rgba(lighten($color-red, 10%), .2);
+            color: lighten($color-red, 10%);
+        }
+    }
+
+    &.positive {
+        color: $color-green;
+
+        &:hover {
+            border-color: rgba(lighten($color-green, 15%), .2);
+            color: lighten($color-green, 15%);
+        }
+    }
+
+    // &.pressed {
+    //     @extend %list-rounded-button:hover;
+    // }
+}
+
+// contains mod buttons
+.big-mod-buttons {
+    float: right;
+    opacity: .35;
+    background: rgba($color-body, .5);
+    padding: 4px $gutter-size 4px 4px;
+    margin: -4px 0;
+    border-radius: $border-radius 0 0 $border-radius;
+    @extend %transition;
+
+    .buttons:hover & {
+        opacity: 1;
+    }
+}
+
+ul.report-reasons {
+    border-radius: 0;
+    padding: ($gutter-size / 2) $gutter-size;
+    line-height: 1.4;
+    margin-top: $gutter-size / 2;
+    @extend %container;
+
+    li {
+        &.report-reason-title {
+            @extend %text-primary;
+            padding: 0;
+        }
+    }
+
+    // hide the next list item when reports are visible
+    &[style*="block"] {
+        + li {
+            @extend %hide;
         }
     }
 }

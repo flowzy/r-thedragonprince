@@ -1,0 +1,71 @@
+.thumbnail {
+    background-color: $content-bg;
+    margin: ($gutter-size - 2px) $gutter-size;
+    width: 70px;
+    height: 70px !important;
+    justify-content: center;
+    @extend %flexbox-center;
+    @extend %rounded;
+
+    // add a sligthly visible outline to the image
+    &::after {
+        content: '';
+        position: absolute;
+        box-shadow: inset 0 0 0 1px rgba(#fff, .1);
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        z-index: 5;
+        @extend %rounded;
+    }
+
+    img {
+        width: auto !important;
+        height: 100% !important;
+
+        @include no-spoiler('.listing-page') {
+            @extend %hide;
+        }
+    }
+
+    &,
+    &.self,
+    &.image,
+    &.spoiler,
+    &.nsfw,
+    &.default {
+        @extend %sprite-image;
+    }
+
+    &,
+    &.self {
+        @include sprite-position($thumbnail-text);
+    }
+
+    &.image {
+        @include sprite-position($thumbnail-image);
+    }
+
+    &.default {
+        @include sprite-position($thumbnail-link);
+    }
+
+    .linkflair-art & {
+        @include sprite-position($thumbnail-flair-art);
+    }
+
+    &.spoiler {
+        @include sprite-position($thumbnail-spoiler);
+    }
+
+    &.nsfw {
+        @include sprite-position($thumbnail-nsfw);
+    }
+
+    // using an attribute selector for backwards compatibility, while keeping the name shorter
+    // previously was "linkflair-official-wonderstorm" used, now it's "linkflair-wonderstorm"
+    [class*="wonderstorm"] & {
+        @include sprite-position($thumbnail-flair-wonderstorm);
+    }
+}

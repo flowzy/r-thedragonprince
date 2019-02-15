@@ -1,0 +1,154 @@
+.flairselector {
+    position: fixed;
+    left: 0 !important;
+    top: 0 !important;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 400px !important;
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 0 !important;
+    background: transparent;
+    flex-direction: column;
+    background: $color-body;
+    border: 1px solid $color-secondary !important;
+    z-index: 100;
+    @extend %box-shadow;
+    @extend %text-size-md;
+
+    &.drop-choices.active {
+        @extend %flexbox;
+    }
+
+    &:not([style*="height: auto"]) {
+        padding: $gutter-size 0 !important;
+    }
+
+    img {
+        margin: auto;
+    }
+
+    // flair choice list
+    ul {
+        width: auto !important;
+        float: none !important;
+        max-width: none;
+        overflow: visible;
+        display: inline;
+        vertical-align: middle;
+
+        // user flair list
+        .link & {
+            width: 100% !important;
+        }
+    }
+
+    // flair list container
+    .flairoptionpane {
+        margin: 0;
+        max-height: 100%;
+        padding: $gutter-size;
+        flex: 1;
+
+        // hide sample titles
+        a.title {
+            @extend %hide;
+        }
+    }
+
+    li {
+        padding: 5px 0;
+        text-align: center !important;
+        border: 1px solid transparent !important;
+        @extend %rounded;
+        @extend %transition;
+        @extend %box-sizing;
+
+        &.selected {
+            border-color: rgba($color-primary, .3) !important;
+        }
+
+        &:hover {
+            background: $color-secondary;
+            border-color: transparent !important;
+        }
+    }
+
+    // link flair choice
+    // .flairsample-left {
+    //     // ...
+    // }
+
+    // user flair choice
+    .flairsample-right {
+        width: 20% !important;
+        padding: 10px 0;
+        float: left;
+
+        // hide unnecessary information
+        .author,
+        .userattrs {
+            @extend %hide;
+        }
+
+        // reset flair position
+        .flair {
+            float: none;
+            margin: 0;
+            vertical-align: middle;
+        }
+    }
+
+    // "remove flair" button
+    .flairremove {
+        font-size: 0;
+        margin-left: auto;
+
+        .tagline & {
+            margin-top: -3px;
+            float: right;
+        }
+
+        li & a,
+        a {
+            @extend %text-size-md;
+            @extend %toggle-button;
+        }
+    }
+
+    // flair preview and remove button
+    .flairselection {
+        margin: 0 0 $gutter-size;
+        text-align: left;
+
+        .link & {
+            @extend %flexbox-center;
+        }
+    }
+
+    // "select flair" heading at the top
+    h2 {
+        background: transparent;
+        text-transform: uppercase;
+        text-align: left;
+        padding: $gutter-size $gutter-size 0;
+        @extend %text-size-lg;
+        @extend %text-white;
+    }
+
+    // bottom form, which contains flair preview, text field and button
+    form {
+        border-color: $color-secondary;
+        margin: auto 0 0;
+        padding: $gutter-size;
+    }
+
+    input {
+        @extend %text-field;
+    }
+
+    button {
+        @extend %rounded-button;
+    }
+}

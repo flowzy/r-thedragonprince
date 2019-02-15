@@ -1,0 +1,27 @@
+.reddit-link {
+    padding-bottom: $gutter-size;
+    @extend %flexbox;
+}
+
+.reddit-entry {
+    padding: 0 0 0 $gutter-size;
+
+    .linkflairlabel {
+        margin: 0 ($gutter-size / 2) 2px 0;
+        vertical-align: middle;
+    }
+
+    small {
+        display: block;
+        margin-top: 5px;
+    }
+
+    .score {
+        margin: 0;
+    }
+}
+
+.reddit-link-title {
+    font-weight: bold;
+    @extend %text-size-md;
+}

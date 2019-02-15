@@ -2,30 +2,36 @@
 
 ---
 
+![early theme preview](early-preview.png)
+
 > Easy to setup theme development project, primarily for [r/TheDragonPrince](https://old.reddit.com/r/TheDragonPrince)
 
 [![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)](LICENSE)
 ![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)
 [![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)](https://travis-ci.org/flowzy/r-thedragonprince)
 
-<!-- Generated using: http://godban.github.io/browsers-support-badges/ -->
-| <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" /></br>Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /></br>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /></br>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /></br>Safari |
-| --------- | --------- | --------- | --------- |
-| last version| last version| last version| last version
-
-TL;DR - Cross-browser support is very narrow at the moment.
-
 # Table of content
+* [Browser support](#browser-support)
 * [Getting started](#getting-started)
     * [Prerequisites](#prerequisites)
     * [Installation](#installation)
     * [Usage](#usage)
 * [Contributing](#contributing)
 * [Acknowledgment](#acknowledgment)
-* [License](#license)
+
+# Browser support
+Because Reddit's limit for stylesheet is only 100 Kb, cross-browser support is not the priority, so officially the project supports only the latest version of current desktop browsers. But, at the time of writing this, here's a list of browsers that, on paper, _should_ fully support currently used features:
+
+| Browser | Version |
+|---------|---------|
+| Edge    | latest  |
+| Firefox | ≥ 36    |
+| Chrome  | ≥ 31    |
+| Opera   | ≥ 26    |
+| Safari  | ≥ 10    |
 
 # Getting started
-Before you start your development on the project, you need go through a couple of steps to setup your environment.
+Before you start working on the project, you need go through a couple of steps to setup your environment.
 
 ## Prerequisites
 Download and install the following software:
@@ -45,6 +51,7 @@ After you've done that, you now need to allow your browser to connect to "insecu
     * then click "Add Exception..."
     * _at this step, if the certificate is not showing up, click "Get Certificate"_
     * add the exception by clicking "Confirm Security Exception"
+    * P.S. you _might_ need to do this every time you restart your machine
 
 ## Installation
 Now that you've setup your environment, you can start downloading and installing the project.
@@ -57,7 +64,7 @@ Now that you've setup your environment, you can start downloading and installing
     > _or download the project as a ZIP._
 
 2. Install dependencies, using Yarn:
-    ```bash
+    ```
     $ yarn install
     ```
 3. Open [this link](https://github.com/flowzy/r-thedragonprince/raw/master/userscript.user.js) and install the userscript.
@@ -65,59 +72,44 @@ Now that you've setup your environment, you can start downloading and installing
 
 ## Usage
 Generate SSL certificates, start a local development server and watch for file changes:
-```bash
+```
 $ yarn dev
 ```
 
----
-
-Minimize the CSS file size, optimize images and rewrites CSS `url(...)` to comply with Reddit's syntax:
-```bash
+Compress images/CSS output size and rewrite `url(...)` values to comply with Reddit's syntax:
+```
 $ yarn prod
 ```
 
----
-
-Combine both of the above tasks without rewriting `url(...)` to keep real image path:
-```bash
+Combine both of the above tasks, without rewriting `url(...)`:
+```
 $ yarn prod-test
 ```
 
----
-
-Run `yarn prod-test` without image optimization (useful for users with weaker CPUs):
-```bash
+Run the task above, but without image compression (useful for users with weaker CPUs):
+```
 $ yarn prod-test-light
 ```
 
-> Although image optimization is the most demanding task in this project, it only really runs once. After that, it stores optimized images in the cache folder (`.cache` in this case) and uses that instead for later builds. You can read on that [here](https://www.npmjs.com/package/imagemin-webpack-plugin#optionscachefolder).
+Compile SASS with a pre-defined header variant, pass `--env.header` argument:
 
----
-
-You can also choose a header image by passing an argument `env.header` like so:
-
-```bash
-$ yarn <any of the above> --env.header=<number>
+```
+$ yarn <task> --env.header=<number>
+---------------------------------------------------
+<task>   - dev | prod | prod-test | prod-test-light
+<number> - min: 1, max: 18
 ```
 
-`number` - from 1 to the amount of header variants inside of `src/img/headers/` directory.
+Run tests on the production-ready bundle to determine its compatibility with Reddit's limits:
 
----
-
-Finally, to make sure the bundle size doesn't exceed Reddit's limit, use:
-
-```bash
-yarn test
 ```
-
-If this command fails, that means that one of the assets (be it an image or a stylesheet) exceeds the limit and needs more optimization applied.
-
-**Note:** This command will run `yarn prod` beforehand, which compresses image assets.
+$ yarn test
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 # Acknowledgment
-[@ncla](https://github.com/ncla) and his project "[musereddit](https://github.com/ncla/musereddit)" was a great starting point and helped me kickstart the initial development.
+[@ncla](https://github.com/ncla) and his project "[musereddit](https://github.com/ncla/musereddit)" was a great starting point and helped me kickstart the initial development. The project still uses a slightly modified version of his userscript for live development.
 
-### [License](LICENSE)
+### [MIT License](LICENSE)

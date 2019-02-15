@@ -16,17 +16,39 @@
 
 // subreddit list above the header
 #sr-header-area {
-    background: $color-black;
+    background: rgba($color-body, .9) !important;
     border: none;
     height: $header-top-height;
     line-height: $header-top-height;
     font-family: $font-family-alt;
-    @extend %text-white;
+    font-size: 10px;
+    overflow: hidden;
+    position: relative;
+    @extend %text-muted;
+
+    &::before {
+        top: 0;
+        bottom: auto;
+        @extend #header-bottom-left::before;
+    }
+
+    .separator {
+        margin: 0 2px;
+    }
 }
 
 .sr-bar a,
 .dropdown.srdrop .selected {
-    @extend %text-white;
+    display: inline-block;
+    padding: 0 4px;
+    border-bottom: 1px solid transparent;
+    height: $header-top-height - 1px;
+    @extend %text-muted;
+
+    &:hover {
+        border-color: $color-primary;
+        @extend %text-primary;
+    }
 }
 
 // "Edit >>" button on the right side

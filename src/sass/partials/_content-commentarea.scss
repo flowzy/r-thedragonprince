@@ -1,0 +1,114 @@
+.panestack-title,
+.commentarea .menuarea {
+    margin: 0;
+    padding: ($gutter-size / 2) $gutter-size;
+    width: 100%;
+    @extend %flexbox-center;
+    @extend %box-sizing;
+    @extend %container;
+}
+
+// container of panels and comments
+.commentarea {
+    margin-top: $gutter-size;
+
+    .menuarea {
+        border-top-width: 0;
+        @extend %text-muted;
+
+        .spacer {
+            margin: 0;
+        }
+
+        .toggle {
+            a {
+                @extend %text-size-md;
+                @extend %toggle-button;
+            }
+
+            &.set_subreddit_sticky-button {
+                a {
+                    color: $color-green;
+                    
+                    &:hover {
+                        border-color: rgba($color-green, .3);
+                        color: lighten($color-green, 10%);
+                    }
+                }
+            }
+        }
+    }
+
+    > .usertext {
+        &,
+        + .sitetable {
+            margin: $gutter-size 0 0;
+        }
+    }
+
+    .usertext-edit {
+        margin: 0;
+
+        .md {
+            margin: 0 0 ($gutter-size / 2);
+        }
+    }
+}
+
+// top panel
+.panestack-title {
+    padding: $gutter-size;
+
+    .title {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0;
+        @extend %text-size-lg;
+    }
+}
+
+// bottom panel
+.menuarea {
+    margin: 0 0 $gutter-size;
+    @extend %container;
+    @extend %text-size-md;
+
+    .spacer {
+        margin: 0;
+
+        &:nth-child(2) {
+            margin-left: auto;
+        }
+    }
+}
+
+// "Highlight comments posted since ..." box, available to mods and Reddit gold/premium owners
+.comment-visits-box {
+    &,
+    &.gold-accent {
+        padding: 4px 4px 4px $gutter-size;
+
+        select {
+            margin-left: ($gutter-size / 2);
+        }
+    }
+
+    &.gold-accent {
+        background: $color-body;
+        border-color: rgba($color-gold, .3);
+        color: $color-gold;
+
+        &,
+        + .sitetable {
+            margin: $gutter-size 0 0;
+        }
+    }
+}
+
+.usertext  {
+    .help-toggle .option.active,
+    a.reddiquette {
+        margin: 2px 0 0;
+        @extend %toggle-button;
+    }
+}

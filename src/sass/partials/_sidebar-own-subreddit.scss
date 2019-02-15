@@ -4,8 +4,9 @@
         @extend %hide;
     }
 
-    .subtitle {
-        color: $color-muted;
-        font-size: .8rem;
+    &.create {
+        margin: 0 (-$gutter-size);
+        padding: 0 $gutter-size $gutter-size;
+        border-bottom: 1px solid $color-secondary;
     }
 }

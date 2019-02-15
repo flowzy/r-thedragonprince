@@ -1,0 +1,46 @@
+.linkinfo {
+    padding: 0;
+    background: transparent;
+    border: none;
+    background: $content-bg;
+    margin: (-$gutter-size);
+    border-top: 1px solid $color-secondary;
+    margin-bottom: $gutter-size;
+    border-radius: 0;
+
+    .date,
+    .shortlink,
+    .score {
+        margin: 0;
+        padding: ($gutter-size / 2) $gutter-size;
+    }
+
+    .date {
+        padding-top: $gutter-size;
+        @extend %text-size-md;
+    }
+
+    .score {
+        padding: 0 $gutter-size $gutter-size;
+        font-weight: normal;
+        @extend %text-size-md;
+        @extend %text-muted;
+
+        .number,
+        .word {
+            @extend %text-white;
+            @extend %text-size-lg;
+        }
+    }
+
+    .shortlink {
+        border-top: 1px solid $color-secondary;
+        @extend %flexbox-center;
+        @extend %text-size-md;
+    }
+
+    // shortlink itself
+    #shortlink-text {
+        margin-left: $gutter-size;
+    }
+}

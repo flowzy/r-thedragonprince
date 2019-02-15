@@ -1,4 +1,190 @@
 .comment {
-    background: $content-bg;
-    margin: 0 0 $gutter-size;
+    flex-wrap: wrap;
+    @extend %flexbox;
+
+    &,
+    body.res-commentBoxes.res-commentBoxes-rounded & {
+        padding: $gutter-size 0 $gutter-size round($gutter-size * 1.25 + $gutter-size) !important;
+        margin: 0 0 $gutter-size;
+        border-radius: 0 !important;
+
+        &.collapsed {
+            padding: ($gutter-size / 2) 0 ($gutter-size / 2) round($gutter-size * 1.25 + $gutter-size) !important;
+        }
+
+        // change the background color of every odd/even comment
+        .comment,
+        .comment .comment .comment,
+        .comment .comment .comment .comment .comment,
+        .comment .comment .comment .comment .comment .comment .comment,
+        .comment .comment .comment .comment .comment .comment .comment .comment .comment {
+            background: lighten($color-body, 1%) !important;
+
+            .comment {
+                background: $content-bg !important;
+            }
+        }
+    }
+
+    &.thing.new-comment {
+        border-color: rgba($color-primary, .4) !important;
+    }
+
+    // reply container
+    .child,
+    .showreplies {
+        border: none;
+        margin: 0;
+
+        .comment {
+            margin-top: $gutter-size !important;
+            border-right-width: 0 !important;
+
+            &:nth-last-child(2) {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+
+    time {
+        opacity: .5;
+    }
+
+    .child,
+    .showreplies,
+    .entry {
+        flex: 1 0 80%;
+    }
+
+    // "load more comments" button
+    .morechildren {
+        margin: $gutter-size $gutter-size 0 0;
+
+        a {
+            @extend %rounded-button;
+
+            * {
+                @extend %transition;
+            }
+
+            &:hover * {
+                @extend %text-body;
+            }
+        }
+    }
+
+    .midcol {
+        background: transparent !important;
+        padding: 8px $gutter-size 0 0;
+    }
+
+    .expand {
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        bottom: -1px;
+        width: round($gutter-size * 1.25);
+        text-align: center;
+        padding: 0;
+        color: rgba($color-muted, .6) !important;
+        font-size: 0;
+
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            border-top: 1px solid;
+            width: ($gutter-size / 2);
+            height: 0;
+            position: absolute;
+            left: 0;
+            top: $gutter-size;
+            right: 0;
+            margin: auto;
+        }
+
+        &::after {
+            content: none;
+            transform: rotate(90deg);
+        }
+
+        &:hover {
+            background: $color-primary;
+            text-decoration: none;
+            color: $color-body !important;
+        }
+    }
+
+    .usertext,
+    .buttons {
+        padding-left: $user-flair-default-width + $gutter-size;
+    }
+
+    .buttons {
+        margin-left: -7px;
+    }
+
+    .usertext-body {
+        padding: 0 !important;
+    }
+
+    .usertext {
+        &.grayed {
+            .usertext-body {
+                background: transparent;
+
+                .md {
+                    color: $color-muted;
+                }
+            }
+        }
+    }
+
+    &.deleted,
+    &.collapsed {
+        > .midcol {
+            @extend %hide;
+        }
+    }
+
+    // deleted comment
+    &.deleted {
+        > .entry {
+            .usertext,
+            .buttons {
+                padding-left: 0;
+            }
+        }
+    }
+
+    // collapsed comment
+    &.collapsed {
+        font-style: normal;
+
+        .author {
+            margin-left: 0;
+
+            &::before {
+                content: none;
+            }
+        }
+
+        .tagline {
+            line-height: 1;
+            margin-top: 3px;
+        }
+
+        .expand {
+            &:not(:hover) {
+                background: $content-bg;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                top: 0;
+                bottom: 0;
+            }
+        }
+    }
 }

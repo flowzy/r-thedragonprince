@@ -1,37 +1,66 @@
 #search {
     margin: (-$gutter-size) (-$gutter-size) 0;
-    border-bottom: 1px solid $color-secondary;
     position: relative;
-    // width: $sidebar-width;
 
     input {
         &[type="text"] {
             padding: $gutter-size;
             height: $sidebar-search-height;
-            border-bottom: none;
-            @extend %input-field;
-
-            &:focus {
-                @extend %input-field-focus;
-            }
+            box-shadow: none;
+            border: none;
+            background: transparent;
+            @extend %text-field;
         }
 
         &[type="submit"] {
             margin-left: -$gutter-size * 2;
         }
     }
+
+    select {
+        @extend %select;
+    }
 }
 
 // this pop up after the user focuses search text field
 #searchexpando {
-    background: $color-primary;
+    background: $color-body;
     position: absolute;
-    left: -1px;
-    right: -1px;
+    left: 0;
+    right: 0;
     margin-top: 0;
     z-index: 100;
-    border: none;
+    border: 1px solid $color-secondary;
+    border-left: none;
+    border-right: none;
     opacity: 1;
     border-radius: 0;
+    padding: $gutter-size;
     box-shadow: $box-shadow;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    [type="checkbox"] {
+        margin: 0 ($gutter-size / 2) 0 0;
+        vertical-align: middle;
+    }
+
+    label {
+        margin-bottom: ($gutter-size / 2);
+    }
+
+    select {
+        margin-left: $gutter-size;
+    }
+}
+
+#moresearchinfo {
+    label + & {
+        max-width: none;
+        margin: ($gutter-size / 2) (-$gutter-size) 0;
+        padding: $gutter-size $gutter-size 0;
+        border-color: $color-secondary;
+    }
 }

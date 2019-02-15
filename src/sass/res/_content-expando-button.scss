@@ -29,10 +29,24 @@
                 }
             }
         }
+
+        &.video-muted {
+            &::before {
+                @include sprite-position($icon-expando-gif);
+            }
+
+            &::after {
+                @include sprite-position($icon-expando-gif-alt);
+            }
+        }
     }
 
+    // expando button inside the body
     .res-freetext-expando & {
         transform: none;
+        margin-left: 4px !important;
+        position: relative;
+        bottom: -1px;
     }
 
     .res-showImages-highlightSpoilerButton .thing.spoiler .title ~ & {

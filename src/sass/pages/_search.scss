@@ -1,4 +1,42 @@
 .search-result-group {
     max-width: none;
     padding: 0;
+
+    .info {
+        @extend #noresults;
+    }
+}
+
+.search-result-group-header {
+    border-color: $color-secondary;
+    margin: $gutter-size 0;
+    @extend %text-muted;
+}
+
+.searchpane {
+    h4 {
+        color: $color-primary !important;
+    }
+}
+
+.combined-search-page {
+    .searchpane {
+        margin: 0;
+        padding: $gutter-size;
+        @extend %container;
+    }
+
+    .search-submit-button {
+        background: $color-primary;
+        border-bottom-color: darken($color-primary, 20%);
+    }
+
+
+    #search {
+        margin: 0;
+
+        input[type="text"] {
+            @extend %text-field;
+        }
+    }
 }

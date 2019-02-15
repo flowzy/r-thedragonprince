@@ -1,0 +1,30 @@
+.titlebox {
+    .res-fancy-toggle-button {
+        width: 50%;
+        margin: 0;
+        float: left;
+        border-radius: 0;
+        background: transparent;
+        border-color: rgba($color-primary, .1);
+        text-align: center;
+        padding: 3px 0;
+        @extend %text-size-md;
+        @extend %text-primary;
+        @extend %box-sizing;
+        @extend %transition;
+
+        &:hover {
+            background: $color-primary;
+            @extend %text-body;
+        }
+
+        + .res-fancy-toggle-button {
+            border-left-width: 0;
+        }
+    }
+
+    .subButtons {
+        padding-bottom: $gutter-size;
+        @include clearfix;
+    }
+}

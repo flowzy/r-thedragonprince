@@ -1,0 +1,55 @@
+.formtabs-content {
+    border: none;
+
+    .infobar {
+        opacity: 1;
+        color: $color-body;
+    }
+}
+
+ul.tabmenu.formtab {
+    width: 520px;
+    padding: 0;
+    @extend %flexbox-center;
+
+    li {
+        flex: 1 0 50%;
+        font-size: 1rem;
+        text-align: center;
+
+        a {
+            border: none;
+            @extend %rounded;
+        }
+
+        &.selected {
+            a {
+                background: $color-primary;
+                color: $color-body;
+                font-size: inherit;
+            }
+        }
+    }
+}
+
+div#newlink-with-image-upload .image-upload-drop-target {
+    background: $color-body;
+    border-color: $color-secondary;
+}
+
+.submit_text,
+.content.submit .info-notice {
+    background: rgba($color-primary, .15);
+    border-color: rgba($color-primary, .25);
+}
+
+.submit_text {
+    h1 {
+        @extend %text-primary;
+    }
+
+    p {
+        @extend %text-size-md;
+    }
+}
+

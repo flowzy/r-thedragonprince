@@ -1,0 +1,93 @@
+// container
+.midcol {
+    margin: 0;
+    overflow: visible;
+}
+
+// thread/comment score
+.score {
+    margin: 5px 0;
+    font-weight: bold;
+
+    .thing & {
+        &.unvoted {
+            @extend %text-muted;
+        }
+
+        &.likes {
+            color: #ff8717;
+        }
+
+        &.dislikes {
+            color: #7193ff;
+        }
+    }
+
+    .comment & {
+        margin-right: ($gutter-size / 2);
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: $color-secondary;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin: -1px ($gutter-size / 2) 0 ($gutter-size / 2 - 3px);
+        }
+    }
+}
+
+// upvote/downvote arrows
+.arrow {
+    position: relative;
+    margin: 6px auto;
+    @include sprite-height($icon-upvote);
+
+    &.up,
+    &.down {
+        opacity: .5;
+        transition: opacity nth($transition, 2) nth($transition, 3);
+        @include sprite-image($icon-upvote);
+        @include sprite-width($icon-upvote);
+        @include sprite-position($icon-upvote);
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &.up,
+    &.upmod {
+        margin-top: 0;
+    }
+
+    &.down {
+        @include sprite-position($icon-downvote);
+    }
+
+    &.upmod,
+    &.downmod {
+        background: transparent;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: -1px;
+            bottom: 0;
+            @include sprite-width($icon-upvoted);
+            @include sprite-height($icon-upvoted);
+            @include sprite-position($icon-upvoted);
+            @extend %sprite-image;
+        }
+    }
+
+    &.downmod {
+        &::after {
+            bottom: auto;
+            top: 0;
+            @include sprite-position($icon-downvoted);
+        }
+    }
+}

@@ -1,7 +1,7 @@
 {
   "name": "r-thedragonprince",
   "description": "Subreddit theme for the Netflix show \"The Dragon Prince\"",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "src/sass/theme.scss",
   "scripts": {
     "dev": "webpack-dev-server --env.NODE_ENV=development",
@@ -42,6 +42,11 @@
     },
     {
       "path": "./dist/img/*/*.jpg",
+      "maxSize": "500 kB",
+      "compression": "none"
+    },
+    {
+      "path": "./dist/img/*.png",
       "maxSize": "500 kB",
       "compression": "none"
     },

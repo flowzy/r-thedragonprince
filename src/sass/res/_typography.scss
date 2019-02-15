@@ -1,7 +1,8 @@
 .res {
     a.author {
         &.moderator,
-        &.submitter {
+        &.submitter,
+        &.friend {
             color: $color-body !important;
             padding: 0 3px;
 
@@ -16,6 +17,10 @@
 
         &.moderator {
             background: $color-green !important;
+
+            &:hover {
+                background: darken($color-green, 15%) !important;
+            }
         }
 
         &.submitter {
@@ -23,6 +28,19 @@
 
             &:hover {
                 background: darken($color-primary, 15%) !important;
+            }
+        }
+    }
+
+    .collapsed .tagline,
+    .collapsed .crosspost-preview-tagline {
+        .author {
+            &.moderator,
+            &.submitter,
+            &.friend {
+                &:not(:hover) {
+                    color: $color-body !important;
+                }
             }
         }
     }

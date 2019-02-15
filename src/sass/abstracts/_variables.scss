@@ -1,7 +1,7 @@
 // colors
 $color-white: #fff;
 $color-black: #000;
-$color-muted: darken(#fff, 25%);
+$color-muted: darken($color-white, 30%);
 $color-body: #131317;
 $color-body-accent-top: lighten(#151b20, 2%);
 $color-body-accent-bottom: #28060f;
@@ -9,19 +9,29 @@ $color-primary: #e5a544 !default;
 $color-secondary: rgba(lighten($color-body, 20%), .65);
 $color-green: #44a244;
 $color-red: #db3131;
+$color-gold: #daa520;
 
 $color-brand-reddit: #ff4500;
 $color-brand-wonderstorm: #139feb;
+$color-brand-netflix: #e50914;
+$color-brand-discord: #7289da;
 
 $color-linkflair-wonderstorm: $color-brand-wonderstorm;
-$color-linkflair-fan-content: #eb6558;
 $color-linkflair-discussion: $color-secondary;
 $color-linkflair-announcement: $color-green;
+$color-linkflair-meme: #da4e9f;
+$color-linkflair-media: #8f939b;
+$color-linkflair-art: #eb6558;
+$color-linkflair-news: #27be91;
+$color-linkflair-game: #af703c;
 
 // font settings
 $font-family: 'Source Sans Pro', Arial, sans-serif;
 $font-family-alt: Verdana, 'Bitstream Vera Sans', 'DejaVu Sans', Tahoma, Geneva, Arial, sans-serif;
 $font-family-serif: 'Times New Roman', Georgia, serif;
+
+$text-size-md: .8rem;
+$text-size-lg: .9rem;
 
 // general
 $gutter-size: 14px;
@@ -31,14 +41,14 @@ $border-radius: 4px;
 
 $transition: all 0.15s cubic-bezier(0.25, 1, 0.2, 1);
 
-$box-shadow: 0 20px 38px rgba(#000, .16);
+$box-shadow: 0 10px 19px rgba(#000, .16);
 
 // header
 $header-height: 300px;
 $header-color: $color-body;
 $header-logo-position: 'left' !default; // available options are: left, center, right
 
-$header-top-height: 22px;
+$header-top-height: 25px;
 
 $header-bottom-height: 40px;
 
@@ -53,9 +63,68 @@ $footer-image-height: 160px;
 $content-bg: transparentize($color-secondary, 0.4);
 
 // sidebar
+$sidebar-subreddit: 'r/TheDragonPrince';
+$sidebar-flair-sample-points: '1,412 points';
+$sidebar-flair-sample-text: 'An extraordinary discovery inspires two human princes';
+$sidebar-flair-edit-text: 'click to change your flair';
+$sidebar-subscribers-word: 'subscribers';
+$sidebar-online-word: 'online';
+
 $sidebar-width: 340px + $gutter-size * 2;
 $sidebar-bg: $content-bg;
 
 $sidebar-search-height: 40px;
 
 $sidebar-submit-height: 35px;
+
+// user flairs
+$user-flairs: (
+    'aanya-1': $user-flair-aanya-1,
+    'ahling-1': $user-flair-ahling-1,
+    'amaya-1': $user-flair-amaya-1,
+    'ava-1': $user-flair-ava-1,
+    'bait-1': $user-flair-bait-1,
+    'bait-2': $user-flair-bait-2,
+    'bait-3': $user-flair-bait-3,
+    'brand-bardel': $user-flair-brand-bardel,
+    'brand-netflix': $user-flair-brand-netflix,
+    'brand-wonderstorm': $user-flair-brand-wonderstorm,
+    'callum-1': $user-flair-callum-1,
+    'callum-2': $user-flair-callum-2,
+    'claudia-1': $user-flair-claudia-1,
+    'claudia-2': $user-flair-claudia-2,
+    'claudia-3': $user-flair-claudia-3,
+    'corvus-1': $user-flair-corvus-1,
+    'ellis-1': $user-flair-ellis-1,
+    'ellis-2': $user-flair-ellis-2,
+    'ezran-1': $user-flair-ezran-1,
+    'ezran-2': $user-flair-ezran-2,
+    'ezran-3': $user-flair-ezran-3,
+    'florian-1': $user-flair-florian-1,
+    'gren-1': $user-flair-gren-1,
+    'harrow-1': $user-flair-harrow-1,
+    'harrow-2': $user-flair-harrow-2,
+    'misc-1': $user-flair-misc-1,
+    'pip-1': $user-flair-pip-1,
+    'rayla-1': $user-flair-rayla-1,
+    'rayla-2': $user-flair-rayla-2,
+    'rayla-3': $user-flair-rayla-3,
+    'rayla-4': $user-flair-rayla-4,
+    'rayla-5': $user-flair-rayla-5,
+    'rayla-6': $user-flair-rayla-6,
+    'runaan-1': $user-flair-runaan-1,
+    'runaan-2': $user-flair-runaan-2,
+    'soren-1': $user-flair-soren-1,
+    'thunder-1': $user-flair-thunder,
+    'viren-1': $user-flair-viren-1,
+    'viren-2': $user-flair-viren-2,
+    'viren-3': $user-flair-viren-3,
+    'zym-1': $user-flair-zym-1,
+    'zym-2': $user-flair-zym-2,
+    's-earth': $user-flair-source-earth,
+    's-moon': $user-flair-source-moon,
+    's-ocean': $user-flair-source-ocean,
+    's-sky': $user-flair-source-sky,
+    's-star': $user-flair-source-star,
+    's-sun': $user-flair-source-sun
+);

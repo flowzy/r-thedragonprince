@@ -1,14 +1,19 @@
 // this is used mainly for threads
 .link,
 .search-result-link {
-    background: $content-bg right -38px no-repeat;
+    background-repeat: no-repeat;
+    background-position: right -38px;
     padding: 0;
     margin: 0;
-    border: 1px solid $color-secondary;
-    border-bottom-width: 0;
-    position: relative;
-    @extend %display-flex;
+    border-bottom-width: 0 !important;
+    @extend %flexbox;
 
+    &:nth-last-child(2) {
+        border-bottom-width: 1px !important;
+    }
+
+    // fake border at the bottom, for easier manipulation
+    .parent,
     &::after {
         position: absolute;
         left: -1px;
@@ -18,9 +23,18 @@
         z-index: 10;
     }
 
+    .parent {
+        display: none;
+        bottom: auto;
+        padding-bottom: $gutter-size;
+        border-bottom: 1px solid $color-secondary;
+        top: (-$gutter-size * 2 - 2px);
+    }
+
     &.last-clicked {
-        border: 1px solid lighten(rgba($color-secondary, 1), 5%);
-        border-bottom-width: 0;
+        border-style: solid;
+        border-color: lighten(rgba($color-secondary, 1), 8%) !important;
+        // border-bottom-width: 0 !important;
         overflow: visible;
 
         &::after {
@@ -28,41 +42,15 @@
         }
     }
 
-    // there are 2 elements with this class, inside one another
-    // p.title and a.title (p.title > a.title)
-    p.title,
-    .search-result-header {
-        line-height: 1.1;
-        margin: 0 $gutter-size round($gutter-size / 2) 0;
-    }
-
-    a.title,
-    a.search-title {
-        color: $color-primary;
-        font-size: 1.2rem;
-        @extend %font-family-serif;
-
-        &:hover {
-            color: saturate(lighten($color-primary, 15%), 10%);
-        }
-
-        &:visited {
-            color: desaturate(darken($color-primary, 20%), 20%);
-
-            &:hover {
-                color: desaturate(darken($color-primary, 10%), 10%);
-            }
-        }
-    }
-
-    &.visited {
-        a.title {
-            @extend a.title:visited;
-        }
-    }
-
     > * {
         flex-shrink: 0;
+    }
+
+    // container for upvotes and downvotes
+    .midcol {
+        padding: round($gutter-size * 1.6) 4px 0;
+        background: $content-bg;
+        border-right: 3px solid rgba($color-muted, .25);
     }
 
     // first selector is used for styling search result
@@ -73,17 +61,9 @@
         flex-grow: 1;
         flex-shrink: 1;
     }
-
-    // contains score of the thread/comment (upvote/downvote)
-    .midcol {
-        margin: 0;
-        padding: round($gutter-size * 1.5) 4px 0;
-        background: $content-bg;
-    }
-
+    
     // hide rank number and user flair
-    .rank,
-    .flair {
+    .rank {
         @extend %hide;
     }
 
@@ -121,142 +101,93 @@
             }
         }
     }
-}
 
-// add a space between the score of the post and arrows
-.score {
-    margin: 5px 0;
-
-    .link & {
-        // change colors of text depending if the thread was upvoted or downvoted
-        &.likes {
-            color: #ff8717;
+    // stickied threads
+    &.stickied {
+        + .clearleft {
+            + .link:not(.stickied) {
+                margin-top: ($gutter-size * 2 + 1px);
+                
+                .parent {
+                    display: block;
+                }
+            }
         }
 
-        &.dislikes {
-            color: #7193ff;
+        .midcol {
+            background: rgba($color-green, .15);
         }
-    }
-}
 
-// upvote/downvote arrows
-.arrow {
-    position: relative;
-    margin: 6px auto;
-    @include sprite-height($icon-upvote);
+        // change the title color of the threads
+        &.thing {
+            .title,
+            a.title {
+                @extend %text-green;
 
-    &.up,
-    &.down {
-        opacity: .5;
-        transition: opacity nth($transition, 2) nth($transition, 3);
-        @include sprite-image($icon-upvote);
-        @include sprite-width($icon-upvote);
-        @include sprite-position($icon-upvote);
-
-        &:hover {
-            opacity: 1;
+                &:hover {
+                    color: lighten($color-green, 10%);
+                }
+            }
         }
     }
 
-    &.up,
-    &.upmod {
-        margin-top: 0;
-    }
-
-    &.down {
-        @include sprite-position($icon-downvote);
-    }
-
-    &.upmod,
-    &.downmod {
-        background: transparent;
-
-        &::after {
-            content: '';
-            position: absolute;
-            left: -2px;
-            bottom: 0;
-            @include sprite($icon-upvoted);
-        }
-    }
-
-    &.downmod {
-        &::after {
-            bottom: auto;
-            top: 0;
-            @include sprite-position($icon-downvoted);
-        }
-    }
-}
-
-// thread thumbnails
-.thumbnail {
-    background-color: $content-bg;
-    margin: ($gutter-size - 2px) $gutter-size;
-    width: 70px;
-    height: 70px !important;
-    @extend %border-radius;
-
-    // add a sligthly visible outline to the image
-    &::after {
-        content: '';
-        position: absolute;
-        box-shadow: inset 0 0 0 1px rgba(#fff, .1);
-        bottom: 0;
-        right: 0;
-        left: 0;
-        top: 0;
-        z-index: 5;
-        @extend %border-radius;
-    }
-
-    img {
-        object-fit: cover;
-        width: 100% !important;
-        height: 100% !important;
-    }
-
-    &.self,
-    &.image,
+    // spoiler-tagged threads
     &.spoiler,
     &.nsfw,
-    &.default {
-        @extend %sprite-image;
+    &[class*="wonderstorm"] {
+        // add an accented background for these threads
+        &::before {
+            content: '';
+            background: linear-gradient(to left, rgba($color-primary, .08), rgba($color-primary, 0) 75%);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
     }
 
-    &.self {
-        @include sprite-position($thumbnail-text);
-    }
-
-    &.spoiler {
-        @include sprite-position($thumbnail-spoiler);
-    }
-
+    // differentiate NSFW posts from the ones marked as spoilery
     &.nsfw {
-        @include sprite-position($thumbnail-nsfw);
+        &::before {
+            background: linear-gradient(to left, rgba($color-red, .1), rgba($color-red, 0) 75%);
+        }
     }
 
-    &.image {
-        @include sprite-position($thumbnail-image);
+    &[class*="wonderstorm"] {
+        &::before {
+            background: linear-gradient(to left, rgba($color-brand-wonderstorm, .07), rgba($color-brand-wonderstorm, 0) 75%);
+        }
+
+        &.stickied {
+            background-image: url(../img/thread/thread-wonderstorm.png);
+        }
     }
 
-    &.default {
-        @include sprite-position($thumbnail-link);
-    }
+    // tweaks for the comments page
+    .comments-page & {
+        border-bottom-width: 1px !important;
 
-    .linkflair-fan-content & {
-        @include sprite-position($thumbnail-flair-fan-content);
-    }
-
-    .linkflair-official-wonderstorm &,
-    .linkflair-wonderstorm & {
-        @include sprite-position($thumbnail-flair-wonderstorm);
+        &::after {
+            content: none;
+        }
     }
 }
 
-// this is the "(self.subreddit)" thing you see after each thread's title
+// "(self.subreddit)" thing you see after each thread's title
 .domain {
-    @extend %hide;
+    font-size: 0;
+    line-height: 1;
+    vertical-align: middle;
+
+    .content .link:not(.self) & {
+        a {
+            font-size: 10px;
+            opacity: 0.5;
+            @extend %text-muted;
+        }
+    }
 }
 
 // overlay over the thumbnail
@@ -268,9 +199,18 @@
 
 // approval checkmark next to the title (visible only to mods)
 .approval-checkmark {
-    content: url(../img/checkmark.png);
-    width: 12px;
-    height: 9px;
-    position: relative;
-    top: -2px;
+    @extend %hide;
+
+    ~ .domain {
+        &::before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            margin: -4px 8px 0 -4px;
+            @include sprite-position($icon-checkmark);
+            @include sprite-width($icon-checkmark);
+            @include sprite-height($icon-checkmark);
+            @extend %sprite-image;
+        }
+    }
 }

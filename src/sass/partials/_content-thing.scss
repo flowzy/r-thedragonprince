@@ -1,83 +1,89 @@
 // used in threads and comments
-.thing {
-    // stickied threads
-    &.stickied.link {
-        border-bottom-width: 0;
+.link,
+.comment {
+    position: relative;
+    @extend %container;
 
+    &.stickied.thing {
+        // change border color of the thread
         &,
         &.last-clicked::after {
-            border-color: rgba($color-green, .3);
+            border-color: rgba($color-green, .45) !important;
         }
 
+        + .clearleft + .link {
+            .parent {
+                border-top-color: rgba($color-green, .5);
+            }
+
+            &:not(.stickied) {
+                .parent {
+                    border-bottom-width: 1px;
+                    padding-bottom: $gutter-size;
+                }
+            }
+        }
+
+        // make the border color lighter
         &.last-clicked {
-            border-color: rgba($color-green, .5);
+            border-color: rgba($color-green, .8) !important;
         }
+    }
+}
 
-        + .clearleft {
-            + .stickied {
-                border-bottom-width: 1px;
+.thing {
+    .entry {
+        overflow: visible;
+        margin: 0;
+    }
 
-                &::after {
-                    content: none;
+    // there are 2 elements with this class, inside one another
+    // p.title and a.title (p.title > a.title)
+    p.title,
+    .search-result-header {
+        line-height: 1.1;
+        margin: 0 $gutter-size round($gutter-size / 2) 0;
+        @extend %text-primary;
+    }
+
+    a.title,
+    a.search-title,
+    .flairselector a.title {
+        font-size: 1.2rem !important;
+        @extend %font-family-serif;
+        @extend %anchor-link;
+    }
+
+    &.visited {
+        .title {
+            @extend a.title:visited;
+        }
+    }
+
+    // blur potentially spoilery titles
+    &:not([class*="discussion"]),
+    &.spoiler {
+        @include no-spoiler('.listing-page') {
+            .title {
+                overflow: visible;
+            }
+
+            &.stickied {
+                a.title {
+                    text-shadow: 0 0 1.5em $color-green;
                 }
             }
 
-            + .link {
-                // add a space
-                &.stickied {
-                    margin-bottom: $gutter-size;
+            a.title {
+                color: transparent;
+                text-shadow: 0 0 1.5em $color-primary;
+                transition: all .5s ease;
+
+                &:hover {
+                    color: inherit;
+                    text-shadow: none;
                 }
             }
-        }
-
-        // change background color for up/down-votes
-        .midcol {
-            background: rgba($color-green, .15);
-        }
-
-        // change the title color of the stickied threads
-        a.title {
-            @extend %text-green;
-
-            &:hover {
-                color: lighten($color-green, 10%);
-            }
-        }
-
-        &.linkflair-official-wonderstorm {
-            background-image: url(../img/thread/thread-wonderstorm.png);
-        }
-    }
-
-    // spoiler-tagged threads
-    &.spoiler,
-    &.nsfw,
-    &.linkflair-official-wonderstorm {
-        position: relative;
-
-        // add an accented background for these threads
-        &::before {
-            content: '';
-            background: linear-gradient(to left, rgba($color-primary, .08), rgba($color-primary, 0) 75%);
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            top: 0;
-            z-index: -1;
-        }
-    }
-
-    // differentiate NSFW posts from the ones marked as spoilery
-    &.nsfw {
-        &::before {
-            background: linear-gradient(to left, rgba($color-red, .1), rgba($color-red, 0) 75%);
-        }
-    }
-
-    &.linkflair-official-wonderstorm {
-        &::before {
-            background: linear-gradient(to left, rgba($color-brand-wonderstorm, .07), rgba($color-brand-wonderstorm, 0) 75%);
         }
     }
 }

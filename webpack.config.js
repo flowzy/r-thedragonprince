@@ -115,6 +115,13 @@ module.exports = env => {
             ]
         },
 
+        resolve: {
+            modules: [
+                'node_modules',
+                'spritesmith-generated'
+            ]
+        },
+
         plugins: [
             // clean the output directory before compiling new assets
             new CleanWebpackPlugin(['dist'], {
@@ -135,16 +142,16 @@ module.exports = env => {
             new SpritesmithPlugin({
                 src: {
                     cwd: path.resolve(__dirname, 'src/img/sprites'),
-                    glob: '*/*.png'
+                    glob: ['*/*.png', '*/*.jpg']
                 },
                 target: {
                     // target destinations for outputs
-                    image: path.resolve(__dirname, `dist/img/sprite.[hash].png`),
+                    image: path.resolve(__dirname, `dist/img/sprite${env.NODE_ENV === 'development' ? '-[hash]' : ''}.png`),
                     css: path.resolve(__dirname, `src/sass/abstracts/_sprite.scss`)
                 },
                 apiOptions: {
                     // image reference inside of CSS
-                    cssImageRef: `../img/sprite.[hash].png`
+                    cssImageRef: `../img/sprite${env.NODE_ENV === 'development' ? '-[hash]' : ''}.png`
                 }
             }),
 
@@ -215,17 +222,17 @@ module.exports = env => {
                     test: /\.(jpe?g|png)$/i,
                     cacheFolder: path.resolve(__dirname, '.cache/rest'),
                     maxFileSize: 500000,
-                    minFileSize: 25000,
+                    minFileSize: 50000,
 
                     // https://github.com/imagemin/imagemin-optipng#api
                     optipng: {
-                        optimizationLevel: 2
+                        optimizationLevel: 3
                     },
 
                     plugins: [
                         // https://github.com/imagemin/imagemin-mozjpeg#api
                         ImageminMozjpeg({
-                            quality: 95,
+                            quality: 90,
                             dcScanOpt: 2
                         })
                     ]

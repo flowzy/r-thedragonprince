@@ -1,20 +1,41 @@
 .side {
-    background: $sidebar-bg;
     width: $sidebar-width;
 
     // add a space at the top, because search and submit buttons will be always at the top
     // margin: ($gutter-size * 2 + $sidebar-submit-height + $sidebar-search-height) 0 0;
-    margin: 0 0 ($body-padding + $footer-image-height);
+    margin: ($sidebar-submit-height + $gutter-size * 3) 0 ($body-padding + $footer-image-height);
 
     padding: $gutter-size;
-    border: 1px solid $color-secondary;
     @extend %box-sizing;
+    @extend %container;
 
     > .spacer {
         margin: 0 0 $gutter-size;
 
         &:last-child {
             margin-bottom: 0;
+        }
+    }
+
+    // create background for submission buttons
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        right: ($body-padding);
+        top: ($body-padding + $header-height + $gutter-size);
+        width: $sidebar-width;
+        height: ($sidebar-submit-height + $gutter-size * 2);
+        @extend %box-sizing;
+        @extend %container;
+    }
+
+    // remove the spacer for submit buttons
+    .submit-page & {
+        margin-top: 0;
+
+        &::before {
+            content: none;
         }
     }
 }

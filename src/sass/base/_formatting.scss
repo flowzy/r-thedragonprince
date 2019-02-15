@@ -1,0 +1,53 @@
+.md {
+    .usertext-body & {
+        margin-top: 0;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    th,
+    hr {
+        background: $color-secondary;
+    }
+
+    table,
+    td,
+    th {
+        border-color: $color-secondary;
+        border-width: 1px;
+    }
+
+    td,
+    th {
+        padding: ($gutter-size / 2) $gutter-size;
+    }
+
+    tr {
+        &:hover {
+            background: $content-bg;
+        }
+    }
+
+    a {
+        @extend %anchor-link;
+    }
+
+    blockquote {
+        color: lighten(rgba($color-secondary, 1), 20%);
+        border-color: inherit;
+        margin: 0;
+        padding: ($gutter-size / 3) 0 ($gutter-size / 3) $gutter-size;
+    }
+
+    pre {
+        background: $color-body;
+        border-color: $color-secondary;
+        @extend %text-size-md;
+    }
+
+    .side & {
+        @extend %text-size-md;
+    }
+}

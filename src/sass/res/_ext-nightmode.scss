@@ -1,0 +1,21 @@
+@include res-nightmode(false) {
+    body,
+    body .content,
+    .modal-body,
+    .side,
+    .icon-menu a,
+    .side .leavemoderator,
+    .side .leavecontributor-button,
+    .side .titlebox,
+    .side .spacer .titlebox .redditname,
+    .side .titlebox .flairtoggle,
+    .side .usertext-body .md ol,
+    .side .usertext-body .md ol ol,
+    .side .usertext-body .md ol ol li,
+    .modactionlisting table *,
+    .side .recommend-box .rec-item,
+    .crosspost-preview,
+    .crosspost-thing-preview {
+        @extend %bg-transparent;
+    }
+}

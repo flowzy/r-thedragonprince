@@ -1,4 +1,24 @@
-.content {
-    margin: 0;
-    margin-right: $sidebar-width + $gutter-size;
+div.content {
+    background: transparent !important;
+    margin: 0 !important;
+    margin-right: $sidebar-width + $gutter-size !important;
+
+    .wiki-page > &,
+    .modtools-page > & {
+        background: $content-bg !important;
+        @extend %container;
+    }
+}
+
+#noresults {
+    margin: $gutter-size 0 0;
+    padding: $gutter-size;
+    text-align: center;
+    color: $color-primary !important;
+    @extend %container;
+}
+
+.nextprev,
+.next-suggestions {
+    @extend %text-size-md;
 }

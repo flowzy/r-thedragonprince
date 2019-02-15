@@ -1,0 +1,46 @@
+.dropdown {
+    cursor: pointer;
+    display: inline-block;
+    padding: 2px;
+
+    &.lightdrop {
+        .selected {
+            background: none;
+            padding: 0;
+            text-decoration: none;
+            color: $color-white;
+
+            &::after {
+                content: '';
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 4px solid;
+                width: 0;
+                height: 0;
+                vertical-align: middle;
+                font-size: 0;
+                margin-left: 3px;
+            }
+        }
+    }
+}
+
+.drop-choices {
+    @extend %dropdown;
+
+    &.lightdrop {
+        margin-top: ($gutter-size / 2);
+    }
+
+    a.choice {
+        @extend %dropdown-item;
+
+        a {
+            @extend %text-primary;
+        }
+
+        &:hover a {
+            @extend %text-body;
+        }
+    }
+}

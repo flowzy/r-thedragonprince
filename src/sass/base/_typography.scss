@@ -1,37 +1,32 @@
-%anchor-link {
-    @extend %text-primary;
+hr {
+    margin: $gutter-size 0;
+    border: 0;
+    border-top: 2px solid $color-secondary;
+}
+
+.side,
+.content,
+.footer {
+    a {
+        @extend %text-primary;
+    }
 }
 
 // markdown
-.md,
+.content .md,
+.side .md,
 .content,
 .side {
     @extend %text-white;
-
-    a {
-        @extend %text-muted;
-
-        &:hover {
-            @extend %text-primary;
-        }
-    }
 }
 
-.md {
-    p {
-        line-height: 1.6;
-    }
+[style*="color: red"],
+.error {
+    color: $color-red !important;
+}
 
-    th,
-    hr {
-        background: $color-secondary;
-    }
-
-    table,
-    td,
-    th {
-        border-color: $color-secondary;
-    }
+.gray {
+    @extend %text-muted;
 }
 
 .toggle {
@@ -44,18 +39,30 @@
 .tagline,
 .search-result-meta {
     font-size: .75rem;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     line-height: 16px;
     @extend %text-muted;
 
     .stickied-tagline {
         @extend %text-green;
     }
+
+    .comment.collapsed & {
+        &,
+        a {
+            @extend %text-muted;
+
+            :not(.expand) {
+                font-style: normal;
+            }
+        }
+    }
 }
 
 // author links
 a.author {
     font-weight: bold;
+    margin-right: 0;
     @extend %text-primary;
 
     &.moderator,
@@ -65,8 +72,8 @@ a.author {
             padding: 1px 3px;
             background: $color-green;
             font-size: 90%;
-            margin: 0 0 0 4px;
-            @extend %border-radius-half;
+            margin: 0 0 0 ($gutter-size / 2);
+            @extend %half-rounded;
             @extend %text-body;
         }
     }
@@ -89,19 +96,31 @@ a.author {
     }
 }
 
-// [M], [S], [S,M] <- these kind of things next to the username
+// [M], [S], [S,M] <- these sort of things next to the username.
+// also contains cakeday
 .userattrs {
-    display: none;
+    font-size: 0;
+
+    .cakeday {
+        margin: 0 0 0 6px;
+        position: relative;
+        top: -4px;
+    }
 }
 
-// NSFW and Spoiler stamps
+// NSFW, spoiler and report stamps
 .stamp {
     border: none;
-    display: inline;
-    padding: 4px 6px 3px;
+    display: inline-block;
+    padding: 3px 6px 2px !important;
     font-weight: bold;
+    text-transform: uppercase;
     @extend %text-white;
-    @extend %border-radius-half;
+    @extend %half-rounded;
+
+    @include res-nightmode {
+        @extend %text-white;
+    }
 }
 
 .spoiler-stamp {

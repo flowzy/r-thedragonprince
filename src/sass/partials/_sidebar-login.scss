@@ -1,14 +1,31 @@
+.status {
+    width: 100%;
+    clear: both;
+    margin: 6px 0 0;
+
+    &[style*="block"] {
+        display: inline-block !important;
+    }
+}
+
+.attention {
+    border-color: inherit;
+    padding: 2px 5px;
+    @extend %half-rounded;
+}
+
 .login-form-side {
     padding: $gutter-size;
-    padding-top: 0;
     border: none;
-    border-bottom: 1px solid $color-secondary;
-    margin: 0 (-$gutter-size);
+    border-top: 1px solid $color-secondary;
+    margin: (-$gutter-size);
+    margin-bottom: $gutter-size;
+    @include clearfix;
 
     input {
         &[type="text"],
         &[type="password"] {
-            @extend %input-field;
+            @extend %text-field;
             width: round($sidebar-width / 2 - $gutter-size - $gutter-size / 2 - 1px);
             margin: 0;
             float: left;
@@ -20,9 +37,13 @@
         }
     }
 
+    .submit,
+    #remember-me {
+        margin: 6px 0 0;
+    }
+
     .submit {
         float: right;
-        margin: 6px 0 0;
         width: auto;
     }
 }

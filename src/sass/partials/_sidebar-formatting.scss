@@ -1,0 +1,298 @@
+// all of the custom formatting for sidebar content
+
+.side .usertext {
+    border-top: 1px solid $color-secondary;
+    border-bottom: 1px solid $color-secondary;
+    margin: 0 (-$gutter-size) (-$gutter-size) (-$gutter-size);
+    padding: $gutter-size;
+
+    // headings
+    h1 {
+        text-transform: uppercase;
+        margin: $gutter-size (-$gutter-size) ($gutter-size / 2);
+        border-top: 1px solid $color-secondary;
+        padding: $gutter-size;
+        padding-bottom: ($gutter-size / 2);
+        @extend %text-size-lg;
+    }
+    
+    // remove top margin from the first paragraph
+    p:first-of-type {
+        margin-top: 0;
+    }
+
+    // hide night mode button
+    h3:first-child,
+    [href*="NightModeCompatible"] {
+        @extend %hide;
+    }
+
+    // tables
+    table {
+        width: 100%;
+    }
+
+    thead {
+        @extend %hide;
+    }
+
+    td {
+        padding: 0;
+
+        a {
+            padding: ($gutter-size / 2) $gutter-size;
+            display: block;
+        }
+    }
+
+    // big buttons
+    [href*="netflix"],
+    [href*="discord"] {
+        border-left: 2px solid $color-brand-netflix;
+        font-weight: bold;
+        height: 40px;
+        padding: 0 5px 0 20px;
+        font-size: 14px;
+        justify-content: space-between;
+        background: linear-gradient(to right, rgba($color-brand-netflix, .25), rgba($color-brand-netflix, .1));
+        color: $color-white !important;
+        @extend %flexbox-center;
+        @extend %transition;
+
+        &:hover {
+            background-color: rgba($color-brand-netflix, .1);
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            @include sprite-width($brand-netflix);
+            @include sprite-height($brand-netflix);
+            @include sprite-position($brand-netflix);
+            @extend %sprite-image;
+        }
+    }
+
+    [href*="discord"] {
+        border-color: $color-brand-discord;
+        background: linear-gradient(to right, rgba($color-brand-discord, .25), rgba($color-brand-discord, .1));
+    
+        &:hover {
+            background-color: rgba($color-brand-discord, .1);
+        }
+
+        &::after {
+            margin-bottom: -2px;
+            @include sprite-width($brand-discord);
+            @include sprite-height($brand-discord);
+            @include sprite-position($brand-discord);
+        }
+    }
+
+    // social media icons
+    [href*="twitter"],
+    [href*="facebook"],
+    [href*="instagram"],
+    [href*="tumblr"] {
+        font-size: 0;
+        line-height: 0;
+        display: inline-block;
+        padding: 6px 10px;
+
+        &::after {
+            content: '';
+            display: block;
+            transition: background-position-y .25s nth($transition, 3);
+            height: $icon-social-twitter-width;
+            @include sprite-width($icon-social-twitter);
+            @include sprite-position($icon-social-twitter);
+            @extend %sprite-image;
+        }
+
+        &:hover {
+            &::after {
+                background-position-y: $icon-social-twitter-offset-y - $icon-social-twitter-width;
+            }
+        }
+    }
+
+    [href*="facebook"],
+    [href*="instagram"] {
+        &:hover {
+            &::after {
+                background-position-y: $icon-social-facebook-offset-y - $icon-social-facebook-width;
+            }
+        }
+    }
+
+    [href*="facebook"]::after {
+        @include sprite-position($icon-social-facebook);
+    }
+
+    [href*="instagram"]::after {
+        @include sprite-position($icon-social-instagram);
+    }
+
+    [href*="tumblr"]::after {
+        @include sprite-position($icon-social-tumblr);
+    }
+
+    // poster
+    [href="#poster"] {
+        display: block;
+        pointer-events: none;
+        margin: 0 (-$gutter-size);
+        height: 294px;
+        background: url(../img/poster.png) center no-repeat;
+    }
+
+    ul {
+        justify-content: center;
+        @extend %flexbox-center;
+        @extend %reset-list;
+    }
+
+    // basically, rules
+    ol {
+        counter-reset: item;
+        @extend %reset-list;
+
+        > li {
+            &::before {
+                content: counter(item);
+                counter-increment: item;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                line-height: 24px;
+                padding: 0;
+                margin-right: ($gutter-size / 2);
+                cursor: auto;
+                @extend %rounded-button;
+            }
+
+            strong {
+                color: $color-primary;
+
+                + em {
+                    font-style: normal;
+                    display: block;
+                    margin-left: 12px;
+                    padding-left: (12px + $gutter-size / 2);
+                    padding-bottom: ($gutter-size / 2);
+                    border-left: 1px solid rgba($color-primary, .1);
+                    @extend %transition;
+                }
+            }
+
+            &:hover {
+                em {
+                    border-color: $color-primary;
+                }
+            }
+
+            &:last-child {
+                em {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    hr:last-of-type {
+        @extend %hide;
+
+        // sticky link inside header
+        ~ ul {
+            position: absolute;
+            top: $body-padding + $header-top-height;
+            right: $body-padding;
+            height: $header-height - ($header-top-height + $header-bottom-height);
+            z-index: 100;
+            padding-right: ($gutter-size * 3);
+            width: $sidebar-width;
+            flex-direction: column;
+            align-items: initial;
+            @extend %box-sizing;
+
+            strong {
+                margin-left: auto;
+                background: $color-primary;
+                color: $color-body;
+                padding: 1px 6px;
+                text-transform: uppercase;
+                @extend %half-rounded;
+            }
+
+            li {                
+                background: $color-body;
+                @extend %box-shadow;
+
+                &:first-child {
+                    a {
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            a {
+                padding: 9px 9px 9px 14px;
+                color: $color-muted !important;
+                box-shadow: $box-shadow;
+                border-bottom: 1px solid $color-secondary;
+                border-right: 2px solid;
+                background-image: linear-gradient(to left, rgba($color-primary, .1), rgba($color-primary, .05));
+                font-weight: bold;
+                @extend %flexbox-center;
+                @extend %text-size-md;
+                @extend %transition;
+
+                &:hover {
+                    background-color: $content-bg;
+                    padding-left: 18px;
+                    color: $color-white !important;
+                }
+
+                &[href*="#b"] {
+                    background-image: linear-gradient(to left, rgba($color-brand-wonderstorm, .2), rgba($color-brand-wonderstorm, .1));
+                    color: $color-brand-wonderstorm !important;
+
+                    strong {
+                        background: $color-brand-wonderstorm;
+                    }
+
+                    &:hover {
+                        color: lighten($color-brand-wonderstorm, 15%) !important;
+                    }
+                }
+
+                &[href*="#r"] {
+                    background-image: linear-gradient(to left, rgba($color-red, .2), rgba($color-red, .1));
+                    color: $color-red !important;
+
+                    strong {
+                        background: $color-linkflair-art;
+                    }
+
+                    &:hover {
+                        color: lighten($color-red, 10%) !important;
+                    }
+                }
+
+                &[href*="#g"] {
+                    background-image: linear-gradient(to left, rgba($color-green, .2), rgba($color-green, .1));
+                    color: $color-green !important;
+
+                    strong {
+                        background: $color-green;
+                    }
+
+                    &:hover {
+                        color: lighten($color-green, 10%) !important;
+                    }
+                }
+            }
+        }
+    }
+}

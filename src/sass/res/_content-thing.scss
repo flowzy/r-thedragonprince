@@ -1,0 +1,41 @@
+.thing {
+    &.res-selected {
+        &,
+        &.comment {
+            @extend .link.last-clicked;
+        }
+    }
+
+    &.res-selected,
+    &.new-comment {
+        .entry {
+            &,
+            .md-container {
+                border: none;
+                @extend %bg-transparent-important;
+            }
+        }
+    }
+
+    .entry,
+    .md-container {
+        &.res-selected {
+            background: transparent !important;
+        }
+    }
+
+    @include res-nightmode {
+        .entry.res-selected {
+            @extend %bg-transparent-important;
+        }
+    }
+
+    &.spam {
+        background: rgba($color-red, .15);
+        border-color: rgba($color-red, .25);
+
+        > .child {
+            background: transparent !important;
+        }
+    }
+}

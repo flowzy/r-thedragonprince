@@ -1,46 +1,11 @@
-.submit {
-    // size them half of the sidebar's width
-    width: $sidebar-width / 2 - $gutter-size * 2 + $gutter-size /2;
+.submit-text,
+.submit-link {
+    position: absolute;
+    top: ($body-padding + $header-height + $gutter-size * 2);
+    right: $body-padding + $gutter-size;
+    width: ($sidebar-width / 2 - $gutter-size - $gutter-size / 2);
 }
 
-.submit-text {
-    // move the button next to its "cousin"
-    margin: -($gutter-size + $sidebar-submit-height) 0 0 ($sidebar-width / 2 - $gutter-size / 2);
-}
-
-.side {
-    .morelink,
-    .account-activity-box {
-        height: $sidebar-submit-height;
-
-        &,
-        &:hover {
-            background: transparent;
-            border: none;
-        }
-
-        a {
-            background: rgba($color-primary, .2);
-            line-height: $sidebar-submit-height;
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 0;
-            font-size: 0.85rem;
-            border-radius: $border-radius;
-            display: block;
-            @extend %transition;
-            @extend %text-primary;
-
-            &:hover {
-                background: lighten($color-primary, 6%);
-                @extend %box-shadow;
-                @extend %text-white;
-            }
-        }
-
-        // hide reddit's nub
-    .nub {
-        display: none;
-    }
-}
+.submit-link {
+    margin-right: ($sidebar-width / 2 - $gutter-size / 2);
 }

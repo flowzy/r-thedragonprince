@@ -16,7 +16,7 @@ $header-logo-shadow: false !default;
     $end: #462519;
 } @else if ($header-variant == 3) {
     $start: #523f21;
-    $end: #a07039;
+    $end: #69563d;
 } @else if ($header-variant == 4) {
     $header-opacity: .5;
 
@@ -90,4 +90,4 @@ $header-logo-shadow: false !default;
 }
 
 // save these colors to variables, that are then used in _variables.scss
-$header-bottom-bg: linear-gradient(to right, rgba($start, .9), rgba($end, .9));
+$header-bottom-bg: linear-gradient(to right, rgba($start, .8), rgba($end, .85));

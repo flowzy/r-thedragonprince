@@ -1,0 +1,91 @@
+.linkflairlabel {
+    padding: 2px 5px;
+    border: none;
+    font-size: 0.8rem;
+    max-width: none;
+    font-weight: bold;
+    margin: 0 round($gutter-size / 1.5) -3px 0;
+    background: $color-linkflair-discussion;        
+    @extend %text-primary;
+
+    .linkflair[class*="wonderstorm"] > &,
+    .linkflair[class*="wonderstorm"] .title & {
+        background: $color-linkflair-wonderstorm;
+        @extend %text-body;
+    }
+
+    .linkflair-art > &,
+    .linkflair-art .title & {
+        background: $color-linkflair-art;
+        @extend %text-body;
+    }
+
+    .linkflair-meme > &,
+    .linkflair-meme .title & {
+        background: $color-linkflair-meme;
+        @extend %text-body;
+    }
+
+    .linkflair-news > &,
+    .linkflair-news .title & {
+        background: $color-linkflair-news;
+        @extend %text-body;
+    }
+
+    .linkflair-game > &,
+    .linkflair-game .title & {
+        background: $color-linkflair-game;
+        @extend %text-body;
+    }
+
+    .linkflair-media > &,
+    .linkflair-media .title & {
+        background: $color-linkflair-media;
+        @extend %text-body;
+    }
+
+    .linkflair-announcement > &,
+    .linkflair-announcement .title & {
+        background: $color-linkflair-announcement;
+        @extend %text-body;
+    }
+}
+
+// color the border, based on the flair
+// default color is defined inside partials/_content-link.scss
+.midcol {
+    .linkflair-announcement &,
+    .stickied & {
+        border-color: rgba($color-green, .7);
+    }
+
+    .linkflair-meme & {
+        border-color: rgba($color-linkflair-meme, .7);
+    }
+
+    .linkflair-art & {
+        border-color: rgba($color-linkflair-art, .7);
+    }
+
+    .linkflair-news & {
+        border-color: rgba($color-linkflair-news, .7);
+    }
+
+    .linkflair-game & {
+        border-color: rgba($color-linkflair-game, .7);
+    }
+
+    .linkflair-media & {
+        border-color: rgba($color-linkflair-media, .7);
+    }
+
+    .spoiler & {
+        border-color: rgba($color-primary, .7);
+    }
+
+    // using an attribute selector for backwards compatibility, while keeping the name shorter
+    // previously was "linkflair-official-wonderstorm" used, now it's "linkflair-wonderstorm"
+    .link[class*="wonderstorm"] & {
+        border-color: rgba($color-linkflair-wonderstorm, .7);
+    }
+}

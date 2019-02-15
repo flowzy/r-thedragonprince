@@ -1,0 +1,18 @@
+.tabpane-content {
+    margin: $gutter-size 0;
+    @extend %container;
+}
+
+// add a space on the left for when the "save" button appears
+.flairrow .edited .flairdeletebtn {
+    margin-left: ($gutter-size / 2);
+}
+
+.flaircell input {
+    @extend %text-field;
+}
+
+.save-button button {
+    margin: 0;
+    @extend %rounded-button;
+}

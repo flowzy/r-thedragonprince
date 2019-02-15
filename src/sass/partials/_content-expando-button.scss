@@ -1,13 +1,10 @@
-// TEMPORARY CODE AHEAD
-// because I don't have icons ready yet
-
 .expando-button {
-    width: 16px;
-    height: 16px;
+    width: 16px !important;
+    height: 16px !important;
     margin: 0 8px 0 0;
     background: transparent;
     position: relative;
-    @extend %border-radius-half;
+    @extend %half-rounded;
     @extend %transition;
 
     &::before,

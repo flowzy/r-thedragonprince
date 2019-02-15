@@ -21,12 +21,12 @@
     transition: $transition;
 }
 
-%border-radius {
+%rounded {
     border-radius: $border-radius;
 }
 
-%border-radius-half {
-    border-radius: $border-radius / 2;
+%half-rounded {
+    border-radius: ($border-radius / 2);
 }
 
 // display properties
@@ -34,11 +34,11 @@
     display: none;
 }
 
-%display-flex {
+%flexbox {
     display: flex;
 }
 
-%display-flex-and-center {
+%flexbox-center {
     display: flex;
     align-items: center;
 }
@@ -60,6 +60,10 @@
     color: $color-green;
 }
 
+%text-red {
+    color: $color-red;
+}
+
 %text-primary {
     color: $color-primary;
 }
@@ -68,7 +72,188 @@
     color: $color-brand-reddit;
 }
 
+// text decorations
+%text-decoration-none {
+    text-decoration: none;
+}
+
+// text sizes
+%text-size-md {
+    font-size: $text-size-md !important;
+}
+
+%text-size-lg {
+    font-size: $text-size-lg !important;
+}
+
+// background
+%bg-transparent {
+    background: transparent;
+}
+
+%bg-transparent-important {
+    background: transparent !important;
+}
+
 // sprite
 %sprite-image {
-    background-image: url(#{$spritesheet-image});
+    background-image: url(#{$spritesheet-image}) !important;
+}
+
+// lists
+%reset-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// component-ish stuff
+%container {
+    background-color: $content-bg;
+    border: 1px solid $color-secondary;
+}
+
+// -- anchor link
+%anchor-link {
+    @extend %text-primary;
+
+    &:hover {
+        color: saturate(lighten($color-primary, 15%), 10%);
+    }
+
+    &:visited {
+        color: desaturate(darken($color-primary, 20%), 20%);
+
+        &:hover {
+            color: desaturate(darken($color-primary, 10%), 10%);
+        }
+    }
+}
+
+// -- button
+%rounded-button {
+    background: rgba($color-primary, .1) !important;
+    border: none !important;
+    padding: 5px 14px;
+    border-radius: 2em;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    line-height: 1.2;
+    vertical-align: middle;
+    font-size: .8rem;
+    transition: $transition;
+    color: $color-primary;
+
+    &:hover {
+        background: $color-primary !important;
+        text-decoration: none;
+        box-shadow: $box-shadow;
+        color: $color-body;
+    }
+}
+
+// -- a small toggle button with border around it on hover
+%toggle-button {
+    font-weight: normal;
+    font-size: $text-size-md;
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid transparent;
+    vertical-align: middle;
+    border-radius: ($border-radius / 2);
+    transition: $transition;
+    color: $color-muted;
+
+    &:hover {
+        border-color: $color-secondary;
+        text-decoration: none;
+        color: $color-white;
+    }
+}
+
+// -- input/textarea
+%text-field {
+    background: $color-body;
+    font: inherit;
+    font-size: 13px;
+    border: none;
+    border: 1px solid $color-secondary;
+    padding: 5px 8px;
+    width: 100%;
+    line-height: 1.4;
+    box-shadow: none;
+    border-radius: 0;
+    color: $color-white !important;
+    box-sizing: border-box;
+    height: auto;
+    transition: $transition;
+
+    &:focus {
+        border-color: $color-primary;
+        outline: none;
+    }
+}
+
+// -- select box
+%select {
+    background: $content-bg;
+    width: auto;
+    cursor: pointer;
+    @extend %text-field;
+
+    option {
+        @extend %text-body;
+    }
+}
+
+// -- tooltip (used in user profile and flairs)
+%tooltip {
+    position: absolute;
+    font: inherit;
+    font-weight: normal;
+    font-size: $text-size-md;
+    top: -5px;
+    left: 50%;
+    transform: rotateX(45deg) translate(-50%, -100%);
+    background: $color-white;
+    color: $color-body;
+    padding: 6px 12px;
+    text-indent: 0;
+    white-space: nowrap;
+    opacity: 0;
+    box-shadow: $box-shadow;
+    transition: $transition;
+    border-radius: $border-radius;
+}
+
+// -- dropdown menu
+%dropdown {
+    background: $color-body;
+    border: none;
+    border-bottom: 1px solid $color-secondary;
+    box-shadow: $box-shadow;
+}
+
+%dropdown-item {
+    padding: 5px ($gutter-size / 2);
+    border: 1px solid $color-secondary;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    font-weight: bold;
+    font-size: $text-size-md;
+    transition: $transition;
+    color: $color-primary;
+    line-height: 1.2;
+
+    &:first-child {
+        border-top-width: 1px;
+    }
+
+    &:hover {
+        background: $color-primary;
+        color: $color-body;
+        border-color: transparent;
+        text-decoration: none;
+    }
 }

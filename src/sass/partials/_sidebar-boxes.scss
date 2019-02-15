@@ -1,0 +1,40 @@
+.sidecontentbox {
+    border-bottom: 1px solid $color-secondary;
+    padding: $gutter-size;
+    margin: 0 (-$gutter-size);
+
+    .content {
+        border: none;
+        padding: ($gutter-size / 2) 0 0;
+        @extend %text-size-md;
+
+        &::before {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
+
+    .title {
+        h1 {
+            font-weight: bold;
+            line-height: 1.7;
+            @extend %text-white;
+            @extend %text-size-lg;
+        }
+    }
+
+    // "message the moderators" button
+    a.helplink {
+        margin: 0;
+
+        ~ .content li {
+            padding: 2px 0;
+        }
+    }
+
+    // collapse button for moderation tools
+    .collapse-button {
+        display: none;
+    }
+}

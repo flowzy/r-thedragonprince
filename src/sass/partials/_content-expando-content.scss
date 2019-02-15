@@ -1,5 +1,35 @@
 .expando {
-    margin: ($gutter-size - 2px) 0 0;
-    padding: ($gutter-size - 2px) 0 0;
-    border-top: 1px solid $color-secondary;
+    margin: $gutter-size 0 0;
+
+    .comments-page .self & {
+        margin: ($gutter-size / 2) 0;
+    }
 }
+
+// .expando {
+//     margin: 0;
+// }
+
+// .expando-gate {
+//     margin: $gutter-size / 2 0;
+// }
+
+// .expando iframe {
+//     margin: ($gutter-size - 2px) 0 0;
+//     padding: ($gutter-size - 2px) 0 0;
+//     border-top: 1px solid $color-secondary;
+
+//     // invert border position for text posts
+//     .comments-page .self & {
+//         border-top: none;
+//         margin: 0 0 ($gutter-size - 2px);
+//         padding: (($gutter-size - 2px) / 2) 0 ($gutter-size - 2px);
+//         border-bottom: 1px solid $color-secondary;
+//     }
+// }
+
+// .usertext-body {
+//     &:empty {
+//         display: none;
+//     }
+// }

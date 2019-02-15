@@ -1,6 +1,102 @@
+%titlebox-row {
+    background: rgba($color-body, .3);
+    margin-bottom: 4px;
+    padding: 8px;
+    @extend %box-sizing;
+}
+
 .titlebox {
+    min-height: 380px;
+    background: url(../img/sidebar-bg.png) center -30px no-repeat;
+    background-size: 100% auto;
+    margin: (-$gutter-size);
+    padding: $gutter-size;
+    @extend %text-size-md;
+
+    .res & {
+        background-position-y: 0;
+    }
+
+    form.toggle,
+    .leavemoderator {
+        font: inherit;
+        color: inherit;
+        display: block;
+        line-height: 1;
+        @extend %rounded;
+        @extend %titlebox-row;
+
+        label {
+            vertical-align: middle;
+        }
+    }
+
+    form.toggle.flairtoggle {
+        background: transparent;
+        padding: 0;
+        text-align: center;
+        font-size: 0;
+        margin-top: $gutter-size;
+
+        label {
+            &::after {
+                content: 'Show my flair. Here\'s a sample post:';
+                vertical-align: middle;
+                @extend %text-size-md;
+            }
+        }
+    }
+
+    form.toggle .option.active {
+        display: inline;
+    }
+
+    input[type="checkbox"] {
+        vertical-align: middle;
+        margin: 0 ($gutter-size / 2) 0 0;
+    }
+
     // "created by ..." part at the bottom
     .bottom {
         @extend %hide;
+    }
+}
+
+.subscribers,
+.users-online {
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    @extend %text-size-lg;
+    @extend %titlebox-row;
+
+    .word {
+        font-size: 0;
+        font-weight: normal;
+        display: block;
+
+        &::after {
+            content: $sidebar-subscribers-word;
+            @extend %text-size-md;    
+        }
+    }
+}
+
+.subscribers {
+    border-radius: $border-radius 0 0 $border-radius;
+    border-right: 1px solid rgba($color-white, .08);
+    @extend %text-primary;
+}
+
+.users-online {
+    border-radius: 0 $border-radius $border-radius 0;
+
+    &::before {
+        content: none;
+    }
+
+    .word::after {
+        content: $sidebar-online-word;
     }
 }

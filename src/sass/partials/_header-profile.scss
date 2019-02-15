@@ -1,29 +1,10 @@
-%profile-tooltip {
-    position: absolute;
-    font: inherit;
-    font-size: .8rem;
-    top: -5px;
-    left: 50%;
-    transform: rotateX(45deg) translate(-50%, -100%);
-    background: $color-white;
-    color: $color-body;
-    padding: 6px 12px;
-    text-indent: 0;
-    font-weight: normal;
-    white-space: nowrap;
-    opacity: 0;
-    @extend %box-shadow;
-    @extend %transition;
-    @extend %border-radius;
-}
-
 #header-bottom-right {
-    background: transparent;
+    background: transparent !important;
     height: $header-bottom-height;
     padding: 0 $gutter-size;
     font-size: 1rem;
     align-items: stretch;
-    @extend %display-flex;
+    @extend %flexbox;
     @extend %box-sizing;
 
     .separator {
@@ -51,11 +32,11 @@
         top: 0;
         position: relative;
         overflow: visible;
-        @extend %display-flex-and-center;
+        @extend %flexbox-center;
 
         // tooltip
         &::before {
-            @extend %profile-tooltip;
+            @extend %tooltip;
         }
 
         // icon
@@ -76,18 +57,20 @@
         }
     }
 
+    // change placement of the tooltip on the last item
+    // (!important are needed for Firefox with RES - they have a crappy consistency across browsers)
     > *:last-child {
         &,
         a {
             &::before {
-                left: auto;
-                right: 0;
-                transform: rotateX(45deg) translateY(-100%);
+                left: auto !important;
+                right: 0 !important;
+                transform: rotateX(45deg) translateY(-100%) !important;
             }
 
             &:hover {
                 &::before {
-                    transform: translateY(-100%);
+                    transform: translateY(-100%) !important;
                 }
             }
         }
@@ -99,6 +82,7 @@
     line-height: 0;
     padding-top: 2px;
     font-size: 0;
+    text-align: right;
     margin-right: ($gutter-size + 10px);
     @extend %text-muted;
     @extend %font-family-serif;
@@ -125,9 +109,9 @@
     }
 
     .userkarma {
-        font-size: .8rem;
         display: block;
         cursor: default;
+        @extend %text-size-md;
         @extend %text-primary;
 
         > a {

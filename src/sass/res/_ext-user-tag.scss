@@ -1,0 +1,17 @@
+a.RESUserTagImage {
+    margin: 0 0 0 2px;
+    opacity: 0.5;
+    @extend %transition;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &::after {
+        @extend %text-primary;
+
+        .link & {
+            @extend %text-muted;
+        }
+    }
+}

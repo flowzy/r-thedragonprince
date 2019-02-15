@@ -1,0 +1,16 @@
+// .fancy-settings {
+
+// }
+
+.roundfield,
+.linefield {
+    &,
+    &.mobile {
+        border-radius: 0;
+        @extend %container;
+    }
+
+    .title {
+        @extend %text-primary;
+    }
+}

@@ -7,13 +7,13 @@
 }
 
 // 
-.NERPageMarker {
+div.NERPageMarker {
     margin: 0;
     border-bottom: none;
     @extend %reset-ner;
 }
 
 // spinny boy
-#progressIndicator {
+div#progressIndicator {
     @extend %reset-ner;
 }

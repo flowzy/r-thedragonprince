@@ -1,0 +1,24 @@
+// (un)subscribe button
+.fancy-toggle-button {
+    .titlebox & {
+        margin: 0 0 $gutter-size;
+        justify-content: space-between;
+        @extend %flexbox-center;
+
+        &::before {
+            content: $sidebar-subreddit;
+            font-size: .9rem;
+            font-weight: bold;
+        }
+
+        // button
+        .remove {
+            @extend %rounded-button;
+        }
+
+        .add {
+            box-shadow: inset 0 0 0 2px $color-primary;
+            @extend %rounded-button;
+        }
+    }
+}

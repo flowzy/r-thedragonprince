@@ -1,0 +1,43 @@
+.content .RESBigEditorPop {
+    margin: 0 0 0 ($gutter-size / 2);
+}
+
+.RESSubscriptionButton {
+    margin-left: auto;
+    @extend %rounded-button;
+}
+
+// "macros" button above the text editor
+.RESMacroDropdownTitle {
+    border: 1px solid transparent;
+
+    &.openMacro {
+        color: $color-white;
+        border-bottom: none;
+        @extend %container;
+    }
+}
+
+div.res-commentNavToggle {
+    padding: 4px 0;
+}
+
+div.res-commentNavToggle-choices {
+    border-radius: 0;
+    padding: 0;
+    margin-top: 4px;
+    @extend %dropdown;
+}
+
+div.res-commentNavToggle-type {
+    width: auto;
+    @extend %dropdown-item;
+}
+
+.RESMacroDropdown {
+    @extend %dropdown;
+
+    li a {
+        @extend %dropdown-item;
+    }
+}

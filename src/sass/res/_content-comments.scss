@@ -1,21 +1,16 @@
-// many oofs
 .res-commentBoxes {
-    // is there a way to transform this into some sort of a neatly-managed @for loop?
-    .comment .comment,
-    .comment .comment .comment .comment,
-    .comment .comment .comment .comment .comment .comment,
-    .comment .comment .comment .comment .comment .comment .comment .comment,
-    .comment .comment .comment .comment .comment .comment .comment .comment .comment .comment {
-        background: $color-body !important;
-
+    &.res-commentBoxes-rounded {
         .comment {
-            background: $content-bg !important;
-        }
-    }
+            overflow: visible;
+            border-radius: 0 !important;
+            border: 1px solid $color-secondary !important;
+            margin: 0 0 $gutter-size !important;
 
-    &.res-commentBoxes-rounded .comment {
-        border-radius: 0 !important;
-        border: 1px solid $color-secondary !important;
-        margin: 0 0 $gutter-size !important;
+            &.new-comment {
+                &.res-selected {
+                    border-color: rgba($color-primary, .7) !important;
+                }
+            }
+        }
     }
 }

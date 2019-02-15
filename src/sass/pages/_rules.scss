@@ -1,0 +1,60 @@
+.modtools-page > div.content {
+    padding: $gutter-size;
+}
+
+.subreddit-rules-page {
+    padding: $gutter-size;
+
+    &::before {
+        content: none;
+    }
+
+    .md-container .md {
+        .subreddit-rule-kind,
+        .subreddit-rule-label,
+        .subreddit-rule-violation-reason {
+            @extend %text-muted;
+        }
+
+        .subreddit-rule-label {
+            opacity: .6;
+        }
+
+        .subreddit-rule-description {
+            @extend %text-white;
+        }
+
+        .subreddit-rule-title {
+            font-weight: bold;
+            color: $color-primary;
+        }
+    }
+}
+
+.subreddit-rule-item {
+    margin: 0 (-$gutter-size);
+    padding: $gutter-size;
+    border: 1px solid $color-secondary;
+
+    + .subreddit-rule-item {
+        border-top-width: 0;
+    }
+
+    &:hover {
+        background: $content-bg;
+    }
+}
+
+.subreddit-rule-form {
+    .c-form-group {
+        .c-form-control {
+            @extend %text-field;
+        }
+
+        .md,
+        .label {
+            margin-bottom: ($gutter-size / 2);
+            color: $color-muted;
+        }
+    }
+}

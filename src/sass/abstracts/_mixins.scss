@@ -5,3 +5,37 @@
         clear: both;
     }
 }
+
+// TODO: merge these two mixins
+
+@mixin no-spoiler($selector: null) {
+    @if $selector {
+        [lang="ns"] #{$selector} & {
+            @content
+        }
+    } @else if ($selector == false) {
+        [lang="ns"] {
+            @content;
+        }
+    } @else {
+        [lang="ns"] & {
+            @content;
+        }
+    }
+}
+
+@mixin res-nightmode($selector: null) {
+    @if $selector {
+        .res-nightmode #{$selector} & {
+            @content;
+        }
+    } @else if ($selector == false) {
+        .res-nightmode {
+            @content;
+        }
+    } @else {
+        .res-nightmode & {
+            @content;
+        }
+    }
+}
