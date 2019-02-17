@@ -49,8 +49,6 @@ module.exports = env => {
             sourceMapFilename: '[file].map'
         },
 
-        devtool: 'cheap-source-map',
-
         performance: {
             // Reddit's max css size is 100 kb
             maxAssetSize: 100000
@@ -63,7 +61,17 @@ module.exports = env => {
             progress: true,
             https: true,
             port: 8080,
-            stats
+            stats,
+
+            watchOptions: {
+                poll: 500,
+                ignored: [
+                    'src/img/**',
+                    'node_modules',
+                    'dist',
+                    '.cache'
+                ]
+            },
         },
 
         module: {
@@ -138,11 +146,28 @@ module.exports = env => {
                 filename: 'css/[name].css'
             }),
 
-            // create sprite from the images inside of img/sprites folder
+            // generate user flair sprite
+            new SpritesmithPlugin({
+                src: {
+                    cwd: path.resolve(__dirname, 'src/img/sprites/user-flairs'),
+                    glob: ['*.png', '*.jpg']
+                },
+                target: {
+                    // target destinations for outputs
+                    image: path.resolve(__dirname, `dist/img/flair-sprite${env.NODE_ENV === 'development' ? '-[hash]' : ''}.png`),
+                    css: path.resolve(__dirname, `src/sass/abstracts/_flair-sprite.scss`)
+                },
+                apiOptions: {
+                    // image reference inside of CSS
+                    cssImageRef: `../img/flair-sprite${env.NODE_ENV === 'development' ? '-[hash]' : ''}.png`
+                }
+            }),
+
+            // generate sprite from all the icons located inside of "src/img/sprites"
             new SpritesmithPlugin({
                 src: {
                     cwd: path.resolve(__dirname, 'src/img/sprites'),
-                    glob: ['*/*.png', '*/*.jpg']
+                    glob: ['*/*.png', '!user-flairs/*']
                 },
                 target: {
                     // target destinations for outputs

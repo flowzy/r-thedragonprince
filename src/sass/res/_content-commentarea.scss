@@ -2,7 +2,7 @@
     margin: 0 0 0 ($gutter-size / 2);
 }
 
-.RESSubscriptionButton {
+span.RESSubscriptionButton {
     margin-left: auto;
     @extend %rounded-button;
 }
@@ -34,7 +34,7 @@ div.res-commentNavToggle-type {
     @extend %dropdown-item;
 }
 
-.RESMacroDropdown {
+span.RESMacroDropdown {
     @extend %dropdown;
 
     li a {

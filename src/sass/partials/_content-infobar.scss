@@ -1,6 +1,25 @@
+.infobar {
+    margin: $gutter-size 0;
+    background: rgba($color-primary, .1);
+    border-color: rgba($color-primary, .4);
+
+    &,
+    .formtabs-content & {
+        padding: ($gutter-size / 2) $gutter-size;
+    }
+
+    .formtabs-content & {
+        margin: 0 0 $gutter-size;
+    }
+
+    a:hover {
+        @extend %anchor-link:hover;
+    }
+}
+
 // usually, this is reddit's ad for stuff like new reddit and the "Welcome to Reddit" banner
 // but also, this class is added to #searchexpando for some reason, so be careful with the changes you make
-.infobar {
+div.content > .infobar {
     &,
     &.listingsignupbar {
         margin: 0 0 $gutter-size !important;

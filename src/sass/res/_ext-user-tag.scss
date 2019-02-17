@@ -15,3 +15,12 @@ a.RESUserTagImage {
         }
     }
 }
+
+a.voteWeight {
+    background: $color-secondary !important;
+    font-weight: bold;
+    padding: 3px 5px;
+    font-size: .9em;
+    margin-left: ($gutter-size / 2);
+    @extend %half-rounded;
+}

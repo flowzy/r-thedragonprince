@@ -87,3 +87,7 @@
         }
     }
 }
+
+.clearleft + .clearleft {
+    @extend %hide;
+}

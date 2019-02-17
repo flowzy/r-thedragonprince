@@ -1,9 +1,9 @@
 .formtabs-content {
     border: none;
+    padding: $gutter-size 0 0;
 
-    .infobar {
-        opacity: 1;
-        color: $color-body;
+    a.sr-suggestion {
+        @extend %anchor-link;
     }
 }
 

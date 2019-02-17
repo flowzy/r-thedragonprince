@@ -231,7 +231,7 @@
 
                 &:first-child {
                     a {
-                        box-shadow: none;
+                        border-top: none;
                     }
                 }
             }
@@ -240,7 +240,7 @@
                 padding: 9px 9px 9px 14px;
                 color: $color-muted !important;
                 box-shadow: $box-shadow;
-                border-bottom: 1px solid $color-secondary;
+                border-top: 1px solid $color-secondary;
                 border-right: 2px solid;
                 background-image: linear-gradient(to left, rgba($color-primary, .1), rgba($color-primary, .05));
                 font-weight: bold;

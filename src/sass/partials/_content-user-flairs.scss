@@ -2,10 +2,7 @@
     content: '';
     float: left;
     box-shadow: inset 0 0 0 1px rgba(#fff, .1);
-    @include sprite-position($user-flair-default);
-    @include sprite-width($user-flair-default);
-    @include sprite-height($user-flair-default);
-    @extend %sprite-image;
+    @include sprite($user-flair-default);
     @extend %rounded;
 }
 

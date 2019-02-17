@@ -24,4 +24,9 @@
 .reddit-link-title {
     font-weight: bold;
     @extend %text-size-md;
+    @extend %anchor-link;
+}
+
+.reddit-comment-link {
+    @extend %anchor-link;
 }

@@ -13,7 +13,6 @@
     margin-top: $gutter-size;
 
     .menuarea {
-        border-top-width: 0;
         @extend %text-muted;
 
         .spacer {
@@ -79,6 +78,10 @@
         &:nth-child(2) {
             margin-left: auto;
         }
+    }
+
+    .panestack-title + & {
+        border-top-width: 0;
     }
 }
 

@@ -87,6 +87,9 @@ $header-logo-shadow: false !default;
 } @else if ($header-variant == 18) {
     $start: #441704;
     $end: #793d16;
+} @else if ($header-variant == 19) {
+    $start: #3c3556;
+    $end: #262358;
 }
 
 // save these colors to variables, that are then used in _variables.scss

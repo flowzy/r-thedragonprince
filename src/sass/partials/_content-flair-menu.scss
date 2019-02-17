@@ -50,6 +50,7 @@
         max-height: 100%;
         padding: $gutter-size;
         flex: 1;
+        overflow-x: hidden;
 
         // hide sample titles
         a.title {

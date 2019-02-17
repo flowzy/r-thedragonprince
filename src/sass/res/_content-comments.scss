@@ -14,3 +14,8 @@
         }
     }
 }
+
+
+.res-commentBoxes.comment-permalink-page .commentarea > .sitetable > .comment.res-selected {
+    border-color: rgba($color-primary, .7) !important;
+}

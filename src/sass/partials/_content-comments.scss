@@ -26,7 +26,8 @@
         }
     }
 
-    &.thing.new-comment {
+    &.thing.new-comment,
+    .comment-permalink-page .commentarea > .sitetable > & {
         border-color: rgba($color-primary, .4) !important;
     }
 
@@ -54,6 +55,12 @@
     .showreplies,
     .entry {
         flex: 1 0 80%;
+    }
+
+    .child {
+        > .usertext {
+            margin: $gutter-size 0 0 $gutter-size * 2;
+        }
     }
 
     // "load more comments" button
@@ -136,6 +143,13 @@
                 .md {
                     color: $color-muted;
                 }
+            }
+        }
+
+        // permalinked comment
+        &.border {
+            .usertext-body {
+                background: transparent;
             }
         }
     }
