@@ -71,7 +71,7 @@ module.exports = env => {
                     'dist',
                     '.cache'
                 ]
-            },
+            }
         },
 
         module: {
@@ -150,7 +150,7 @@ module.exports = env => {
             new SpritesmithPlugin({
                 src: {
                     cwd: path.resolve(__dirname, 'src/img/sprites/user-flairs'),
-                    glob: ['*.png', '*.jpg']
+                    glob: ['*.png', '*.jpg'],
                 },
                 target: {
                     // target destinations for outputs
@@ -160,6 +160,9 @@ module.exports = env => {
                 apiOptions: {
                     // image reference inside of CSS
                     cssImageRef: `../img/flair-sprite${env.NODE_ENV === 'development' ? '-[hash]' : ''}.png`
+                },
+                spritesmithOptions: {
+                    algorithm: 'top-down'
                 }
             }),
 
