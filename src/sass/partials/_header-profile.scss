@@ -4,6 +4,7 @@
     padding: 0 $gutter-size;
     font-size: 1rem;
     align-items: stretch;
+    z-index: 100;
     @extend %flexbox;
     @extend %box-sizing;
 
@@ -154,7 +155,8 @@
     }
 
     // icon
-    &::after {
+    &::after,
+    &.havemail + a + .separator::after {
         @include sprite-position($icon-mail);
         @include sprite-width($icon-mail);
         @include sprite-height($icon-mail);
@@ -164,6 +166,21 @@
         // change icon
         &::after {
             @include sprite-position($icon-mail-marked);
+        }
+
+        // fixed message at the bottom left corner
+        + a + .separator {
+            background: $color-brand-reddit;
+            @extend %popup-message;
+
+            &::before {
+                content: 'You have unread mail!';
+            }
+        }
+
+        // move the modmail alert above inbox alert
+        ~ #new_modmail.havemail + .separator {
+            bottom: (35px + $gutter-size);
         }
     }
 }
@@ -217,7 +234,8 @@
     }
 
     // icon
-    &::after {
+    &::after,
+    &.havemail + .separator::after {
         @include sprite-position($icon-modmail);
         @include sprite-width($icon-modmail);
         @include sprite-height($icon-modmail);
@@ -227,6 +245,15 @@
         // change icon
         &::after {
             @include sprite-position($icon-modmail-marked);
+        }
+
+        // fixed message at the bottom left corner
+        + .separator {
+            @extend %popup-message;
+
+            &::before {
+                content: 'You have unread mod mail!';
+            }
         }
     }
 }

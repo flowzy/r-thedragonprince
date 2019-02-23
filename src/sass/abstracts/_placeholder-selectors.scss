@@ -257,3 +257,34 @@
         text-decoration: none;
     }
 }
+
+// popup message
+// used for letting the user know of missed mail
+%popup-message {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-120%);
+    margin: $body-padding;
+    background: $color-green;
+    font-size: 0;
+    line-height: 1;
+    height: 35px;
+    font-weight: bold;
+    color: $color-white;
+    padding: 0 $gutter-size;
+    animation: popup-message 1 5s ease-in-out 1s;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    @extend %flexbox-center;
+
+    &::before {
+        font-size: $text-size-md;
+    }
+
+    &::after {
+        content: '';
+        margin-left: $gutter-size;
+        @extend %sprite-image;
+    }
+}
