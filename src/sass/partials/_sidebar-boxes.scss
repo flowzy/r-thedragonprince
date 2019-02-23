@@ -1,7 +1,7 @@
 .sidecontentbox {
     border-bottom: 1px solid $color-secondary;
     padding: $gutter-size;
-    margin: 0 (-$gutter-size);
+    margin: (-$gutter-size) (-$gutter-size) 0;
 
     .content {
         border: none;

@@ -1,3 +1,4 @@
+// controls on the top right
 div#RESShortcutsSort,
 div#RESShortcutsRight,
 div#RESShortcutsLeft,
@@ -13,4 +14,10 @@ div#srLeftContainer,
 div#RESShortcutsViewport,
 div#RESShortcutsEditContainer {
     max-height: $header-top-height;
+}
+
+// subreddit dropdown menu
+#srList {
+    top: ($body-padding + $header-top-height);
+    left: $body-padding;
 }

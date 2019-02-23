@@ -34,15 +34,24 @@
 
 // used in threads and comments
 .buttons {
+    .stamp {
+        margin-right: ($gutter-size / 2);
+        
+        &.reported-stamp {
+            margin-left: ($gutter-size / 2);
+        }
+    }
+
     .entry & {
         padding: 2px 0 0;
 
         li {
             line-height: inherit;
             padding-right: 0;
+            color: $color-muted;
 
             + li {
-                padding-left: 0;
+                padding-left: 1px;
             }
 
             &.reported-stamp {
@@ -59,8 +68,19 @@
             &.toggle a,
             .state-button a,
             .redditSingleClick::after {
-                opacity: .3;
                 @extend %toggle-button;
+            }
+
+            > a,
+            > form,
+            .redditSingleClick {
+                opacity: .3;
+                transition: $transition;
+            }
+
+            > form {
+                vertical-align: middle;
+                display: inline-block;
             }
 
             a {
@@ -74,9 +94,20 @@
                 }
             }
 
+            // removal reason
+            &[title*="removed"] > b {
+                color: $color-red;
+                margin: 0 ($gutter-size / 2);
+            }
+
+            .option.error.active {
+                border: 1px solid rgba($color-red, .4);
+                padding: 2px ($gutter-size /2);
+                border-radius: ($border-radius / 2);
+            }
+
             .link & {
-                // stamp (spoiler, nsfw) and "X comments"
-                &:first-child,
+                // "X comments" button
                 &.first {
                     &:not(.flairsample-left) {
                         padding-right: ($gutter-size / 2);
@@ -101,11 +132,9 @@
         }
 
         &:hover {
-            li > a,
-            .toggle .togglebutton,
-            .toggle a,
-            .state-button a,
-            .redditSingleClick::after {
+            > li > a,
+            > li > form,
+            .redditSingleClick {
                 opacity: 1;
             }
         }
@@ -114,11 +143,16 @@
 
 // mod buttons
 .pretty-button {
-    margin: 0;
+    margin: 0 1px 0 0;
 
     &.access-required {
         background: transparent;
         @extend %toggle-button;
+
+        &.pressed {
+            background: $color-secondary;
+            font-weight: bold;
+        }
     }
 
     &.negative {
@@ -127,6 +161,10 @@
         &:hover {
             border-color: rgba(lighten($color-red, 10%), .2);
             color: lighten($color-red, 10%);
+        }
+
+        &.pressed {
+            background: rgba($color-red, .4);
         }
     }
 
@@ -137,22 +175,26 @@
             border-color: rgba(lighten($color-green, 15%), .2);
             color: lighten($color-green, 15%);
         }
-    }
 
-    // &.pressed {
-    //     @extend %list-rounded-button:hover;
-    // }
+        &.pressed {
+            background: rgba($color-green, .4);
+        }
+    }
 }
 
 // contains mod buttons
 .big-mod-buttons {
     float: right;
     opacity: .35;
-    background: rgba($color-body, .5);
+    background: rgba($color-black, .5);
     padding: 4px $gutter-size 4px 4px;
-    margin: -4px 0;
+    margin: -4px -5px -4px -4px;
     border-radius: $border-radius 0 0 $border-radius;
     @extend %transition;
+
+    .link & {
+        margin-right: (-$gutter-size);
+    }
 
     .buttons:hover & {
         opacity: 1;

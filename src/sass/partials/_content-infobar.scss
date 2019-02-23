@@ -2,6 +2,7 @@
     margin: $gutter-size 0;
     background: rgba($color-primary, .1);
     border-color: rgba($color-primary, .4);
+    color: $color-white;
 
     &,
     .formtabs-content & {
@@ -15,24 +16,27 @@
     a:hover {
         @extend %anchor-link:hover;
     }
-}
 
-// usually, this is reddit's ad for stuff like new reddit and the "Welcome to Reddit" banner
-// but also, this class is added to #searchexpando for some reason, so be careful with the changes you make
-div.content > .infobar {
-    &,
-    &.listingsignupbar {
-        margin: 0 0 $gutter-size !important;
-        // lower the opacity of 
-        opacity: 0.8;
+    // usually, this is reddit's ad for stuff like new reddit and the "Welcome to Reddit" banner
+    // but also, this class is added to #searchexpando for some reason, so be careful with the changes you make
+    .listing-page & {
+        &,
+        &.listingsignupbar {
+            margin: 0 0 $gutter-size !important;
+            // lower the opacity of 
+            opacity: 0.8;
+        }
     }
 }
 
 // "This post is locked" bar
 .reddit-infobar {
     margin-bottom: $gutter-size;
-    background: rgba(#fff7d7, .4);
-    border-color: rgba(#ffd634, .7);
+    @extend .infobar;
+
+    .content > & {
+        margin: $gutter-size;
+    }
 
     &.with-icon {
         &::before {

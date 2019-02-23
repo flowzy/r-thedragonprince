@@ -6,6 +6,11 @@
     margin: 0 (-$gutter-size) (-$gutter-size) (-$gutter-size);
     padding: $gutter-size;
 
+    // add a space at the top, if the user is not logged in
+    [name*='"userId":false'] ~ & {
+        margin-top: 100px;
+    }
+
     // headings
     h1 {
         text-transform: uppercase;
@@ -99,42 +104,82 @@
         display: inline-block;
         padding: 6px 10px;
 
-        &::after {
-            content: '';
+        em {
             display: block;
-            transition: background-position-y .25s nth($transition, 3);
-            height: $icon-social-twitter-width;
-            @include sprite-width($icon-social-twitter);
-            @include sprite-position($icon-social-twitter);
-            @extend %sprite-image;
-        }
+            overflow: hidden;
+            position: relative;
 
-        &:hover {
+            &,
+            &::before,
             &::after {
+                height: $icon-social-twitter-width;
+                @include sprite-width($icon-social-twitter);
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                transition: top .25s nth($transition, 3),
+                            bottom .25s nth($transition, 3);
+                @include sprite-position($icon-social-twitter);
+                @extend %sprite-image;
+            }
+
+            &::before {
+                bottom: 0;
+            }
+
+            &::after {
+                top: 100%;
                 background-position-y: $icon-social-twitter-offset-y - $icon-social-twitter-width;
             }
         }
-    }
 
-    [href*="facebook"],
-    [href*="instagram"] {
         &:hover {
-            &::after {
-                background-position-y: $icon-social-facebook-offset-y - $icon-social-facebook-width;
+            em {
+                &::before {
+                    bottom: 100%;
+                }
+
+                &::after {
+                    top: 0;
+                }
             }
         }
     }
 
-    [href*="facebook"]::after {
-        @include sprite-position($icon-social-facebook);
+    [href*="facebook"] em {
+        &::before,
+        &::after {
+            @include sprite-position($icon-social-facebook);
+        }
+
+        &::after {
+            background-position-y: $icon-social-facebook-offset-y - $icon-social-facebook-width;
+        }
     }
 
-    [href*="instagram"]::after {
-        @include sprite-position($icon-social-instagram);
+    [href*="instagram"] em {
+        &::before,
+        &::after {
+            @include sprite-position($icon-social-instagram);
+        }
+
+        &::after {
+            background-position-y: $icon-social-instagram-offset-y - $icon-social-instagram-width;
+        }
     }
 
-    [href*="tumblr"]::after {
-        @include sprite-position($icon-social-tumblr);
+    [href*="tumblr"] em {
+        &::before,
+        &::after {
+            @include sprite-position($icon-social-tumblr);
+        }
+
+        &::after {
+            background-position-y: $icon-social-tumblr-offset-y - $icon-social-tumblr-width;
+        }
     }
 
     // poster
@@ -147,6 +192,7 @@
     }
 
     ul {
+        background: transparent !important;
         justify-content: center;
         @extend %flexbox-center;
         @extend %reset-list;

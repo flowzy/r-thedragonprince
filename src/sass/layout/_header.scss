@@ -8,7 +8,6 @@
 // this element contains all of the elements listed in here
 #header {
     border-bottom: none;
-    z-index: -1;
     margin-bottom: $gutter-size;
     @extend %box-shadow;
     @extend %header-img;

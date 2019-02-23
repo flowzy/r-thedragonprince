@@ -45,9 +45,13 @@
         padding: ($gutter-size / 3) 0 ($gutter-size / 3) $gutter-size;
     }
 
+    code,
     pre {
-        background: $color-body;
+        background: $color-body !important;
         border-color: $color-secondary;
+    }
+
+    pre {
         @extend %text-size-md;
     }
 

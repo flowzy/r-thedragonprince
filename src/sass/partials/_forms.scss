@@ -76,3 +76,7 @@ a.helplink,
 .usertext a.redditquette {
     margin: 0 0 0 ($gutter-size / 2);
 }
+
+button + button {
+    margin-left: ($gutter-size / 2) !important;
+}

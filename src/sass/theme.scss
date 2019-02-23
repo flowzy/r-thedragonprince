@@ -11,6 +11,7 @@
 
 // ==================================================
 // animations, base, typography, and utilies.
+@import 'base/keyframes';
 @import 'base/general';
 @import 'base/typography';
 @import 'base/formatting';
@@ -32,6 +33,7 @@
 @import 'res/content-expando-content';
 @import 'res/content-comments';
 @import 'res/content-commentarea';
+@import 'res/content-editor';
 
 // -- sidebar partials
 @import 'res/sidebar-sub-buttons';
@@ -39,6 +41,7 @@
 
 // -- extension-specific features
 @import 'res/ext-user-tag';
+@import 'res/ext-search';
 @import 'res/ext-nightmode';
 // ==================================================
 
@@ -77,8 +80,8 @@
 @import 'partials/sidebar-history';
 
 // -- content partials
-@import 'partials/content-link';
 @import 'partials/content-thing';
+@import 'partials/content-link';
 @import 'partials/content-crosspost';
 @import 'partials/content-thumbnails';
 @import 'partials/content-score';

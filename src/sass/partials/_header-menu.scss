@@ -85,18 +85,22 @@
 }
 
 // reddit snoo
-#header-img.default-header {
-    background: transparent;
-    width: $snoo-width;
-    height: $snoo-height;
-    margin: 0;
-    font-size: 0;
-    justify-content: center;
-    @extend %flexbox-center;
+#header-img {
+    @extend %hide;
 
-    &::before {
-        content: '';
-        display: block;
-        @include sprite($icon-reddit-snoo);
+    &.default-header {
+        background: transparent;
+        width: $snoo-width;
+        height: $snoo-height;
+        margin: 0;
+        font-size: 0;
+        justify-content: center;
+        @extend %flexbox-center;
+
+        &::before {
+            content: '';
+            display: block;
+            @include sprite($icon-reddit-snoo);
+        }
     }
 }

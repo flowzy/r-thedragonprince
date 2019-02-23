@@ -12,7 +12,7 @@
             padding: ($gutter-size / 2) 0 ($gutter-size / 2) round($gutter-size * 1.25 + $gutter-size) !important;
         }
 
-        // change the background color of every odd/even comment
+        // change the background color of every odd/even child comment
         .comment,
         .comment .comment .comment,
         .comment .comment .comment .comment .comment,
@@ -26,6 +26,27 @@
         }
     }
 
+    &.thing.spam {
+        z-index: 10;
+
+        &::before,
+        &::after {
+            content: '';
+            background: $color-body;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        &::after {
+            background: rgba($color-red, .15);
+        }
+    }
+
+    // change border color of a permanently-linked comment
     &.thing.new-comment,
     .comment-permalink-page .commentarea > .sitetable > & {
         border-color: rgba($color-primary, .4) !important;
@@ -33,7 +54,8 @@
 
     // reply container
     .child,
-    .showreplies {
+    .showreplies,
+    .morechildren {
         border: none;
         margin: 0;
 
@@ -47,10 +69,12 @@
         }
     }
 
+    // time at which the comment was made
     time {
         opacity: .5;
     }
 
+    // force child comments to be on a new row
     .child,
     .showreplies,
     .entry {
@@ -59,7 +83,7 @@
 
     .child {
         > .usertext {
-            margin: $gutter-size 0 0 $gutter-size * 2;
+            margin: $gutter-size 0 0 ($gutter-size * 2);
         }
     }
 
@@ -80,11 +104,13 @@
         }
     }
 
+    // adjust upvote/downvote arrow container
     .midcol {
         background: transparent !important;
         padding: 8px $gutter-size 0 0;
     }
 
+    // move expand/collapse button to the left and in full height
     .expand {
         position: absolute;
         left: -1px;
@@ -122,20 +148,62 @@
         }
     }
 
+    // so far it seems like this only has something inside it on the "Reports" page
+    // and it contains some info about the thread comments was made in
+    .parent {
+        flex-basis: 100%;
+
+        .flair {
+            @extend %hide;
+        }
+
+        .author {
+            margin-left: 0;
+
+            &::before {
+                content: none;
+            }
+        }
+
+        .title {
+            margin-bottom: $gutter-size;
+        }
+
+        // add a space at the bottom
+        .subreddit {
+            &::after {
+                content: '';
+                clear: both;
+                display: table;
+                margin-bottom: $gutter-size;
+            }
+        }
+    }
+
+    .link + .clearleft + & {
+        margin-top: $gutter-size;
+    }
+
+    // add a space on the left for comment and button list
     .usertext,
     .buttons {
         padding-left: $user-flair-default-width + $gutter-size;
     }
 
+    // adjust button list
     .buttons {
         margin-left: -7px;
     }
 
+    // remove the default padding from comment's body
     .usertext-body {
+        background: transparent;
+        border: none;
         padding: 0 !important;
     }
 
     .usertext {
+        // deleted comment
         &.grayed {
             .usertext-body {
                 background: transparent;
@@ -154,6 +222,7 @@
         }
     }
 
+    // hide upvote/downvote arrow container for deleted or collapsed comments
     &.deleted,
     &.collapsed {
         > .midcol {
@@ -163,6 +232,7 @@
 
     // deleted comment
     &.deleted {
+        // remove unnecessary padding
         > .entry {
             .usertext,
             .buttons {
@@ -175,6 +245,7 @@
     &.collapsed {
         font-style: normal;
 
+        // hide user flair
         .author {
             margin-left: 0;
 
