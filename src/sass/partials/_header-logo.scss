@@ -1,6 +1,7 @@
 // make a header logo out of the reddit name, located in the sidebar
 
 .redditname {
+    background: transparent !important;
     position: absolute;
     top: $header-top-height + $body-padding;
     height: $header-height - ($header-top-height + $header-bottom-height);

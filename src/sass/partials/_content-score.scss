@@ -49,22 +49,38 @@
     &.down {
         opacity: .5;
         transition: opacity nth($transition, 2) nth($transition, 3);
-        @include sprite-image($icon-upvote);
         @include sprite-width($icon-upvote);
         @include sprite-position($icon-upvote);
+        @extend %sprite-image;
 
         &:hover {
             opacity: 1;
         }
     }
 
+    &.down {
+        @include sprite-position($icon-downvote);
+    }
+
+    @include res-nightmode {
+        &.up {
+            &,
+            &:hover {
+                @include sprite-position($icon-upvote);
+            }
+        }
+
+        &.down {
+            &,
+            &:hover {
+                @include sprite-position($icon-downvote);
+            }
+        }
+    }
+
     &.up,
     &.upmod {
         margin-top: 0;
-    }
-
-    &.down {
-        @include sprite-position($icon-downvote);
     }
 
     &.upmod,

@@ -11,7 +11,7 @@
     padding: 0 !important;
     background: transparent;
     flex-direction: column;
-    background: $color-body;
+    background: $color-body !important;
     border: 1px solid $color-secondary !important;
     z-index: 100;
     @extend %box-shadow;
@@ -130,7 +130,7 @@
 
     // "select flair" heading at the top
     h2 {
-        background: transparent;
+        background: transparent !important;
         text-transform: uppercase;
         text-align: left;
         padding: $gutter-size $gutter-size 0;

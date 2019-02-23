@@ -9,6 +9,10 @@
     @extend %box-sizing;
     @extend %container;
 
+    @include res-nightmode {
+        @extend %container;
+    }
+
     > .spacer {
         margin: 0 0 $gutter-size;
 
@@ -37,5 +41,10 @@
         &::before {
             content: none;
         }
+    }
+
+    .combined-search-page & {
+        padding-top: 0;
+        border-top-width: 0;
     }
 }

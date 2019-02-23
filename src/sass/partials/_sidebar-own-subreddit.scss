@@ -1,5 +1,7 @@
 // "Create your own subreddit" subtitles
 .sidebox {
+    background: transparent !important;
+
     .spacer {
         @extend %hide;
     }

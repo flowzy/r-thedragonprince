@@ -1,5 +1,5 @@
 %titlebox-row {
-    background: rgba($color-body, .3);
+    background: rgba($color-body, .3) !important;
     margin-bottom: 4px;
     padding: 8px;
     @extend %box-sizing;
@@ -7,14 +7,14 @@
 
 .titlebox {
     min-height: 380px;
-    background: url(../img/sidebar-bg.png) center -30px no-repeat;
+    background: url(../img/sidebar-bg.png) center -30px no-repeat !important;
     background-size: 100% auto;
     margin: (-$gutter-size);
     padding: $gutter-size;
     @extend %text-size-md;
 
     .res & {
-        background-position-y: 0;
+        background-position-y: 0 !important;
     }
 
     form.toggle,
@@ -32,7 +32,7 @@
     }
 
     form.toggle.flairtoggle {
-        background: transparent;
+        background: transparent !important;
         padding: 0;
         text-align: center;
         font-size: 0;
