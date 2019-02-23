@@ -32,9 +32,22 @@ ul.tabmenu.formtab {
     }
 }
 
-div#newlink-with-image-upload .image-upload-drop-target {
-    background: $color-body;
-    border-color: $color-secondary;
+div#newlink-with-image-upload {
+    // SEO preview for the link user wants to submit
+    #new-link-preview {
+        @extend %container;
+    }
+
+    .clear-input-button {
+        padding: 1px 3px;
+        @extend %rounded-button;
+    }
+
+    // image "drag & drop" area
+    .image-upload-drop-target {
+        background: $color-body;
+        border-color: $color-secondary;
+    }
 }
 
 .submit_text,
@@ -52,4 +65,3 @@ div#newlink-with-image-upload .image-upload-drop-target {
         @extend %text-size-md;
     }
 }
-
