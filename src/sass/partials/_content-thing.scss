@@ -4,60 +4,68 @@
     position: relative;
     @extend %container;
 
-    &.stickied.thing {
-        // change border color of the thread
-        &,
-        &.last-clicked::after {
-            border-color: rgba($color-green, .45) !important;
+    // gilded comment/thread
+    &.gilded {
+        background: rgba($color-gold, .1);
+        border-color: rgba($color-gold, .2) !important;
+
+        + .clearleft + .link:not(.res-selected) {
+            border-top-color: rgba($color-gold, .2) !important;
         }
 
-        + .clearleft + .link {
-            .parent {
-                border-top-color: rgba($color-green, .5);
-            }
-
-            &:not(.stickied) {
-                .parent {
-                    border-bottom-width: 1px;
-                    padding-bottom: $gutter-size;
-                }
-            }
-        }
-
-        // make the border color lighter
+        // change border color
         &.last-clicked {
-            border-color: rgba($color-green, .8) !important;
+            &,
+            &::after {
+                border-color: rgba($color-gold, .4) !important;  
+            }
         }
     }
+
+    &.thing {
+        // deleted by mods
+        &.spam {
+            background: rgba($color-red, .15);
+            border-color: rgba($color-red, .2) !important;
+        }
+
+        // stickied comment/thread
+        &.stickied {
+            // change border color
+            &,
+            &.last-clicked::after {
+                border-color: rgba($color-green, .45) !important;
+            }
+
+            // make the border color lighter
+            &.last-clicked {
+                border-color: rgba($color-green, .8) !important;
+            }
+        }
+    }
+}
+
+// there are 2 elements with this class, inside one another
+// p.title and a.title (p.title > a.title)
+.thing p.title,
+.search-result-header {
+    line-height: 1.1;
+    margin: 0 $gutter-size round($gutter-size / 2) 0;
+    @extend %text-primary;
+}
+
+.thing a.title,
+.search-result .search-title,
+.flairselector a.title {
+    font-size: 1.2rem !important;
+    @extend %font-family-serif;
+    @extend %anchor-link;
 }
 
 .thing {
     .entry {
         overflow: visible;
         margin: 0;
-    }
-
-    // there are 2 elements with this class, inside one another
-    // p.title and a.title (p.title > a.title)
-    p.title,
-    .search-result-header {
-        line-height: 1.1;
-        margin: 0 $gutter-size round($gutter-size / 2) 0;
-        @extend %text-primary;
-    }
-
-    a.title,
-    a.search-title,
-    .flairselector a.title {
-        font-size: 1.2rem !important;
-        @extend %font-family-serif;
-        @extend %anchor-link;
-    }
-
-    &.visited {
-        .title {
-            @extend a.title:visited;
-        }
     }
 
     // blur potentially spoilery titles
@@ -85,6 +93,11 @@
                 }
             }
         }
+    }
+
+    &.morerecursion {
+        margin-top: $gutter-size;
+        border: none !important;
     }
 }
 

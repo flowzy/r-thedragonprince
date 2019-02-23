@@ -31,11 +31,14 @@
     }
 
     &.spam {
-        background: rgba($color-red, .15);
-        border-color: rgba($color-red, .25);
-
         > .child {
             background: transparent !important;
         }
+    }
+}
+
+div.search-result {
+    &.res-selected {
+        @extend .link.last-clicked;
     }
 }

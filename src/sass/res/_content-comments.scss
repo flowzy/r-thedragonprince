@@ -6,16 +6,21 @@
             border: 1px solid $color-secondary !important;
             margin: 0 0 $gutter-size !important;
 
-            &.new-comment {
-                &.res-selected {
+            &.res-selected {
+                &.new-comment {
                     border-color: rgba($color-primary, .7) !important;
+                }
+
+                // comment deleted by a mod
+                &.spam {
+                    border-color: rgba($color-red, .6) !important;
                 }
             }
         }
     }
 }
 
-
+// permalinked comment
 .res-commentBoxes.comment-permalink-page .commentarea > .sitetable > .comment.res-selected {
     border-color: rgba($color-primary, .7) !important;
 }

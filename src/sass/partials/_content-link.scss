@@ -6,6 +6,7 @@
     padding: 0;
     margin: 0;
     border-bottom-width: 0 !important;
+    position: relative;
     @extend %flexbox;
 
     &:nth-last-child(2) {
@@ -34,7 +35,6 @@
     &.last-clicked {
         border-style: solid;
         border-color: lighten(rgba($color-secondary, 1), 8%) !important;
-        // border-bottom-width: 0 !important;
         overflow: visible;
 
         &::after {
@@ -42,6 +42,13 @@
         }
     }
 
+    &.thing.visited {
+        a.title {
+            @extend a.title:visited;
+        }
+    }
+
+    // make all direct child element un-shrinkable
     > * {
         flex-shrink: 0;
     }
@@ -105,11 +112,21 @@
     // stickied threads
     &.stickied {
         + .clearleft {
-            + .link:not(.stickied) {
-                margin-top: ($gutter-size * 2 + 1px);
-                
+            + .link {
+                // change border color of the fake bottom border
                 .parent {
-                    display: block;
+                    border-top-color: rgba($color-green, .5);
+                }
+
+                // add a space between the last stickied post and the rest threads
+                &:not(.stickied) {
+                    margin-top: ($gutter-size * 2 + 1px);
+
+                    .parent {
+                        border-bottom-width: 1px;
+                        padding-bottom: $gutter-size;
+                        display: block;
+                    }
                 }
             }
         }
@@ -175,6 +192,16 @@
     }
 }
 
+.link {
+    body:not(.listing-page) & {
+        border-bottom-width: 1px !important;
+
+        + .clearleft + .link {
+            margin-top: $gutter-size;
+        }
+    }
+}
+
 // "(self.subreddit)" thing you see after each thread's title
 .domain {
     font-size: 0;
@@ -213,4 +240,57 @@
             @extend %sprite-image;
         }
     }
+}
+
+// search link
+div.search-result-link {
+    @extend %container;
+
+    // hide user flairs
+    .flair {
+        @extend %hide;
+    }
+
+    &.visited {
+        .search-title {
+            @extend a.title:visited;
+        }
+    }
+    
+    .search-link {
+        @extend %anchor-link;
+    }
+
+    .search-comments,
+    .search-subreddit-link {
+        @extend %text-muted;
+    }
+
+    :link {
+        > mark {
+            color: $color-white;
+        }
+    }
+
+    :visited {
+        > mark {
+            color: $color-muted;
+        }
+    }
+}
+
+.search-expando,
+.search-result-footer {
+    margin-top: ($gutter-size / 2);
+}
+
+.search-expando {
+    &.collapsed::before {
+        background: linear-gradient(to top, $color-secondary, transparent);
+    }
+}
+
+.search-expando-button {
+    margin-top: ($gutter-size / 2);
+    @extend %anchor-link;
 }
