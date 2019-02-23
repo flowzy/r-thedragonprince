@@ -35,6 +35,10 @@
     a.choice {
         @extend %dropdown-item;
 
+        &.selectedItem {
+            @extend %dropdown-item:hover;
+        }
+
         a {
             @extend %text-primary;
         }

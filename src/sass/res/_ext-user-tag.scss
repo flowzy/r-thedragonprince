@@ -14,6 +14,10 @@ a.RESUserTagImage {
             @extend %text-muted;
         }
     }
+
+    .parent & {
+        margin: 0 3px 0 -5px;
+    }
 }
 
 a.voteWeight {
@@ -21,6 +25,7 @@ a.voteWeight {
     font-weight: bold;
     padding: 3px 5px;
     font-size: .9em;
+    color: $color-primary !important;
     margin-left: ($gutter-size / 2);
     @extend %half-rounded;
 }

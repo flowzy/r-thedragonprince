@@ -1,0 +1,17 @@
+ul.res-search-tabs {
+    a {
+        background: $color-body;
+        border: 1px solid $color-secondary !important;
+    }
+
+    .res-search-tab-active {
+        a {
+            border-bottom-width: 0 !important;
+        }
+    }
+}
+
+div.res-search-pane {
+    background: $color-body !important;
+    @extend %container;
+}

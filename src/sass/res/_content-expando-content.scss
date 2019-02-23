@@ -1,3 +1,23 @@
 .res-expando-box {
+    position: relative;
+    z-index: 100;
     @extend .expando;
+
+    div.usertext-body .md {
+        table {
+            background: $content-bg;
+
+            &:first-of-type {
+                margin: 0 0 ($gutter-size / 2) $gutter-size;
+            }
+        }
+
+        &,
+        .commentarea & {
+            background: $color-body;
+            border: 1px solid $color-secondary;
+            border-radius: 0;
+            padding: $gutter-size;
+        }
+    }
 }

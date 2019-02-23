@@ -1,0 +1,68 @@
+div.livePreview {
+    background-color: $color-body !important;
+    margin-top: $gutter-size;
+    border-color: $color-secondary;
+    border-radius: 0;
+
+    &,
+    > h3 {
+        border-color: $color-secondary;
+    }
+
+    > h3 {
+        background: $content-bg;
+        color: $color-primary;
+        padding: ($gutter-size / 2) $gutter-size;
+        height: auto;
+        margin-bottom: ($gutter-size / 2);
+    }
+
+    .md.RESDialogContents {
+        padding: 0 $gutter-size ($gutter-size / 2);
+        margin-bottom: 0;
+    }
+}
+
+.markdownEditor {
+    .edit-btn:not(.btn-micro) {
+        border-radius: ($border-radius / 2);
+        border: none;
+        background-color: $color-secondary;
+        transition: $transition;
+
+        &:hover {
+            background-color: rgba($color-secondary, 1);
+            box-shadow: $box-shadow;
+        }
+    }
+}
+
+// big editor
+.RESDialogSmall {
+    background: $color-body;
+
+    &,
+    & > h3 {
+        border-color: $color-secondary;
+    }
+
+    > h3 {
+        background: $content-bg;
+        color: $color-primary;
+    }
+
+    textarea {
+        @extend %text-field;
+    }
+
+    button {
+        @extend %rounded-button;
+    }
+}
+
+.RESCloseButton {
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: $border-radius;
+    @extend %rounded-button;
+}
