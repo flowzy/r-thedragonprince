@@ -19,13 +19,15 @@
 
     // usually, this is reddit's ad for stuff like new reddit and the "Welcome to Reddit" banner
     // but also, this class is added to #searchexpando for some reason, so be careful with the changes you make
-    .listing-page & {
-        &,
-        &.listingsignupbar {
-            margin: 0 0 $gutter-size !important;
-            // lower the opacity of 
-            opacity: 0.8;
-        }
+    &.listingsignupbar {
+        margin: 0 0 $gutter-size !important;
+        // lower the opacity of 
+        opacity: 0.8;
+    }
+
+    &.commentsignupbar {
+        margin: $gutter-size 0 !important;
+        padding: 0;
     }
 }
 

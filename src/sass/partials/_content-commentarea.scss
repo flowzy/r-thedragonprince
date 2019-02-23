@@ -116,3 +116,20 @@
         @extend %toggle-button;
     }
 }
+
+// guest textarea
+.commentsignupbar__container,
+.commentsignupbar__textarea {
+    background: $color-body;
+}
+
+.commentsignupbar__textarea {
+    border: 1px solid $color-secondary;
+}
+
+div.commentsignupbar__container {
+    .commentsignupbar__title,
+    .commentsignupbar__desc {
+        color: $color-primary !important;
+    }
+}
