@@ -10,24 +10,24 @@
     left: $body-padding;
     font-size: 0 !important;
 
-    @if ($header-logo-position == 'left' and $header-logo-shadow) {
-        background: linear-gradient(to right, rgba(#000, 0.3) 10%, rgba(#000, 0) 60%);
-    } @else if ($header-logo-position == 'center') {
-        justify-content: center;
-    } @else if ($header-logo-position == 'right') {
-        justify-content: flex-end;
-
-        @if ($header-logo-shadow) {
-            background: linear-gradient(to right, rgba(#000, 0.3) 10%, rgba(#000, 0) 60%);
-        }
-    }
-
     // create a logo
     a { 
         height: 100%;
         padding: 0 ($gutter-size * 3);
         display: inline-flex;
         align-items: center;
+
+        @if ($header-logo-position == 'left' and $header-logo-shadow == true) {
+            background: linear-gradient(to right, rgba(#000, 0.3) 10%, rgba(#000, 0) 80%);
+        } @else if ($header-logo-position == 'center') {
+            justify-content: center;
+        } @else if ($header-logo-position == 'right') {
+            justify-content: flex-end;
+
+            @if ($header-logo-shadow == true) {
+                background: linear-gradient(to right, rgba(#000, 0.3) 10%, rgba(#000, 0) 80%);
+            }
+        }
 
         &::after {
             content: '';

@@ -43,7 +43,7 @@
     }
 
     &.thing.visited {
-        a.title {
+        .title {
             @extend a.title:visited;
         }
     }

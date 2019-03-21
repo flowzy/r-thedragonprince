@@ -3,50 +3,36 @@
 $start: #000 !default;
 $end: #000 !default;
 
-$header-opacity: .2 !default; // opacity of the blurred header in the background of an actual header
 $header-logo-shadow: false !default;
 
 @if ($header-variant == 1) {
     $start: #5f5653;
     $end: #293138;
 } @else if ($header-variant == 2) {
-    $header-opacity: .6;
-
     $start: #211e19;
     $end: #462519;
 } @else if ($header-variant == 3) {
     $start: #523f21;
     $end: #69563d;
 } @else if ($header-variant == 4) {
-    $header-opacity: .5;
-
     $start: #383a32;
     $end: #332e21;
 } @else if ($header-variant == 5) {
-    $header-opacity: .5;
-
     $start: #2c465d;
     $end: #182e42;
 } @else if ($header-variant == 6) {
     $start: #264c4a;
     $end: #152d2a;
 } @else if ($header-variant == 7) {
-    $header-opacity: .4;
-
     $start: #264354;
     $end: #172b44;
 } @else if ($header-variant == 8) {
-    $header-opacity: .7;
-
     $start: #402424;
     $end: #54211e;
 } @else if ($header-variant == 9) {
-    $header-opacity: .3;
-
     $start: #424236;
     $end: #313028;
 } @else if ($header-variant == 10) {
-    $header-opacity: .4;
     $header-logo-shadow: true;
 
     $start: #232d1f;
@@ -55,15 +41,12 @@ $header-logo-shadow: false !default;
     $start: #5f5844;
     $end: #403b34;
 } @else if ($header-variant == 12) {
-    $header-opacity: .4;
-
     $start: #384848;
     $end: #232c2f;
 } @else if ($header-variant == 13) {
     $start: #202727;
     $end: #21262b;
 } @else if ($header-variant == 14) {
-    $header-opacity: .15;
     $header-logo-shadow: true;
 
     $start: #5a4d3c;
@@ -75,13 +58,10 @@ $header-logo-shadow: false !default;
     $end: #7321a9;
 } @else if ($header-variant == 16) {
     $header-logo-shadow: true;
-    $header-opacity: .15;
 
     $start: #253756;
     $end: #254167;
 } @else if ($header-variant == 17) {
-    $header-opacity: .15;
-
     $start: #1f2127;
     $end: #1d2533;
 } @else if ($header-variant == 18) {
@@ -97,7 +77,7 @@ $header-logo-shadow: false !default;
     $start: #141d2b;
     $end: #494e63;
 } @else if ($header-variant == 22) {
-    $start: #1e1e2a;
+    $start: #21212d;
     $end: #262633;
 } @else if ($header-variant == 23) {
     $start: #43674b;
@@ -110,6 +90,9 @@ $header-logo-shadow: false !default;
 
     $start: #75705d;
     $end: #94866f;
+} @else if ($header-variant == 26) {
+    $start: #565350;
+    $end: #807163;
 }
 
 // save these colors to variables, that are then used in _variables.scss
