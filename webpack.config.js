@@ -11,7 +11,7 @@ const ImageminMozjpeg = require('imagemin-mozjpeg')
 const SpritesmithPlugin = require('webpack-spritesmith')
 
 // clear console
-process.stdout.write('\033c')
+// process.stdout.write('\033c')
 
 module.exports = env => {
     const stats = {
@@ -113,7 +113,7 @@ module.exports = env => {
                             loader: 'sass-loader',
                             options: {
                                 data: `
-                                    $env: ${ env.NODE_ENV};
+                                    $env: ${ env.NODE_ENV };
                                     $header-variant: ${ headerVariant };
                                 `
                             }

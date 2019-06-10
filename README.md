@@ -58,7 +58,7 @@ Now that you've setup your environment, you can start downloading and installing
     $ git clone https://github.com/flowzy/r-thedragonprince.git
     $ cd ./r-thedragonprince
     ```
-    > _or download the project as a ZIP._
+    > _or download the project as a ZIP archive._
 
 2. Install dependencies, using Yarn:
     ```
@@ -66,6 +66,22 @@ Now that you've setup your environment, you can start downloading and installing
     ```
 3. Open [this link](https://github.com/flowzy/r-thedragonprince/raw/master/userscript.user.js) and install the userscript.
 4. At this point you should be all set and ready to go.
+
+### Having issues why trying to install dependencies?
+
+If you're on Windows, try this:
+
+1. _(optional)_ Install **Python** from the [official website](https://www.python.org/).
+2. Run the following command to install the **Windows Build Tools** using an elevated _(Administrator)_ terminal window which installs the **VS Build Tools** and also **Python 2.7**:
+    ```
+    $ npm install --global --production windows-build-tools
+    ```
+
+    ![Terminal preview](https://i.imgur.com/qGP06qO.png)
+
+The installation **Windows Build Tools** may take a couple of minutes, so after it's complete, re-open the terminal _(normally)_ and run `yarn install` again.
+
+_credit goes to [Catalin Vasile](https://catalin.me/how-to-fix-node-js-gyp-err-cant-find-python-executable-python-on-windows/) for figuring this out_
 
 ## Usage
 Generate SSL certificates, start a local development server and watch for file changes:
