@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)](LICENSE)
 [![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)](package.json)
-[![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)](https://travis-ci.org/flowzy/r-thedragonprince)
+[![build status](https://travis-ci.org/flowzy/r-thedragonprince.svg?branch=master)](https://travis-ci.org/flowzy/r-thedragonprince)
 
 ![theme preview](preview.png)
 
