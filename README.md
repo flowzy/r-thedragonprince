@@ -67,7 +67,7 @@ Now that you've setup your environment, you can start downloading and installing
 3. Open [this link](https://github.com/flowzy/r-thedragonprince/raw/master/userscript.user.js) and install the userscript.
 4. At this point you should be all set and ready to go.
 
-### Having issues why trying to install dependencies?
+### Having issues when trying to install dependencies?
 
 If you're on Windows, try this:
 
