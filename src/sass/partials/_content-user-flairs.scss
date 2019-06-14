@@ -70,6 +70,22 @@
     }
 }
 
+// verified users
+.flair-verified ~ .userattrs::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: url(../img/verified.png) center no-repeat;
+    border: 1px solid rgba($color-green, .15);
+    background-size: 100%;
+    position: relative;
+    bottom: -.25rem;
+    margin: -.25rem .1rem 0 .25rem;
+    box-sizing: border-box;
+}
+
 // generate flair classes by looping through a list of flairs
 @each $flair in $user-flairs {
     $name: nth($flair, 1);

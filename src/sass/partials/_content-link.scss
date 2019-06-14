@@ -234,6 +234,7 @@
             display: inline-block;
             vertical-align: middle;
             margin: -4px 8px 0 -4px;
+            opacity: .7;
             @include sprite-position($icon-checkmark);
             @include sprite-width($icon-checkmark);
             @include sprite-height($icon-checkmark);
