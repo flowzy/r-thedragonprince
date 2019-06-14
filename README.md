@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/flowzy/r-thedragonprince.svg)](LICENSE)
 [![dependencies](https://img.shields.io/david/flowzy/r-thedragonprince.svg)](package.json)
-[![build status](https://img.shields.io/travis/com/flowzy/r-thedragonprince.svg)](https://travis-ci.org/flowzy/r-thedragonprince)
+[![build status](https://travis-ci.org/flowzy/r-thedragonprince.svg?branch=master)](https://travis-ci.org/flowzy/r-thedragonprince)
 
 ![theme preview](preview.png)
 
@@ -67,7 +67,7 @@ Now that you've setup your environment, you can start downloading and installing
 3. Open [this link](https://github.com/flowzy/r-thedragonprince/raw/master/userscript.user.js) and install the userscript.
 4. At this point you should be all set and ready to go.
 
-### Having issues why trying to install dependencies?
+### Having issues when trying to install dependencies?
 
 If you're on Windows, try this:
 
